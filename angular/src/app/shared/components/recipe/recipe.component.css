@@ -69,7 +69,8 @@
 }
 
 .add-medicine {
-  position: relative;
-  left: 290px;
-  top: 50px;
+  /*position: relative;*/
+  justify-self: flex-end;
+  /*left: 290px;*/
+  /*top: 50px;*/
 }
