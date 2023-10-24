@@ -1,0 +1,14 @@
+.site {
+    width: 600px;
+    border: 1px solid black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.two .patient,
+.two .doctor,
+.two .pharmacist,
+.two .pharmacy {
+border: 1px solid red;
+padding: 5em;
+}
