@@ -11,6 +11,7 @@ import {PharmacyModule} from "./pharmacy/pharmacy.module";
 import {PatientModule} from "./patient/patient.module";
 import {TokenInterceptor} from "./shared/interceptors/token.interceptor";
 import {ApiInterceptor} from "./shared/interceptors/api.interceptor";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 @NgModule({
   declarations: [
