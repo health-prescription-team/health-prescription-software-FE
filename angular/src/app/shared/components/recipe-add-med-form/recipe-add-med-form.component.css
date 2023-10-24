@@ -1,0 +1,47 @@
+form{
+  max-width: 200px;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+#select-med-input{
+  background-color: white;
+  border: none;
+  font-weight: bolder;
+  padding: 10px;
+}
+#additionalInfo{
+  max-width: 90%;
+  margin-bottom: 20px;
+}
+#inputs-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.intake-input{
+  height: 30px;
+  width: 60px;
+}
+#btns-container{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.btn{
+  border: none;
+  width: 100%;
+  padding: 10px 25px;
+  border-radius: 100px;
+}
+#proceedBtn{
+  background-color: rgb(0, 255, 0);
+}
+#cancelBtn{
+  background-color: rgb(247, 0, 0);
+}
