@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
-import {RecipeComponent} from "./shared/components/recipe/recipe.component";
+import {RecipeComponent} from "./shared/components/recipe1/recipe/recipe.component";
 
 const routes: Routes = [
   {
