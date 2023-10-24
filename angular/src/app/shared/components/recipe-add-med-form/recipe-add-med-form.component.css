@@ -14,13 +14,18 @@ form{
   font-weight: bolder;
   padding: 10px;
 }
+h4{
+  align-self: flex-start;
+}
 #additionalInfo{
   max-width: 90%;
   margin-bottom: 20px;
+  align-self: flex-start;
 }
 #inputs-container{
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 10px;
 }
 .intake-input{
