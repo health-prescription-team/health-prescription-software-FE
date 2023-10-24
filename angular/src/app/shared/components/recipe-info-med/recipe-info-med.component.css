@@ -1,0 +1,70 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+#medInfoConatiner{
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-items: center;
+
+}
+#dayTimesContainer{
+  display: flex;
+
+}
+.dayTimeContainer{
+  display: flex;
+  border: solid black 0.01cm;
+  flex-direction: column;
+}
+.dayTimeContainer>*{
+  background-color: grey;
+  width: 100%
+}
+.dayTimeName{
+  border-bottom: solid black 0.01cm;
+  padding: 10px 20px ;
+
+}
+.dayTimeInfo{
+  text-align: center;
+  padding: 20px 0;
+}
+
+#additionalInfoContainer{
+  text-align: center;
+  margin-top: 25px;
+}
+#additionalInfo{
+
+  padding: 5px 20px;
+  border: solid grey 0.01cm;
+  border-right: none;
+  border-left: none;
+}
+
+
+#btnsContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+.btn{
+  width: 80%;
+  border-radius: 100px;
+  border: none;
+  padding: 10px 0;
+}
+#proceedBtn{
+  background-color: rgb(0, 255, 0);
+}
+#editBtn{
+  background-color: rgb(255, 255, 0);
+}
+#cancelBtn{
+  background-color: rgb(255, 0, 0);
+}
