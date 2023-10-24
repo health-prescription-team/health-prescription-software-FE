@@ -15,7 +15,7 @@
 
 .field {
   padding: 10px;
-  min-width: 300px;
+  /*min-width: 300px;*/
   display: flex;
   justify-content: space-around;
 }
@@ -23,6 +23,7 @@
 .diagnosis-field {
   background-color: grey;
   text-align: center;
+  width: 100%;
 }
 
 .field label {
