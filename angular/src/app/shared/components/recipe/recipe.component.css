@@ -1,0 +1,75 @@
+.container {
+  max-width: 500px;
+  min-height: 100px;
+  margin: 0 auto;
+  border: 1px solid blue;
+}
+
+.recipe-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(229, 232, 248);
+}
+
+.field {
+  padding: 10px;
+  min-width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.diagnosis-field {
+  background-color: grey;
+  text-align: center;
+}
+
+.field label {
+  padding: 10px;
+}
+
+/* BODY */
+
+.recipe-body {
+  min-height: 58vh;
+}
+
+/* FOOTER */
+
+.validity {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.start {
+  background-color: grey;
+}
+.end {
+  background-color: goldenrod;
+}
+.date {
+  width: 50%;
+  text-align: center;
+}
+.recipe-id {
+  text-align: center;
+}
+
+/* BUTTON */
+.btn {
+  background-color: #343cd6;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.add-medicine {
+  position: relative;
+  left: 290px;
+  top: 50px;
+}
