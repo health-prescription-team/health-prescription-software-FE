@@ -2,8 +2,9 @@
   margin: 0;
   box-sizing: border-box;
 }
-#medInfoConatiner{
+#medInfoContainer{
   display: flex;
+  width: 100%;
   flex-direction: column;
   max-width: 300px;
   align-items: center;
