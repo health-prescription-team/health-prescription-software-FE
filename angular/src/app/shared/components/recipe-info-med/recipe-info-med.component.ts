@@ -12,6 +12,9 @@ export class RecipeInfoMedComponent implements AfterViewInit{
   ) {
   }
   ngAfterViewInit() {
+    this.setStyles()
+  }
+  setStyles(){
     this.Renderer2.setStyle(this.ElementRef.nativeElement,"display","flex")
     this.Renderer2.setStyle(this.ElementRef.nativeElement,"justify-content","center")
   }
