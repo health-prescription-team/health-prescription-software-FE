@@ -3,9 +3,8 @@
 }
 #medInfoContainer{
   display: flex;
-  width: 100%;
+  width: 80%;
   flex-direction: column;
-  max-width: 300px;
   align-items: center;
 
 }
@@ -36,8 +35,11 @@
   text-align: center;
   margin-top: 25px;
 }
+#additionalInfoHeading{
+  margin: 10px;
+}
 #additionalInfo{
-
+  word-break: break-word;
   padding: 5px 20px;
   border: solid grey 0.01cm;
   border-right: none;

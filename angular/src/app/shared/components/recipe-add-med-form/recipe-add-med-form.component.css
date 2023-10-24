@@ -1,5 +1,5 @@
 form{
-  max-width: 200px;
+  min-width: 250px;
   background-color: grey;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,8 @@ h4{
   align-self: flex-start;
 }
 #additionalInfo{
-  max-width: 90%;
+  max-width: 100%;
+  min-width: 50%;
   margin-bottom: 20px;
   align-self: flex-start;
 }
