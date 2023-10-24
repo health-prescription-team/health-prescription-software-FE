@@ -1,14 +1,89 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=PT+Serif&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Serif', serif;
+
+}
+.body {
+    background-image: url('../../assets/images/19366.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+
+}
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 .site {
-    width: 600px;
-    border: 1px solid black;
+    width: 100%;
     height: 100vh;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
-.two .patient,
-.two .doctor,
-.two .pharmacist,
-.two .pharmacy {
-border: 1px solid red;
-padding: 5em;
+.logo-box {
+    width: 200px;
 }
+
+.buttons-box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.doctor-patient,
+.pharmacist-pharmacy {
+    display: flex;
+    gap: 5em;
+    text-align: center;
+}
+.doctor-patient p,
+.pharmacist-pharmacy p {
+    font-size: 3em;
+    padding: 2em 0 ;
+    text-align: center;
+    border: 3px solid #b8b4b4;
+    width: clamp(200px, 40vw, 500px);
+    font-weight: bold;
+    border-radius: 0.4em;
+}
+.doctor-patient p:hover,
+.pharmacist-pharmacy p:hover{
+    background-color: #fff9f9;
+    transition: 0.3s;
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 5px 5px 8px 11px #96D2EE;
+}
+.doctor-patient p:active,
+.pharmacist-pharmacy p:active{
+    background-color: #fff9f9;
+    transition: 0.3s;
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 5px 5px 8px 11px #96D2EE;
+}
+@media(width<700px){
+    .doctor-patient p,
+    .pharmacist-pharmacy p {
+    font-size: 2em;
+}
+.doctor-patient,
+.pharmacist-pharmacy {
+    flex-direction: column;
+    gap: 2em;
+}
+.logo-box {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0.3;
+}
+
+}
+
