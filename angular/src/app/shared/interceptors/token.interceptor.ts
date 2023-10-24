@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
       // Clone the request and add the JWT token to the Authorization header.
       request = request.clone({
         setHeaders: {
-          Authorization: `token`,
+          Authorization:token
         },
       });
     }

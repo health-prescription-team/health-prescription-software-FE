@@ -4,6 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import {SharedModule} from "./shared/shared.module";
+import {DoctorModule} from "./doctor/doctor.module";
+import {PharmacistModule} from "./pharmacist/pharmacist.module";
+import {PharmacyModule} from "./pharmacy/pharmacy.module";
+import {PatientModule} from "./patient/patient.module";
+import {TokenInterceptor} from "./shared/interceptors/token.interceptor";
+import {ApiInterceptor} from "./shared/interceptors/api.interceptor";
 
 @NgModule({
   declarations: [
@@ -12,9 +19,25 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    DoctorModule,
+    PharmacistModule,
+    PharmacyModule,
+    PatientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor, // Add your interceptor class here
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor, // Add your interceptor class here
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
