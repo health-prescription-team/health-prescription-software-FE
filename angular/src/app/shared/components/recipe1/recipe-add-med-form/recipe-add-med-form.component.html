@@ -1,5 +1,5 @@
 <div>
-  <select id="selectMedInput" name="Изберете лекарство" name="selectMedInput"
+  <select (input)="emit()" id="selectMedInput" name="Изберете лекарство" name="selectMedInput"
   #inputselectMedInput="ngModel"
   required
   ngModel >
@@ -8,21 +8,21 @@
   </select>
   <h4>Прием</h4>
   <div id="inputs-container">
-    <input class="intake-input" type="text" placeholder="Сутрин..." id="morning" name="morning"
+    <input (input)="emit()" class="intake-input" type="text" placeholder="Сутрин..." id="morning" name="morning"
     #inputmorning="ngModel"
     required
     ngModel>
-    <input class="intake-input" type="text" placeholder="Обед..." id="midday" name="midday"
+    <input (input)="emit()" class="intake-input" type="text" placeholder="Обед..." id="midday" name="midday"
     #inputmidday="ngModel"
     required
     ngModel>
-    <input class="intake-input" type="text" placeholder="Вечер..." id="evening" name="evening"
+    <input (input)="emit()" class="intake-input" type="text" placeholder="Вечер..." id="evening" name="evening"
     #inputevening="ngModel"
     required
     ngModel>
   </div>
   <h4>Допълнителни бележки</h4>
-  <textarea id="additionalInfo" placeholder="Допълнителна информация..."  name="additionalInfo"
+  <textarea (input)="emit()" id="additionalInfo" placeholder="Допълнителна информация..."  name="additionalInfo"
   #inputadditionalInfo="ngModel"
   ngModel></textarea>
   <div id="btns-container">

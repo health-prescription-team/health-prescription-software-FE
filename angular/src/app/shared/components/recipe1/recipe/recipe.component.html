@@ -43,7 +43,7 @@
 
         <div class="recipe-body recipe-component">
             <app-recipe-info-med />
-            <app-recipe-add-med-form />
+            <app-recipe-add-med-form (nestedFormValues)="nestedFormValues = $event" />
             <button class="btn add-medicine">Добави лекарство</button>
         </div>
 
