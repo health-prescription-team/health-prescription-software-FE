@@ -1,44 +1,66 @@
 <div class="container">
-    <div class="recipe-header recipe-component">
-        <div class="field">
-            <label for="patient">Пациент: </label>
-            <input type="text" id="patient" placeholder="ЕГН">
-        </div>
-        <div class="field">
-            <label for="patient-age">Години: </label>
-            <input type="text" id="patient-age" placeholder="Години" >
-        </div>
-        <div class="field">
-            <label for="doctor">Лекар: </label>
-            <input type="text" id="doctor" placeholder="Димитър Георгиев Стоянов" >
-        </div>
-    </div>
-    <div class="recipe-sub-header">
-        <div class="field diagnosis-field">
-            <label for="diagnosis">Диагноза: </label>
-            <input type="text" id="diagnosis" placeholder="Кашлица">
-        </div>
-    </div>
-
-    <div class="recipe-body recipe-component">
-      <app-recipe-info-med />
-      <app-recipe-add-med-form />
-      <button class="btn add-medicine">Добави лекарство</button>
-    </div>
-
-    <div class="recipe-footer recipe-component">
-        <div class="validity">
-            <div class="start date">
-                <p>Издадена на</p>
-                <p>01.12.2023</p>
+    <form #form="ngForm" (ngSubmit)="recipeInfo(form)">
+        <div class="recipe-header recipe-component">
+            <div class="field">
+                <label for="patient">Пациент: </label>
+                <input type="text" id="patient" placeholder="ЕГН" type="text"
+                name="patient"
+                id="patient"
+                #inputpatient="ngModel"
+                required
+                ngModel>
             </div>
-            <div class="end date">
-                <p>Валидна до</p>
-                <p>02.12.2023</p>
+            <div class="field">
+                <label for="patientАge">Години: </label>
+                <input type="text" id="patientАge" placeholder="Години" type="text"
+                name="patientАge"
+                id="patientАge"
+                #inputpatientАge="ngModel"
+                required
+                ngModel>
+            </div>
+            <div class="field">
+                <label for="doctor">Лекар: </label>
+                <input type="text" id="doctor" placeholder="Димитър Георгиев Стоянов" type="text"
+                name="doctor"
+                id="doctor"
+                #inputdoctor="ngModel"
+                required
+                ngModel>
             </div>
         </div>
-    </div>
-    <div class="recipe-id">
-        <h3>ID: dsadsadojsamd1dsa4dsa55dsa</h3>
-    </div>
+        <div class="recipe-sub-header">
+            <div class="field diagnosis-field">
+                <label for="diagnosis">Диагноза: </label>
+                <input type="text" id="diagnosis" placeholder="Кашлица" type="text"
+                name="diagnosis"
+                id="diagnosis"
+                #inputdiagnosis="ngModel"
+                required
+                ngModel>
+            </div>
+        </div>
+
+        <div class="recipe-body recipe-component">
+            <app-recipe-info-med />
+            <app-recipe-add-med-form />
+            <button class="btn add-medicine">Добави лекарство</button>
+        </div>
+
+        <div class="recipe-footer recipe-component">
+            <div class="validity">
+                <div class="start date">
+                    <p>Издадена на</p>
+                    <p>01.12.2023</p>
+                </div>
+                <div class="end date">
+                    <p>Валидна до</p>
+                    <p>02.12.2023</p>
+                </div>
+            </div>
+        </div>
+        <div class="recipe-id">
+            <h3>ID: dsadsadojsamd1dsa4dsa55dsa</h3>
+        </div>
+    </form>
 </div>

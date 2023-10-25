@@ -1,20 +1,32 @@
-<form >
-  <select id="select-med-input" name="Изберете лекарство" >
-    <option value="Изберете лекарство">Изберете лекарство</option>
+<div>
+  <select id="selectMedInput" name="Изберете лекарство" name="selectMedInput"
+  #inputselectMedInput="ngModel"
+  required
+  ngModel >
+    <option value="Изберете лекарство" selected disabled>Изберете лекарство</option>
     <option value="2">2</option>
   </select>
   <h4>Прием</h4>
   <div id="inputs-container">
-    <input class="intake-input" type="text" placeholder="Сутрин...">
-    <input class="intake-input" type="text" placeholder="Обед...">
-    <input class="intake-input" type="text" placeholder="Вечер...">
+    <input class="intake-input" type="text" placeholder="Сутрин..." id="morning" name="morning"
+    #inputmorning="ngModel"
+    required
+    ngModel>
+    <input class="intake-input" type="text" placeholder="Обед..." id="midday" name="midday"
+    #inputmidday="ngModel"
+    required
+    ngModel>
+    <input class="intake-input" type="text" placeholder="Вечер..." id="evening" name="evening"
+    #inputevening="ngModel"
+    required
+    ngModel>
   </div>
   <h4>Допълнителни бележки</h4>
-  <textarea id="additionalInfo" placeholder="Допълнителна информация..." ></textarea>
+  <textarea id="additionalInfo" placeholder="Допълнителна информация..."  name="additionalInfo"
+  #inputadditionalInfo="ngModel"
+  ngModel></textarea>
   <div id="btns-container">
     <button class="btn" id="proceedBtn" type="submit">Предпиши</button>
     <button class="btn" id="cancelBtn">Отказ</button>
   </div>
-
-
-</form>
+</div>
