@@ -4,6 +4,11 @@ import { RecipeComponent } from './components/recipe1/recipe/recipe.component';
 import { RecipeAddMedFormComponent } from './components/recipe1/recipe-add-med-form/recipe-add-med-form.component';
 import { RecipeInfoMedComponent } from './components/recipe1/recipe-info-med/recipe-info-med.component';
 import { CatalogMedicamentsComponent } from './components/catalog-medicaments/catalog-medicaments.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from "@angular/forms";
+import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './components/register/register.component';
+
 
 
 
@@ -12,10 +17,14 @@ import { CatalogMedicamentsComponent } from './components/catalog-medicaments/ca
     RecipeComponent,
     RecipeAddMedFormComponent,
     RecipeInfoMedComponent,
-    CatalogMedicamentsComponent
+    CatalogMedicamentsComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    RouterModule
   ]
 })
 export class SharedModule { }

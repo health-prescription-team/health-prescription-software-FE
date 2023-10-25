@@ -12,6 +12,7 @@ import {PatientModule} from "./patient/patient.module";
 import {TokenInterceptor} from "./shared/interceptors/token.interceptor";
 import {ApiInterceptor} from "./shared/interceptors/api.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import { FormsModule, NgForm } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
     DoctorModule,
     PharmacistModule,
     PharmacyModule,
-    PatientModule
+    PatientModule,
+    FormsModule
   ],
   providers: [
     {
