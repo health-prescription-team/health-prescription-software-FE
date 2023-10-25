@@ -9,6 +9,6 @@ import { NgForm } from '@angular/forms';
 export class RecipeComponent {
 recipeInfo(form:NgForm){
   const {patient, patientАge, doctor, diagnosis, selectMedInput, morning, midday, evening, additionalInfo}= form.value;
-  console.log(form.value);
+  console.log('-->',selectMedInput);
 }
 }

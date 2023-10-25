@@ -6,6 +6,7 @@ import {AfterViewInit, Component, ElementRef, Renderer2} from '@angular/core';
   styleUrls: ['./recipe-info-med.component.css']
 })
 export class RecipeInfoMedComponent implements AfterViewInit{
+  
   constructor(
   private  Renderer2:Renderer2,
   private  ElementRef:ElementRef,
