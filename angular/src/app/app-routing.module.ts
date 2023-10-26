@@ -75,7 +75,7 @@ const routes: Routes = [
       },
       {
         //pharmacist search
-        path:"pharmacist",
+        path:"search",
         pathMatch:"full",
         component:SearchComponent
       },

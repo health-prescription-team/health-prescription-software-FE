@@ -1,1 +1,17 @@
-<p>search works!</p>
+<div class="wrapper">
+  <form class="form" #form="ngForm">
+    <label class="heading" for="recipeNumber">Номер на рецепта:</label>
+    <input
+      id="recipeNumber"
+      type="text"
+      required
+      ngModel
+      name="recipeNumber"
+      #recipeNumber="ngModel"
+    >
+    <div *ngIf="form.controls['recipeNumber']?.touched && form.controls['recipeNumber'].invalid">
+      <div *ngIf="form.controls['recipeNumber'].errors?.['required']" class="error">Recipe number is required.</div>
+    </div>
+    <button class="btn" type="submit">Намери рецепта</button>
+  </form>
+</div>
