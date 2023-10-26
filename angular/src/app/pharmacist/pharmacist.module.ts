@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PharmacistComponent } from './pharmacist/pharmacist.component';
-import { RouterModule } from '@angular/router';
+import { PharmacistComponent } from './components/pharmacist/pharmacist.component';
+import {RouterModule, RouterOutlet} from '@angular/router';
+import { SearchComponent } from './components/search/search.component';
 
 
 
 @NgModule({
   declarations: [
-    PharmacistComponent
+    PharmacistComponent,
+    SearchComponent
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        RouterOutlet
+    ]
 })
 export class PharmacistModule { }
