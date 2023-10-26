@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordMatchValidatorDirective } from './validators/password-validators.directive';
 
 
 
@@ -20,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
     CatalogMedicamentsComponent,
     LoginComponent,
     RegisterComponent,
+    PasswordMatchValidatorDirective
   ],
   imports: [
     CommonModule,

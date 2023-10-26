@@ -17,7 +17,9 @@ export class RegisterComponent {
         image,
         phoneNumber,
         uiNumber,
-        companyName
+        companyName,
+        password,
+        rePassword
           } = form.value
           console.log(form.value);
           
