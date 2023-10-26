@@ -6,6 +6,8 @@ import { RegisterComponent } from './shared/components/register/register.compone
 import { RecipeComponent } from './shared/components/recipe1/recipe/recipe.component';
 import { DoctorComponent } from './doctor/doctor/doctor.component';
 import { PatientComponent } from './patient/patient/patient.component';
+import {SearchComponent} from "./pharmacist/components/search/search.component";
+import {PharmacistComponent} from "./pharmacist/components/pharmacist/pharmacist.component";
 
 const routes: Routes = [
   {
@@ -43,19 +45,43 @@ const routes: Routes = [
     component:PatientComponent,
     children:[
       {
-        //doctor/login
+        //patient/login
         path:"login",
         component:LoginComponent
       },
       {
-        //doctor register
+        //patient register
         path:"register",
         pathMatch:"full",
         component:RegisterComponent
       },
     ]
   },
-  
+  {
+    //pharmacist
+    path:"pharmacist",
+    component:PharmacistComponent,
+    children:[
+      {
+        //pharmacist login
+        path:"login",
+        component:LoginComponent
+      },
+      {
+        //pharmacist register
+        path:"register",
+        pathMatch:"full",
+        component:RegisterComponent
+      },
+      {
+        //pharmacist search
+        path:"pharmacist",
+        pathMatch:"full",
+        component:SearchComponent
+      },
+    ]
+  },
+
 
   {
     //create recipe
