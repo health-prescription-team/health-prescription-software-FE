@@ -9,6 +9,7 @@ import { PatientComponent } from './patient/patient/patient.component';
 import {SearchComponent} from "./pharmacist/components/search/search.component";
 import {PharmacistComponent} from "./pharmacist/components/pharmacist/pharmacist.component";
 import { ProfileComponent } from './patient/components/profile/profile.component';
+import { AddMedicamentComponent } from './pharmacist/components/add-medicament/add-medicament.component';
 
 const routes: Routes = [
   {
@@ -85,6 +86,12 @@ const routes: Routes = [
         path:"search",
         pathMatch:"full",
         component:SearchComponent
+      },
+      {
+        //pharmacist add medicament
+        path:"add-medicament",
+        pathMatch:"full",
+        component:AddMedicamentComponent
       },
     ]
   },
