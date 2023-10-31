@@ -10,6 +10,7 @@ import {SearchComponent} from "./pharmacist/components/search/search.component";
 import {PharmacistComponent} from "./pharmacist/components/pharmacist/pharmacist.component";
 import { ProfileComponent } from './patient/components/profile/profile.component';
 import { AddMedicamentComponent } from './pharmacist/components/add-medicament/add-medicament.component';
+import { PharmacyComponent } from './pharmacy/pharmacy/pharmacy.component';
 
 const routes: Routes = [
   {
@@ -102,6 +103,13 @@ const routes: Routes = [
     path:"doctor/recipe/new",
     pathMatch:"full",
     component:RecipeComponent
+  },
+
+  {
+    //pharmacy/login
+    path:"pharmacy/login",
+    pathMatch:"full",
+    component:LoginComponent
   },
 ];
 
