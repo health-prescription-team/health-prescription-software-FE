@@ -9,6 +9,7 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordMatchValidatorDirective } from './validators/password-validators.directive';
+import { PharmacyModule } from '../pharmacy/pharmacy.module';
 
 
 
@@ -26,7 +27,7 @@ import { PasswordMatchValidatorDirective } from './validators/password-validator
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class SharedModule { }

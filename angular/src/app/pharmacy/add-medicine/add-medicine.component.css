@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+form {
+    border: 2px solid rgb(152, 151, 151);
+    /* text-align: center; */
+    padding: 2em;
+    backdrop-filter: blur(5px);
+    border-radius: 0.5em;
+}
+.container {
+    /* width: 500px; */
+    height: 100vh;
+    /* border: 1px solid red; */
+    /* margin: 0 auto; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    /* margin-top:8em; */
+    background-image: url('../../../assets/images/add-medicine-bck.jpg');
+    background-size: auto 100vh;
+    background-repeat: no-repeat;
+
+}
+.form-group {
+    text-align: center;
+    padding: 0.4em;
+    margin-left: 5em;
+    border-radius: 0.5em;
+
+}
+input {
+    text-align: center;
+    width: 300px;
+    font-size: 16px;
+    border-radius: 0.5em;
+
+    margin-left: -5em;
+}
+.title {
+    font-size: 2em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #005BC7
+}
+textarea {
+    font-size: 16px;
+    width: 300px;
+    height: 100px;
+    margin-left: -5em;
+}
+#price {
+    width: 60%;
+}
+#price ,#name {
+    height: 2em;
+    font-weight: bold;
+}
+button {
+    margin-left: -4em;
+    padding: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.3em;
+}
+button:hover {
+    background-color: #bad6f8;
+}

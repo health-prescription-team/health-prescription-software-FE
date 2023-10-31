@@ -1,0 +1,76 @@
+
+
+<div class="container">
+    <p class="title">Добре дошли:(име на фирмата)</p>
+    <form #form="ngForm" (ngSubmit)="addMedicine(form)">
+        <div class="form-group">
+            <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Име на лекарство"
+            #inputName="ngModel"
+            required
+            ngModel
+            >
+        </div>
+        <div class="form-group">
+            <textarea 
+            type="text"
+            name="ingredients"
+            id="ingredients"
+            placeholder="Съставки..."
+            #inputIngredients="ngModel"
+            required
+            ngModel
+            ></textarea>
+        </div>
+        <div class="form-group">
+            <textarea 
+            type="text"
+            name="description"
+            id="description"
+            placeholder="Описание..."
+            #inputDescription="ngModel"
+            required
+            ngModel
+            ></textarea>
+        </div>
+        <div class="form-group">
+            <textarea 
+            type="text"
+            name="method"
+            id="method"
+            placeholder="Начин на употреба..."
+            #inputMethod="ngModel"
+            required
+            ngModel
+            ></textarea>
+        </div>
+        <div class="form-group">
+            <input 
+            type="file"
+            name="image"
+            id="image"
+            placeholder="Снимка"
+            #inputImage="ngModel"
+            required
+            ngModel
+            >
+        </div>
+        <div class="form-group">
+            <input 
+            type="number"
+            name="price"
+            id="price"
+            placeholder="Цена в лева"
+            #inputPrice="ngModel"
+            required
+            ngModel
+            >
+        </div>
+        <div class="form-group">
+            <button type="submit">Добави лекарство</button>
+        </div>
+    </form>
+</div>
