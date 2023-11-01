@@ -25,3 +25,4 @@ addMedicine(form:NgForm){
   form.reset();
 }
 }
+  

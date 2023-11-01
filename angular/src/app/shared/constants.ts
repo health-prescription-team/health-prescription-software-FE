@@ -1,2 +1,3 @@
 export const API_URL = "https://localhost:3000"
-export const endpoints = ' api/Medicine'
+export const medicineEndpoint = ' api/Medicine'
+export const prescriptionEndpoint = 'api/Prescription'

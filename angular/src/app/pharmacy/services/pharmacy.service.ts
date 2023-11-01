@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { endpoints } from 'src/app/shared/constants'
+import { medicineEndpoint } from 'src/app/shared/constants'
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +10,17 @@ export class PharmacyService {
   constructor(private http:HttpClient) {}
 
   getAll(){
-   return this.http.get(endpoints)
+   return this.http.get(medicineEndpoint)
   }
 
   addMeidicine(data:any) {
-    return this.http.post(endpoints,data)
+    return this.http.post(medicineEndpoint,data)
   }
   editMedsicine(id:string,data:any){
-   return this.http.put(`${endpoints}/${id}`,data)
+   return this.http.put(`${medicineEndpoint}/${id}`,data)
   }
 
   deleteMedicine(id:string) {
-   return this.http.delete(`${endpoints}/${id}`)
+   return this.http.delete(`${medicineEndpoint}/${id}`)
   }
 }
