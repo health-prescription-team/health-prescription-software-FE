@@ -5,9 +5,9 @@
             <div class="form-group">
                 <input
                 type="text"
-                name="id"
+                [name]="isPharamcyLogin ? 'CompanyName' : 'id'"
                 id="id"
-                placeholder=9902020202
+                [placeholder]="isPharamcyLogin ? 'Company Name' : 'id'"
                 #inputId="ngModel"
                 required
                 ngModel
