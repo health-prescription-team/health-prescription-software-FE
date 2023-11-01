@@ -12,6 +12,6 @@ constructor() {}
 
 addMedicine(form:NgForm){
 console.log(form.value);
-
+form.reset();
 }
 }

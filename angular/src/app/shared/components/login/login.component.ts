@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(private router:Router,private activeRoute:Router){
-
   }
+
    login(forms:NgForm){
     if(forms.invalid) return;
   
@@ -30,6 +30,8 @@ export class LoginComponent {
     this.router.navigate([`${currentPath}/search`]);
    }
    if(currentPath == 'pharmacy'){
+    console.log(currentPath);
+    
     this.router.navigate([`${currentPath}/add-medicine`]);
    }
     
