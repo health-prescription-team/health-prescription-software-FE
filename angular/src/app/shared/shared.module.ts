@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordMatchValidatorDirective } from './validators/password-validators.directive';
 import { PharmacyModule } from '../pharmacy/pharmacy.module';
+import { DetailsComponent } from './components/details/details.component';
 
 
 
@@ -22,7 +23,8 @@ import { PharmacyModule } from '../pharmacy/pharmacy.module';
     CatalogMedicamentsComponent,
     LoginComponent,
     RegisterComponent,
-    PasswordMatchValidatorDirective
+    PasswordMatchValidatorDirective,
+    DetailsComponent
   ],
   imports: [
     CommonModule,

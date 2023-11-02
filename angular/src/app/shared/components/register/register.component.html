@@ -11,7 +11,7 @@
             placeholder="Ivan"
             #inputfirstName="ngModel"
             required
-            ngModel
+            ngModel = 'Ivan'
             >
         </div>
         <div *ngIf="form.controls['firstName']?.touched && form.controls['firstName'].invalid">
@@ -26,7 +26,7 @@
             placeholder="Ivanov"
             #inputmiddleName="ngModel"
             required
-            ngModel
+            ngModel="Ivanov"
             >
         </div>
         <div *ngIf="form.controls['middleName']?.touched && form.controls['middleName'].invalid">
@@ -41,7 +41,7 @@
             placeholder="Petrov"
             #inputsurName="ngModel"
             required
-            ngModel
+            ngModel="Petrov"
             >
         </div>
         <div *ngIf="form.controls['surName']?.touched && form.controls['surName'].invalid">
@@ -56,7 +56,7 @@
             placeholder="990102****"
             #inputpersonalId="ngModel"
             required
-            ngModel
+            ngModel="12345670"
             >
         </div>
         <div *ngIf="form.controls['personalId']?.touched && form.controls['personalId'].invalid">
@@ -79,30 +79,45 @@
         <div class="form-group">
             <input 
             type="number"
-            name="uiNumber"
-            id="uiNumber"
+            name="uinNumber"
+            id="uinNumber"
             placeholder="1234567890"
-            #inputuiNumber="ngModel"
+            #inputuinNumber="ngModel"
             required
-            ngModel
+            ngModel="12345678"
             >
         </div>
-        <div *ngIf="form.controls['uiNumber']?.touched && form.controls['uiNumber'].invalid">
-            <div *ngIf="form.controls['uiNumber'].errors?.['required']" class="error">Identity Number is required.</div>
+        <div *ngIf="form.controls['uinNumber']?.touched && form.controls['uinNumber'].invalid">
+            <div *ngIf="form.controls['uinNumber'].errors?.['required']" class="error">Identity Number is required.</div>
           </div>
         <div class="form-group">
             <input 
             type="text"
-            name="companyName"
-            id="companyName"
-            placeholder="Your company name..."
-            #inputcompanyName="ngModel"
+            name="hospitalName"
+            id="hospitalName"
+            placeholder="Hospital name..."
+            #inputhospitalName="ngModel"
             required
-            ngModel
+            ngModel="Ivan Rilski"
             >
         </div>
-        <div *ngIf="form.controls['companyName']?.touched && form.controls['companyName'].invalid">
-            <div *ngIf="form.controls['companyName'].errors?.['required']" class="error">Company name is required.</div>
+        <div *ngIf="form.controls['hospitalName']?.touched && form.controls['hospitalName'].invalid">
+            <div *ngIf="form.controls['hospitalName'].errors?.['required']" class="error">Hospital name is required.</div>
+          </div>
+
+          <div class="form-group">
+            <input 
+            type="number"
+            name="phoneNumber"
+            id="phoneNumber"
+            placeholder="Phone Number..."
+            #inputphoneNumber="ngModel"
+            required
+            ngModel="0889786754"
+            >
+        </div>
+        <div *ngIf="form.controls['phoneNumber']?.touched && form.controls['phoneNumber'].invalid">
+            <div *ngIf="form.controls['phoneNumber'].errors?.['required']" class="error">Phone Number is required.</div>
           </div>
 
           <div class="form-group">
@@ -113,7 +128,7 @@
             placeholder="Password"
             #inputpassword="ngModel"
             required
-            ngModel
+            ngModel="Health12345@"
             minlength="8"
             >
         </div>
@@ -130,7 +145,7 @@
             placeholder="Repeat Password"
             #inputrePassword="ngModel"
             required
-            ngModel
+            ngModel="Health12345@"
             minlength="8"
             >
         </div>

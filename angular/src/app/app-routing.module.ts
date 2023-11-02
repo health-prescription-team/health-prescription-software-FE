@@ -11,6 +11,7 @@ import {PharmacistComponent} from "./pharmacist/components/pharmacist/pharmacist
 import { ProfileComponent } from './patient/components/profile/profile.component';
 import { AddMedicamentComponent } from './pharmacist/components/add-medicament/add-medicament.component';
 import { AddMedicineComponent } from './pharmacy/add-medicine/add-medicine.component';
+import { DetailsComponent } from './shared/components/details/details.component';
 
 const routes: Routes = [
   {
@@ -117,6 +118,18 @@ const routes: Routes = [
     pathMatch:"full",
     component:AddMedicineComponent
   },
+  {
+    //pharmacy/register
+    path:"pharmacy/register",
+    pathMatch:"full",
+    component:RegisterComponent
+  },
+  //DETAILS
+  {
+    path:'details/4',
+    pathMatch:"full",
+    component:DetailsComponent
+  }
 ];
 
 @NgModule({

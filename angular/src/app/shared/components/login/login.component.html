@@ -5,9 +5,9 @@
             <div class="form-group">
                 <input
                 type="text"
-                [name]="isPharamcyLogin ? 'CompanyName' : 'id'"
+                [name]="isPharamcyLogin ? 'email' : 'id'"
                 id="id"
-                [placeholder]="isPharamcyLogin ? 'Company Name' : 'id'"
+                [placeholder]="isPharamcyLogin ? 'Email' : 'id'"
                 #inputId="ngModel"
                 required
                 ngModel
@@ -29,7 +29,7 @@
             </div>
         </form>
         <div class="register">
-            <p>Don't have account? <a routerLink="/doctor/register">Register</a></p>
+            <p>Don't have account? <a [routerLink]='"/"+currentPath + "/register"'>Register</a></p>
         </div>
     </div>
 

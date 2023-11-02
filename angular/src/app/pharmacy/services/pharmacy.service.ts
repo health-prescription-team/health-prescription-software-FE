@@ -16,7 +16,7 @@ export class PharmacyService {
   addMeidicine(data:any) {
     return this.http.post(medicineEndpoint,data)
   }
-  editMedsicine(id:string,data:any){
+  editMedicine(id:string,data:any){
    return this.http.put(`${medicineEndpoint}/${id}`,data)
   }
 

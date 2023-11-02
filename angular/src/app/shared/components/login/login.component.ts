@@ -13,9 +13,16 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router,private activeRoute:Router){
   }
   isPharamcyLogin:boolean = false;
+  currentPath:string = '';
+  urlPath:string = '';
 
   ngOnInit(): void {
     this.isPharmacy()
+   this.getcurrentPath()
+  }
+  getcurrentPath() {
+    this.currentPath = this.activeRoute.url.split('/')[1]
+    return this.currentPath
   }
     isPharmacy() {
       const currentPath = this.activeRoute.url.split('/')[1];
@@ -28,7 +35,7 @@ export class LoginComponent implements OnInit {
     //TODO: Doctor and Pharmacist should be implement!
    login(forms:NgForm){
     if(forms.invalid) return;
-  
+    
     const {id,password} =  forms.value;
     const currentPath = this.activeRoute.url.split('/')[1];
     console.log(currentPath);
@@ -42,7 +49,9 @@ export class LoginComponent implements OnInit {
    if(currentPath == 'pharmacist'){
     this.router.navigate([`${currentPath}/search`]);
    }
-   if(this.isPharamcyLogin){  
+   if(this.isPharamcyLogin){ 
+    console.log(forms.value);
+     
    this.router.navigate([`${currentPath}/add-medicine`]);
    }
     
