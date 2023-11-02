@@ -119,7 +119,7 @@ const routes: Routes = [
   },
   //DETAILS
   {
-    path:'details/4',
+    path:'details/:id',
     pathMatch:"full",
     component:DetailsComponent
   }
