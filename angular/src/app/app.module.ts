@@ -13,7 +13,6 @@ import {TokenInterceptor} from "./shared/interceptors/token.interceptor";
 import {ApiInterceptor} from "./shared/interceptors/api.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import { FormsModule, NgForm } from "@angular/forms";
-
 @NgModule({
   declarations: [
     AppComponent,

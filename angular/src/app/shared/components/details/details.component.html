@@ -3,13 +3,12 @@
 
     <div class="left-box">
         <div class="product-image">
-            <img [src]="imageSrc" alt="nqma">
+            <img src="data:image/jpeg;base64,{{imageSrc}}" alt="nqma">
         </div>
         <div class="price">
             <p>{{currentMedicine.price}} лв</p>
         </div>
     </div>
-
     <div class="right-box">
         <p class="name">{{currentMedicine.name}}</p>
         <p class="details">Детайли</p>

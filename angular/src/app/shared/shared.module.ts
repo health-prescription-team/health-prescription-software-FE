@@ -24,7 +24,7 @@ import { DetailsComponent } from './components/details/details.component';
     LoginComponent,
     RegisterComponent,
     PasswordMatchValidatorDirective,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -32,4 +32,5 @@ import { DetailsComponent } from './components/details/details.component';
     RouterModule,
   ]
 })
+
 export class SharedModule { }
