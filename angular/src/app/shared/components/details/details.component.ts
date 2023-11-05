@@ -24,16 +24,16 @@ export class DetailsComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(dataUrl);
   }
 
-  createImageSourceFromBlob(blob: Blob) {
-    const reader = new FileReader();
+  // createImageSourceFromBlob(blob: Blob) {
+  //   const reader = new FileReader();
 
-    reader.onload = (e) => {
-      // Set the data URL to the imageSource property
-      this.imageSrc = e.target!.result as string;
-    };
+  //   reader.onload = (e) => {
+  //     // Set the data URL to the imageSource property
+  //     this.imageSrc = e.target!.result as string;
+  //   };
 
-    reader.readAsDataURL(blob);
-  }
+  //   reader.readAsDataURL(blob);
+  // }
 
   ngOnInit() {
     this.ActivatedRoute.params.subscribe((params) => {
@@ -58,7 +58,8 @@ export class DetailsComponent implements OnInit {
           const binaryToPngResult = binaryToPng(this.imagebytes);
 
           const blob = dataURItoBlob(binaryToPngResult, 'image/png');
-          this.createImageSourceFromBlob(blob);
+          console.log();
+          // this.createImageSourceFromBlob(blob);
 
           // const reader = new FileReader();
 
@@ -120,13 +121,10 @@ export class DetailsComponent implements OnInit {
           //   reader.readAsDataURL(blob); // Read the blob data, not this.imageSrc
           // }, 0);
         },
-        (error) => {
-          console.log(error);
+        (error)=>{
+          console.log(error)
         }
-      );
+      )
     });
   }
-}
-{
-  throw new Error('Function not implemented.');
 }
