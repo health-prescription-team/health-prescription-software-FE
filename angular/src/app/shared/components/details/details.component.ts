@@ -1,50 +1,85 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {DetailsService} from "../../services/details.service";
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DetailsService } from '../../services/details.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
-export class DetailsComponent implements OnInit{
+export class DetailsComponent implements OnInit {
   constructor(
-    private ActivatedRoute:ActivatedRoute,
-    private DetailsService:DetailsService,
-    private sanitizer: DomSanitizer
-
-  ) {
-  }
-  currentMedicine!:any
+    private ActivatedRoute: ActivatedRoute,
+    private DetailsService: DetailsService,
+    private sanitizer: DomSanitizer,
+    private renderer: Renderer2,
+    private el: ElementRef
+  ) {}
+  currentMedicine!: any;
   imageSrc!: any;
+  imagebytes!: any;
+  dataTYPE: any;
 
+  displayImage(dataUrl: any) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(dataUrl);
+  }
 
-  ngOnInit(){
+  createImageSourceFromBlob(blob: Blob) {
+    const reader = new FileReader();
 
-    this.ActivatedRoute.params.subscribe(params => {
+    reader.onload = (e) => {
+      // Set the data URL to the imageSource property
+      this.imageSrc = e.target!.result as string;
+    };
+
+    reader.readAsDataURL(blob);
+  }
+
+  ngOnInit() {
+    this.ActivatedRoute.params.subscribe((params) => {
       const productId = params['id'];
       this.DetailsService.getMedicine(productId).subscribe(
-        (res:any)=>{
-          this.currentMedicine =res
+        (res: any) => {
+          this.currentMedicine = res;
+          this.imagebytes = res.medicineImageBytes;
 
-
-          // Decode the Base64 data to a Uint8Array
-          const rawData = atob(res.medicineImageBytes);
-          const dataAsArray = new Uint8Array(rawData.length);
-          for (let i = 0; i < rawData.length; i++) {
-            dataAsArray[i] = rawData.charCodeAt(i);
+          function binaryToPng(binary: any) {
+            return 'data:image/png;base64,' + btoa(binary);
           }
 
-// // Decompress the GZIP data
-//           const inflate = new Zlib.Gunzip(dataAsArray);
-//           const decompressedData = inflate.decompress();
+          function dataURItoBlob(dataURI: any, dataTYPE: any) {
+            const binary = atob(dataURI.split(',')[1].replace(/\s/g, ''));
+            const array = [];
+            for (let i = 0; i < binary.length; i++)
+              array.push(binary.charCodeAt(i));
+            return new Blob([new Uint8Array(array)], { type: dataTYPE });
+          }
 
-// // Now you have the decompressed data
-//           const decompressedString = String.fromCharCode.apply(null, decompressedData);
+          const binaryToPngResult = binaryToPng(this.imagebytes);
 
+          const blob = dataURItoBlob(binaryToPngResult, 'image/png');
+          this.createImageSourceFromBlob(blob);
 
+          // const reader = new FileReader();
 
+          // reader.onload = () => {
+          //   this.imageSrc = reader.result as string;
+          // };
+          // reader.readAsDataURL(blob);
 
+          // Decode the Base64 data to a Uint8Array
+          // const rawData = atob(res.medicineImageBytes);
+          // const dataAsArray = new Uint8Array(rawData.length);
+          // for (let i = 0; i < rawData.length; i++) {
+          //   dataAsArray[i] = rawData.charCodeAt(i);
+          // }
+
+          // // Decompress the GZIP data
+          //           const inflate = new Zlib.Gunzip(dataAsArray);
+          //           const decompressedData = inflate.decompress();
+
+          // // Now you have the decompressed data
+          //           const decompressedString = String.fromCharCode.apply(null, decompressedData);
 
           // const reader = new FileReader()
           //
@@ -73,8 +108,6 @@ export class DetailsComponent implements OnInit{
 
           // this.currentMedicine.medicineImageBytes
 
-
-
           // setTimeout(() => {
           //   const reader = new FileReader();
           //   const blob = new Blob([res.medicineImageBytes], { type: 'image/png' });
@@ -86,14 +119,14 @@ export class DetailsComponent implements OnInit{
           //
           //   reader.readAsDataURL(blob); // Read the blob data, not this.imageSrc
           // }, 0);
-
-
         },
-        (error)=>{
-          console.log(error)
+        (error) => {
+          console.log(error);
         }
-      )
+      );
     });
   }
-
+}
+{
+  throw new Error('Function not implemented.');
 }
