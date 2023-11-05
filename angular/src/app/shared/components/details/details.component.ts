@@ -35,12 +35,12 @@ export class DetailsComponent implements OnInit{
             dataAsArray[i] = rawData.charCodeAt(i);
           }
 
-// Decompress the GZIP data
-          const inflate = new Zlib.Gunzip(dataAsArray);
-          const decompressedData = inflate.decompress();
+// // Decompress the GZIP data
+//           const inflate = new Zlib.Gunzip(dataAsArray);
+//           const decompressedData = inflate.decompress();
 
-// Now you have the decompressed data
-          const decompressedString = String.fromCharCode.apply(null, decompressedData);
+// // Now you have the decompressed data
+//           const decompressedString = String.fromCharCode.apply(null, decompressedData);
 
 
 
