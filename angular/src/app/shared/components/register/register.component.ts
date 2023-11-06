@@ -40,43 +40,21 @@ export class RegisterComponent implements OnInit {
   }
    data:any = '';
   register(form:any){
-    // console.log(this.activeRoute.url.split('/')[1]);
     if(this.activeRoute.url.split('/')[1] === 'doctor'){
-      
-      this.currentUser = {
-        FirstName: ['Ivan'],
-        MiddleName: ['Ivanov'],
-        LastName: ['Petrov'],
-        Egn: ['1078782727'],
-        ProfilePicture: ['wwe'],
-        PhoneNumber: ['08876564523'],
-        UinNumber: ['2354'],
-        HospitalName: ['Pirogov'],
-        Password: ['Health12345$'],
-      };
-      // this.currentUser = form.value
-      // console.log(this.currentUser);
-      
       const data1 = new FormData()
-
-    
-
-      console.log(form.value);
-      
-      data1.append('FirstName','Ivan')
-      data1.append('MiddleName','Doctor')
-      data1.append('LastName','Petrov')
-      data1.append('Password','Health12345@')
+        console.log(form.value.uinNumber);
+        
+      data1.append('FirstName',form.value.firstName)
+      data1.append('MiddleName',form.value.middleName)
+      data1.append('LastName',form.value.surName)
+      data1.append('Password',form.value.password)
       data1.append('ProfilePicture',this.imageBinary)
-      data1.append('PhoneNumber','0887675656')
-      data1.append('UinNumber','1234567890')
-      data1.append('HospitalName','Pirogov')
-      data1.append('Egn','1098765435')
+      data1.append('PhoneNumber',form.value.phoneNumber)
+      data1.append('UinNumber',form.value.uinNumber)
+      data1.append('HospitalName',form.value.hospitalName)
+      data1.append('Egn',form.value.personalId)
 
-      
-      // console.log(this.currentUser);
       this.data = data1
-      console.log(this.data);
       
       this.userService.registerDoctor(this.data).subscribe(data => {
         // console.log(data);
@@ -84,23 +62,7 @@ export class RegisterComponent implements OnInit {
       })
 
     }
-    console.log(this.currentUser);
-    
 
-    // const { 
-    //     "FirstName":[firstName],
-    //     middleName,
-    //     surName,
-    //     personaliD,
-    //     image,
-    //     phoneNumber,
-    //     uinNumber,
-    //     companyName,
-    //     password,
-    //     rePassword
-    //       } = form.value
-    //       form.reset()
-          
   } 
 }
 

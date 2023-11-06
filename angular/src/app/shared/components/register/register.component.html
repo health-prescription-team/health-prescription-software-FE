@@ -11,7 +11,7 @@
             placeholder="Ivan"
             #inputfirstName="ngModel"
             required
-            ngModel = 'Ivan'
+            ngModel
             >
         </div>
         <div *ngIf="form.controls['firstName']?.touched && form.controls['firstName'].invalid">
@@ -26,7 +26,7 @@
             placeholder="Ivanov"
             #inputmiddleName="ngModel"
             required
-            ngModel="Ivanov"
+            ngModel
             >
         </div>
         <div *ngIf="form.controls['middleName']?.touched && form.controls['middleName'].invalid">
@@ -41,7 +41,7 @@
             placeholder="Petrov"
             #inputsurName="ngModel"
             required
-            ngModel="Petrov"
+            ngModel
             >
         </div>
         <div *ngIf="form.controls['surName']?.touched && form.controls['surName'].invalid">
@@ -56,7 +56,7 @@
             placeholder="990102****"
             #inputpersonalId="ngModel"
             required
-            ngModel="12345670"
+            ngModel
             >
         </div>
         <div *ngIf="form.controls['personalId']?.touched && form.controls['personalId'].invalid">
@@ -85,7 +85,7 @@
             placeholder="1234567890"
             #inputuinNumber="ngModel"
             required
-            ngModel="12345678"
+            ngModel
             >
         </div>
         <div *ngIf="form.controls['uinNumber']?.touched && form.controls['uinNumber'].invalid">
@@ -99,7 +99,7 @@
             placeholder="Hospital name..."
             #inputhospitalName="ngModel"
             required
-            ngModel="Ivan Rilski"
+            ngModel
             >
         </div>
         <div *ngIf="form.controls['hospitalName']?.touched && form.controls['hospitalName'].invalid">
@@ -114,7 +114,7 @@
             placeholder="Phone Number..."
             #inputphoneNumber="ngModel"
             required
-            ngModel="0889786754"
+            ngModel
             >
         </div>
         <div *ngIf="form.controls['phoneNumber']?.touched && form.controls['phoneNumber'].invalid">
@@ -129,7 +129,7 @@
             placeholder="Password"
             #inputpassword="ngModel"
             required
-            ngModel="Health12345@"
+            ngModel
             minlength="8"
             >
         </div>
@@ -146,7 +146,7 @@
             placeholder="Repeat Password"
             #inputrePassword="ngModel"
             required
-            ngModel="Health12345@"
+            ngModel
             minlength="8"
             >
         </div>
