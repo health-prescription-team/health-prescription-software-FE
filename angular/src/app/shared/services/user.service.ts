@@ -9,11 +9,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  registerDoctor(data:any){
-    return this.http.post(registerEndpoint +"/Gp",data,{
-      headers:{
-        // 'Content-Type':'multipart/form-data'
-      }
-    });
+  registerDoctor(data:FormData){
+    return this.http.post(registerEndpoint +"/Gp",data)
   }
 }

@@ -71,6 +71,7 @@
             placeholder="Снимка"
             #inputimage="ngModel"
             ngModel
+            (change)="handleFileInput($event)"
             >
         </div>
         <div *ngIf="form.controls['image']?.touched && form.controls['image'].invalid">

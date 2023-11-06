@@ -41,30 +41,30 @@ export class DetailsComponent implements OnInit {
       this.DetailsService.getMedicine(productId).subscribe(
         (res: any) => {
           this.currentMedicine = res;
+          console.log(this.currentMedicine);
           this.imagebytes = res.medicineImageBytes;
-
+          
           function binaryToPng(binary: any) {
-            return 'data:image/png;base64,' + btoa(binary);
+            
+            return 'data:image/png;base64,' + (binary);
           }
 
-          function dataURItoBlob(dataURI: any, dataTYPE: any) {
-            const binary = atob(dataURI.split(',')[1].replace(/\s/g, ''));
-            const array = [];
-            for (let i = 0; i < binary.length; i++)
-              array.push(binary.charCodeAt(i));
-            return new Blob([new Uint8Array(array)], { type: dataTYPE });
-          }
+          const result = binaryToPng(this.imagebytes)
+          console.log(result);
+          this.imageSrc = result
+          
 
           const binaryToPngResult = binaryToPng(this.imagebytes);
+          this.imageSrc = binaryToPngResult
+          // console.log(binaryToPngResult);
+          
 
-          const blob = dataURItoBlob(binaryToPngResult, 'image/png');
-          console.log();
-          // this.createImageSourceFromBlob(blob);
-
-          // const reader = new FileReader();
+          const reader = new FileReader();
 
           // reader.onload = () => {
-          //   this.imageSrc = reader.result as string;
+          //   url = reader.result as string;
+          //   // console.log(url);
+
           // };
           // reader.readAsDataURL(blob);
 
