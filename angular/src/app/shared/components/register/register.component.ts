@@ -13,9 +13,10 @@ export class RegisterComponent implements OnInit {
 
     constructor(private router:Router,private activeRoute:Router,private userService:UserService){}
   ngOnInit(): void {
-     console.log(this.currentPath());
-
+     // console.log(this.currentPath());
+      this.currentRole = this.activeRoute.url.split('/')[1]
   }
+  currentRole!:string
   currentUser:any = {};
   imageBinary: any = ''
   handleFileInput(event: any) {
@@ -51,20 +52,61 @@ export class RegisterComponent implements OnInit {
   }
    data:any = '';
   register(form:any){
-    if(this.activeRoute.url.split('/')[1] === 'doctor'){
-
       const payload = this.getFormData(form.value)
-      payload.delete("ProfilePicture")
-      payload.delete("rePassword")
-      payload.append("ProfilePicture",this.imageBinary)
-
-
-      this.userService.registerDoctor(payload).subscribe(data => {
-        // console.log(data);
-
+      payload.forEach((e)=>{
+        console.log(e)
       })
 
+    payload.delete("rePassword")
+
+    if(this.activeRoute.url.split('/')[1] === 'doctor'){
+
+      payload.delete("ProfilePicture")
+      payload.append("ProfilePicture",this.imageBinary)
+
+      this.userService.registerDoctor(payload).subscribe(
+        (res:any)=>{
+          localStorage.setItem("token",res.token)
+        },
+        (error)=>{
+          alert("Something went wrong!")
+      })
+
+    }else if(this.activeRoute.url.split('/')[1] === 'patient'){
+      payload.delete("ProfilePicture")
+      payload.append("ProfilePicture",this.imageBinary)
+
+      this.userService.registerPatient(payload).subscribe(
+        (res:any)=>{
+          localStorage.setItem("token",res.token)
+        },
+        (error)=>{
+          alert("Something went wrong!")
+        })
+
+    }else if(this.activeRoute.url.split('/')[1] === 'pharmacy'){
+      this.userService.registerPharmacy(payload).subscribe(
+        (res:any)=>{
+          localStorage.setItem("token",res.token)
+        },
+        (error)=>{
+          alert("Something went wrong!")
+        })
+
+    }else if(this.activeRoute.url.split('/')[1] === 'pharmacist'){
+      payload.delete("ProfilePicture")
+      payload.append("ProfilePicture",this.imageBinary)
+
+      this.userService.registerPharmacist(payload).subscribe(
+        (res:any)=>{
+          localStorage.setItem("token",res.token)
+        },
+        (error)=>{
+          alert("Something went wrong!")
+        })
+
     }
+
 
   }
 }

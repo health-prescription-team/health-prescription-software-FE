@@ -12,4 +12,13 @@ export class UserService {
   registerDoctor(data:FormData){
     return this.http.post(registerEndpoint +"/Gp",data)
   }
+  registerPatient(data:FormData){
+    return this.http.post(registerEndpoint +"/Patient",data)
+  }
+  registerPharmacy(data:FormData){
+    return this.http.post(registerEndpoint +"/Pharmacy",data)
+  }
+  registerPharmacist(data:FormData){
+    return this.http.post(registerEndpoint +"/Pharmacist",data)
+  }
 }
