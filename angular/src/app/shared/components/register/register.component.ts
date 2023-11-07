@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     constructor(private router:Router,private activeRoute:Router,private userService:UserService){}
   ngOnInit(): void {
      console.log(this.currentPath());
-      
+
   }
   currentUser:any = {};
   imageBinary: any = ''
@@ -33,36 +33,39 @@ export class RegisterComponent implements OnInit {
       reader.readAsArrayBuffer(file);
     }
   }
+  getFormData(formValue:any){
+    const formData = new FormData()
 
-      
+    const array = Object.entries(formValue)
+    for (const arrayElement of array) {
+      // @ts-ignore
+      formData.append(arrayElement[0],arrayElement[1])
+
+    }
+
+    return formData
+  }
+
   currentPath() {
     return this.activeRoute.url
   }
    data:any = '';
   register(form:any){
     if(this.activeRoute.url.split('/')[1] === 'doctor'){
-      const data1 = new FormData()
-        console.log(form.value.uinNumber);
-        
-      data1.append('FirstName',form.value.firstName)
-      data1.append('MiddleName',form.value.middleName)
-      data1.append('LastName',form.value.surName)
-      data1.append('Password',form.value.password)
-      data1.append('ProfilePicture',this.imageBinary)
-      data1.append('PhoneNumber',form.value.phoneNumber)
-      data1.append('UinNumber',form.value.uinNumber)
-      data1.append('HospitalName',form.value.hospitalName)
-      data1.append('Egn',form.value.personalId)
 
-      this.data = data1
-      
-      this.userService.registerDoctor(this.data).subscribe(data => {
+      const payload = this.getFormData(form.value)
+      payload.delete("ProfilePicture")
+      payload.delete("rePassword")
+      payload.append("ProfilePicture",this.imageBinary)
+
+
+      this.userService.registerDoctor(payload).subscribe(data => {
         // console.log(data);
-        
+
       })
 
     }
 
-  } 
+  }
 }
 
