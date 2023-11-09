@@ -1,11 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {API_URL, loginEndpoint, registerEndpoint} from '../constants';
+import  * as jwt  from 'jsonwebtoken';
+import {jwtDecode} from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  token:string='';
+  role:string='';
+
 
   constructor(private http:HttpClient) { }
 
@@ -34,5 +40,12 @@ export class UserService {
   }
   loginPatient(data:FormData){
     return this.http.post(loginEndpoint +"/Patient",data)
+  }
+
+  jwtdecrypt(token: string): any {
+
+    const decodedToken = jwtDecode(token);
+    //@ts-ignore
+    this.role=decodedToken['role'];
   }
 }

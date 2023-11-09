@@ -68,6 +68,7 @@ export class RegisterComponent implements OnInit {
         (res:any)=>{
           localStorage.setItem("token",res.token);
           this.router.navigate(['doctor/recipe/new']);
+          this.userService.jwtdecrypt(res.token);
         },
         (error)=>{
           alert("Something went wrong!")
