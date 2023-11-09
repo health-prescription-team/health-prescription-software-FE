@@ -1,12 +1,13 @@
-form{
+.form{
   min-width: 250px;
   background-color: grey;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   padding: 20px;
+  display: none;
 }
 #select-med-input{
   background-color: white;

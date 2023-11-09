@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Renderer2} from '@angular/core';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-recipe-info-med',
@@ -6,10 +7,12 @@ import {AfterViewInit, Component, ElementRef, Renderer2} from '@angular/core';
   styleUrls: ['./recipe-info-med.component.css']
 })
 export class RecipeInfoMedComponent implements AfterViewInit{
-  
+
+
   constructor(
   private  Renderer2:Renderer2,
   private  ElementRef:ElementRef,
+  public userService:UserService
   ) {
   }
   ngAfterViewInit() {

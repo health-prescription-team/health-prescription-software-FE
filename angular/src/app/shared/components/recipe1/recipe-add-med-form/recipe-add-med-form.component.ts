@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild} from '@angular/core';
 import {NgModel} from "@angular/forms";
+import { CacheService } from 'src/app/shared/services/cache.service';
 
 @Component({
   selector: 'app-recipe-add-med-form',
@@ -18,6 +19,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit{
   constructor(
     private  Renderer2:Renderer2,
     private  ElementRef:ElementRef,
+    public CacheService:CacheService,
   ) {
   }
   emit(){

@@ -78,3 +78,16 @@
   /*left: 290px;*/
   /*top: 50px;*/
 }
+.current-medicine{
+  border: 1px solid black;
+  width: 90%;
+  margin: auto;
+  margin: 1em;
+
+}
+summary::marker{
+  text-align: end !important;
+}
+.current-medicine h4{
+text-align: center;
+}

@@ -1,4 +1,4 @@
-<div>
+<div class="form" [style.display]="CacheService.displayAddMedicine">
   <select (input)="emit()" id="selectMedInput" name="Изберете лекарство" name="selectMedInput"
   #inputselectMedInput="ngModel"
   required
@@ -26,7 +26,7 @@
   #inputadditionalInfo="ngModel"
   ngModel></textarea>
   <div id="btns-container">
-    <button class="btn" id="proceedBtn" type="submit">Предпиши</button>
-    <button class="btn" id="cancelBtn">Отказ</button>
+    <button class="btn" id="proceedBtn" type="submit" (click)="CacheService.hideAddMedicineComponent()">Предпиши</button>
+    <button class="btn" id="cancelBtn" (click)="CacheService.hideAddMedicineComponent()">Отказ</button>
   </div>
 </div>

@@ -3,48 +3,41 @@
         <div class="recipe-header recipe-component">
             <div class="field">
                 <label for="patient">Пациент: </label>
-                <input type="text" id="patient" placeholder="ЕГН" type="text"
-                name="patient"
-                id="patient"
-                #inputpatient="ngModel"
-                required
-                ngModel>
+                <input type="text" id="patient" placeholder="ЕГН" type="text" name="patient" id="patient"
+                    #inputpatient="ngModel" required ngModel>
             </div>
             <div class="field">
                 <label for="patientАge">Години: </label>
-                <input type="text" id="patientАge" placeholder="Години" type="text"
-                name="patientАge"
-                id="patientАge"
-                #inputpatientАge="ngModel"
-                required
-                ngModel>
+                <input type="text" id="patientАge" placeholder="Години" type="text" name="patientАge" id="patientАge"
+                    #inputpatientАge="ngModel" required ngModel>
             </div>
             <div class="field">
                 <label for="doctor">Лекар: </label>
-                <input type="text" id="doctor" placeholder="Димитър Георгиев Стоянов" type="text"
-                name="doctor"
-                id="doctor"
-                #inputdoctor="ngModel"
-                required
-                ngModel>
+                <input type="text" id="doctor" placeholder="Димитър Георгиев Стоянов" type="text" name="doctor"
+                    id="doctor" #inputdoctor="ngModel" required ngModel>
             </div>
         </div>
         <div class="recipe-sub-header">
             <div class="field diagnosis-field">
                 <label for="diagnosis">Диагноза: </label>
-                <input type="text" id="diagnosis" placeholder="Кашлица" type="text"
-                name="diagnosis"
-                id="diagnosis"
-                #inputdiagnosis="ngModel"
-                required
-                ngModel>
+                <input type="text" id="diagnosis" placeholder="Кашлица" type="text" name="diagnosis" id="diagnosis"
+                    #inputdiagnosis="ngModel" required ngModel>
             </div>
         </div>
 
         <div class="recipe-body recipe-component">
-            <app-recipe-info-med />
+
+            <details class="current-medicine">
+                <summary>
+                    <h4>Лекарство 1</h4>
+                </summary>
+                <app-recipe-info-med />
+
+            </details>
             <app-recipe-add-med-form (nestedFormValues)="nestedFormValues = $event" />
-            <button class="btn add-medicine">Добави лекарство</button>
+            <button class="btn add-medicine" type="button" (click)="CacheService.showAddMedicineComponent()"
+                *ngIf="CacheService.displayAddMedicine== 'flex'? false:true">Добави
+                лекарство</button>
         </div>
 
         <div class="recipe-footer recipe-component">
