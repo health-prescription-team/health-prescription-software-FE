@@ -66,7 +66,8 @@ export class RegisterComponent implements OnInit {
 
       this.userService.registerDoctor(payload).subscribe(
         (res:any)=>{
-          localStorage.setItem("token",res.token)
+          localStorage.setItem("token",res.token);
+          this.router.navigate(['doctor/recipe/new']);
         },
         (error)=>{
           alert("Something went wrong!")
@@ -78,7 +79,9 @@ export class RegisterComponent implements OnInit {
 
       this.userService.registerPatient(payload).subscribe(
         (res:any)=>{
-          localStorage.setItem("token",res.token)
+          localStorage.setItem("token",res.token);
+          this.router.navigate(['patient/profile']);
+
         },
         (error)=>{
           alert("Something went wrong!")
@@ -87,7 +90,8 @@ export class RegisterComponent implements OnInit {
     }else if(this.activeRoute.url.split('/')[1] === 'pharmacy'){
       this.userService.registerPharmacy(payload).subscribe(
         (res:any)=>{
-          localStorage.setItem("token",res.token)
+          localStorage.setItem("token",res.token);
+          this.router.navigate(['pharmacy/add-medicine']);
         },
         (error)=>{
           alert("Something went wrong!")
@@ -99,7 +103,8 @@ export class RegisterComponent implements OnInit {
 
       this.userService.registerPharmacist(payload).subscribe(
         (res:any)=>{
-          localStorage.setItem("token",res.token)
+          localStorage.setItem("token",res.token);
+          this.router.navigate(['pharmacist/search']);
         },
         (error)=>{
           alert("Something went wrong!")
@@ -110,4 +115,3 @@ export class RegisterComponent implements OnInit {
 
   }
 }
-
