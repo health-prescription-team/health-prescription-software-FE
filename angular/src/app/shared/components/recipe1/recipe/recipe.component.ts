@@ -9,28 +9,45 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./recipe.component.css'],
 })
 export class RecipeComponent implements OnInit {
-  constructor(private service: UserService, public CacheService :CacheService) {}
+  recipeId: string = 'ID';
+  inputselectMedInput: string = '';
+
+  date = new Date();
+  options: any = { day: 'numeric', month: 'numeric', year: 'numeric' };
+  formattedDate = this.date.toLocaleDateString(undefined, this.options);
+
+  constructor(
+    private service: UserService,
+    public CacheService: CacheService
+  ) {}
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     this.service.jwtdecrypt(token!);
   }
 
   nestedFormValues = {};
+
   recipeInfo(form: NgForm) {
-    const {
-      patient,
-      patientАge,
-      doctor,
-      diagnosis,
-      selectMedInput,
-      morning,
-      midday,
-      evening,
-      additionalInfo,
-    } = form.value;
-    const allFields = { ...form.value, ...this.nestedFormValues };
-    console.log(allFields);
+    //POST
+    const { patient, patientАge, diagnosis } = form.value;
+    const allFields = { ...form.value, ...this.nestedFormValues, "startDate":this.formattedDate };
+    // console.log(patient, patientАge, diagnosis);
+    if (!this.recipeId) {
+      // response => ID
+      //this.rescipeID = response.ID;
+    } else {
+      //put new medicine
+      const { med, morning, midday, evening, additionalInfo } = allFields;
+      console.log(allFields);
+      //PUT med, morning, midday, evening, additionalInfo
+      console.log(med, morning, midday, evening, additionalInfo);
+    }
     // console.log('-->',selectMedInput);
   }
 
+  medicinesInfo(form: NgForm) {
+    const {} = form.value;
+    const medicines = { ...form.value, ...this.nestedFormValues };
+    console.log('medicines', medicines);
+  }
 }

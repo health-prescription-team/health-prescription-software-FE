@@ -1,25 +1,25 @@
-<div id="medInfoContainer">
+<div id="medInfoContainer" >
   <div id="dayTimesContainer">
     <div class="dayTimeContainer">
       <h4 class="dayTimeName">Сутрин</h4>
-      <p class="dayTimeInfo">1/2</p>
+      <p class="dayTimeInfo">{{currentRecord.morning}}</p>
     </div>
     <div class="dayTimeContainer">
-      <h4 class="dayTimeName">Сутрин</h4>
-      <p class="dayTimeInfo">1/2</p>
+      <h4 class="dayTimeName">Обед</h4>
+      <p class="dayTimeInfo">{{currentRecord.midday}}</p>
     </div>
     <div class="dayTimeContainer">
-      <h4 class="dayTimeName">Сутрин</h4>
-      <p class="dayTimeInfo">1/2</p>
+      <h4 class="dayTimeName">Вечер</h4>
+      <p class="dayTimeInfo">{{currentRecord.evening}}</p>
     </div>
   </div>
   <div id="additionalInfoContainer">
     <h4 id="additionalInfoHeading">Допълнителни бележки</h4>
-    <p id="additionalInfo">dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd ffffffff dddddddddd</p>
+    <p id="additionalInfo">{{currentRecord.additionalInfo}}</p>
   </div>
   <div id="btnsContainer">
     <button class="btn" id="proceedBtn" *ngIf="userService.role === 'pharmacist'">Завърши</button>
-    <button class="btn" id="editBtn">Редактирай</button>
+    <!-- <button class="btn" id="editBtn">Редактирай</button> -->
     <button class="btn" id="cancelBtn">Отказ</button>
   </div>
 

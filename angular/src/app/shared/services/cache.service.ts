@@ -10,7 +10,13 @@ export class CacheService {
   showAddMedicineComponent() {
     this.displayAddMedicine = 'flex';
   }
-  hideAddMedicineComponent() {
+  hideAddMedicineComponent(currentmedicine:any) {
     this.displayAddMedicine = 'none';
+    const data = currentmedicine;
+    console.log(data);
+    this.allMedicinesAdded.push(data)
   }
+
+  allMedicinesAdded:any= [];
+
 }

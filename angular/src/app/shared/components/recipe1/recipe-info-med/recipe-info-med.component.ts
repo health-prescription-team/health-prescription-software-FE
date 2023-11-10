@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, Renderer2} from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class RecipeInfoMedComponent implements AfterViewInit{
 
+@Input('med') currentRecord:any;
 
   constructor(
   private  Renderer2:Renderer2,

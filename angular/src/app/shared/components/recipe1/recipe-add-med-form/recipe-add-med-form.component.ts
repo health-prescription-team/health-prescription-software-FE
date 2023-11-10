@@ -8,6 +8,7 @@ import { CacheService } from 'src/app/shared/services/cache.service';
   styleUrls: ['./recipe-add-med-form.component.css']
 })
 export class RecipeAddMedFormComponent implements AfterViewInit{
+  selectedMedicine:string='';
 
   @ViewChild("inputselectMedInput") inputselectMedInput!: NgModel
   @ViewChild("inputmorning") inputmorning!: NgModel
@@ -16,6 +17,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit{
   @ViewChild("inputevening") inputevening!: NgModel
   @Output("nestedFormValues") customEvent  = new EventEmitter<object>()
 
+currentmedicine:any = '';
   constructor(
     private  Renderer2:Renderer2,
     private  ElementRef:ElementRef,
@@ -23,13 +25,14 @@ export class RecipeAddMedFormComponent implements AfterViewInit{
   ) {
   }
   emit(){
-    this.customEvent.emit({
-      "med":this.inputselectMedInput.value,
+    this.currentmedicine = {
+      "med":this.selectedMedicine,
       "morning":this.inputmorning.value,
       "midday":this.inputmidday.value,
       "evening":this.inputevening.value,
       "additionalInfo":this.inputadditionalInfo.value,
-    });
+    }
+    this.customEvent.emit(this.currentmedicine);
   }
   ngAfterViewInit() {
     this.setStyles()
