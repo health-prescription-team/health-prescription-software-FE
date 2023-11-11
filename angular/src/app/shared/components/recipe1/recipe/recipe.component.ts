@@ -9,7 +9,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./recipe.component.css'],
 })
 export class RecipeComponent implements OnInit {
-  recipeId: string = 'ID';
+  recipeId: string = 'a45DSA5SDA5DAS';
   inputselectMedInput: string = '';
 
   date = new Date();

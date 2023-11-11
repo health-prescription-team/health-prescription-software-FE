@@ -1,5 +1,5 @@
 <div class="form" [style.display]="CacheService.displayAddMedicine">
-  <select (change)="emit()" id="selectMedInput" name="selectMedInput"
+  <select (change)="emit()" id="selectMedInput" name="selectMedInput" class="select"
   #inputselectMedInput="ngModel"
   required
   [(ngModel)]="selectedMedicine">

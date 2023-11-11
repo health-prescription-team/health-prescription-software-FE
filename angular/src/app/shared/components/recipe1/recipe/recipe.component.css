@@ -1,66 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=PT+Serif&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "PT Serif", serif;
+}
+
 .container {
+  height: 100%;
+  color: #265978;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.recipe-form {
   max-width: 500px;
   min-height: 100px;
-  margin: 0 auto;
-  border: 1px solid blue;
+  /* margin: 0 auto; */
 }
 
 .recipe-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  background-color: rgb(229, 232, 248);
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 .field {
   padding: 10px;
-  /*min-width: 300px;*/
+  /* width: 300px; */
   display: flex;
-  justify-content: space-around;
-}
-
-.diagnosis-field {
-  background-color: grey;
-  text-align: center;
-  width: 100%;
+  justify-content: space-evenly;
 }
 
 .field label {
   padding: 10px;
 }
 
+.field input {
+  border: none;
+  background: none;
+  border-bottom: 2px solid grey;
+  color: #002e29;
+}
+
+.field input:focus {
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  width: 35%;
+  align-self: flex-end;
+  margin: 0 35px 25px 35px;
+  border-radius: 10px;
+  padding: 9px 7px;
+  text-transform: uppercase;
+  background: #265978;
+  color: #fff1eb;
+  letter-spacing: 1.5px;
+  box-shadow: 2px 3px 4px #052d46, inset -2px -3px 4px #052d46;
+  border: none;
+}
+
+.add-recipe:hover,
+.add-recipe:active {
+  box-shadow: 2px 3px 4px #052d46, inset 2px 3px 4px #052d46;
+}
 /* BODY */
 
 .recipe-body {
-  min-height: 58vh;
   display: flex;
   flex-direction: column;
 }
 
 /* FOOTER */
 
+.recipe-footer {
+  color: #030303;
+}
+
 .validity {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.start {
-  background-color: grey;
-}
-.end {
-  background-color: goldenrod;
-}
+
 .date {
   width: 50%;
   text-align: center;
+  padding: 10px;
 }
+
+.start {
+  background-color: grey;
+}
+
+.end {
+  background-color: #d9b448;
+}
+
 .recipe-id {
   text-align: center;
+  padding: 10px 0;
+}
+
+/* INPUT DATE */
+input[type="date"],
+.start-date {
+  font-size: 14px;
+  background-color: #d9b448;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 7px;
+  box-shadow: 1px 1px 5px #7a631d;
+  margin-top: 5px;
+}
+
+.start-date {
+  background-color: grey;
+  box-shadow: 1px 1px 5px rgb(78, 78, 78);
+  padding: 10px;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: #ffffff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 /* BUTTON */
-.btn {
+/* .btn {
   background-color: #343cd6;
   border: none;
   color: white;
@@ -69,25 +141,53 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-}
+} */
 
 .add-medicine {
   /*position: relative;*/
   align-self: flex-end;
   max-width: 230px;
-  /*left: 290px;*/
-  /*top: 50px;*/
+  left: 290px;
+  top: 50px;
 }
-.current-medicine{
+
+/* ADD NEW MEDICINE */
+.current-medicine {
   border: 1px solid black;
   width: 90%;
   margin: auto;
   margin: 1em;
-
 }
-summary::marker{
+summary::marker {
   text-align: end !important;
 }
-.current-medicine h4{
-text-align: center;
+.current-medicine h4 {
+  text-align: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    background-image: url("../../../../../assets/images/bg-recipe.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .recipe-header {
+    background: none;
+  }
+
+  .btn {
+    width: 30%;
+    padding: 12px 7px;
+  }
+
+  .recipe-form {
+    margin-left: 17em;
+  }
+  .recipe-footer {
+  }
+}
+
+h3 {
 }

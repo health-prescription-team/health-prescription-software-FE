@@ -1,54 +1,107 @@
-.form{
-  min-width: 250px;
-  background-color: grey;
+
+
+.form {
+  width: 90%;
+  /* min-width: 250px; */
+  background: rgb(5, 45, 70);
+  background: linear-gradient(
+    209deg,
+    rgba(5, 45, 70, 1) 5%,
+    rgba(172, 224, 249, 1) 44%,
+    rgba(255, 255, 255, 1) 87%
+  );
   /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   padding: 20px;
-  display: none;
+  display: flex;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  text-align: center;
 }
-#select-med-input{
+
+#selectMedInput {
   background-color: white;
   border: none;
   font-weight: bolder;
   padding: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
 }
-h4{
+
+#selectMedInput:focus{
+  outline: none;
+}
+
+h4 {
   align-self: flex-start;
 }
-#additionalInfo{
+
+#additionalInfo {
   max-width: 100%;
   min-width: 50%;
   margin-bottom: 20px;
   align-self: flex-start;
 }
-#inputs-container{
+
+#additionalInfo:focus{
+  outline: none;
+}
+
+#inputs-container {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
   gap: 10px;
 }
-.intake-input{
-  height: 30px;
-  width: 60px;
+
+.intake-input {
+  height: 35px;
+  width: 65%;
+  padding: 5px 7px;
+  border: none;
+  border-radius: 5px;
+
 }
-#btns-container{
-  width: 80%;
+
+#btns-container {
+  width: 60%;
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 10px;
 }
-.btn{
+
+.intake-input:active,
+.intake-input:focus{
+  outline: none;
+  border: none;
+}
+
+.btn {
   border: none;
   width: 100%;
   padding: 10px 25px;
-  border-radius: 100px;
+  border-radius: 10px;
+  padding: 9px 7px;
+  letter-spacing: 1.5px;
+  border: none;
+
 }
-#proceedBtn{
+
+#proceedBtn {
   background-color: rgb(0, 255, 0);
 }
-#cancelBtn{
+
+#cancelBtn {
   background-color: rgb(247, 0, 0);
+}
+
+@media only screen and (min-width: 600px) {
+  .form {
+    background: none;
+    box-shadow: 1px 1px 5px #052d46;
+  }
 }
