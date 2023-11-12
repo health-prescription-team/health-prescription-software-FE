@@ -1,44 +1,45 @@
-*{
+* {
   margin: 0;
 }
-#medInfoContainer{
+
+#medInfoContainer {
   display: flex;
   width: 80%;
   flex-direction: column;
   align-items: center;
-
 }
-#dayTimesContainer{
-  display: flex;
 
-}
-.dayTimeContainer{
+#dayTimesContainer {
   display: flex;
-  border: solid black 0.01cm;
+}
+.dayTimeContainer {
+  display: flex;
+  border: solid white 0.05cm;
   flex-direction: column;
 }
-.dayTimeContainer>*{
-  background-color: grey;
-  width: 100%
-}
-.dayTimeName{
-  border-bottom: solid black 0.01cm;
-  padding: 10px 20px ;
 
+.dayTimeContainer > * {
+  background-color: #265978;
+  color: white;
+  width: 100%;
 }
-.dayTimeInfo{
+.dayTimeName {
+  border-bottom: solid white 0.01cm;
+  padding: 10px 20px;
+}
+.dayTimeInfo {
   text-align: center;
   padding: 20px 0;
 }
 
-#additionalInfoContainer{
+#additionalInfoContainer {
   text-align: center;
   margin-top: 25px;
 }
-#additionalInfoHeading{
+#additionalInfoHeading {
   margin: 10px;
 }
-#additionalInfo{
+#additionalInfo {
   word-break: break-word;
   padding: 5px 20px;
   border: solid grey 0.01cm;
@@ -46,8 +47,7 @@
   border-left: none;
 }
 
-
-#btnsContainer{
+#btnsContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,18 +55,51 @@
   width: 100%;
   margin-top: 20px;
 }
-.btn{
+/* .btn{
   width: 80%;
   border-radius: 100px;
   border: none;
   padding: 10px 0;
+} */
+
+.btn {
+  width: 70%;
+  border-radius: 10px;
+  padding: 12px;
+  text-transform: uppercase;
+  color: #fff1eb;
+  letter-spacing: 1.5px;
+  /* box-shadow: 2px 3px 4px #052d46, inset -2px -3px 4px #052d46; */
+  border: none;
 }
-#proceedBtn{
-  background-color: rgb(0, 255, 0);
+
+#proceedBtn {
+  background-color: #94c646;
+  box-shadow: 2px 3px 4px #447336, inset -2px -3px 4px #447336;
 }
-#editBtn{
-  background-color: rgb(255, 255, 0);
+
+#proceedBtn:active,
+#proceedBtn:hover{
+  box-shadow: 2px 3px 4px #447336, inset 2px 3px 4px #447336;
 }
-#cancelBtn{
-  background-color: rgb(255, 0, 0);
+
+
+#editBtn {
+  background-color: #d9b448;
+  box-shadow: 2px 3px 4px #a88a2e, inset -2px -3px 4px #a88a2e;
+}
+
+#editBtn:active,
+#editBtn:hover {
+  box-shadow: 2px 3px 4px #a88a2e, inset 2px 3px 4px #a88a2e;
+}
+
+#cancelBtn {
+  background-color: #e6303a;
+  box-shadow: 2px 3px 4px #8d1d40, inset -2px -3px 4px #8d1d40;
+}
+
+#cancelBtn:active,
+#cancelBtn:hover{
+  box-shadow: 2px 3px 4px #8d1d40, inset 2px 3px 4px #8d1d40;
 }

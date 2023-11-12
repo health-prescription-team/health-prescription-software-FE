@@ -15,7 +15,6 @@
 }
 
 .recipe-form {
-  max-width: 500px;
   min-height: 100px;
   /* margin: 0 auto; */
 }
@@ -94,6 +93,7 @@
 
 .start {
   background-color: grey;
+  text-align: -webkit-center;
 }
 
 .end {
@@ -116,6 +116,7 @@ input[type="date"],
   padding: 7px;
   box-shadow: 1px 1px 5px #7a631d;
   margin-top: 5px;
+  max-width: 100%;
 }
 
 .start-date {
@@ -153,41 +154,50 @@ input[type="date"],
 
 /* ADD NEW MEDICINE */
 .current-medicine {
-  border: 1px solid black;
+  border: 3px solid #052d46;
   width: 90%;
-  margin: auto;
   margin: 1em;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
 }
-summary::marker {
+
+summary{
+display: flex;
+cursor: pointer;
+}
+
+details[open]{
+
+}
+
+/* summary::marker {
   text-align: end !important;
-}
+} */
 .current-medicine h4 {
   text-align: center;
+  /* width: 80%; */
 }
 
 @media only screen and (min-width: 600px) {
-  .container {
-    background-image: url("../../../../../assets/images/bg-recipe.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  .recipe-form {
+    width: 450px;
   }
 
-  .recipe-header {
-    background: none;
+  .container {
+    align-items: center;
+    margin-top: 2em;
   }
 
   .btn {
     width: 30%;
-    padding: 12px 7px;
   }
 
-  .recipe-form {
-    margin-left: 17em;
+  .start-date{
+    width: 70%;
   }
-  .recipe-footer {
-  }
-}
 
-h3 {
+  .recipe-id {
+    border: 1px solid #052d46;
+  }
 }
