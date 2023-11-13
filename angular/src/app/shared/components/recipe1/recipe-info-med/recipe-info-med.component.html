@@ -1,4 +1,4 @@
-<div id="medInfoContainer" >
+<div id="medInfoContainer" [attr.id]="currentRecord.id">
   <div id="dayTimesContainer">
     <div class="dayTimeContainer">
       <h4 class="dayTimeName">Сутрин</h4>
@@ -20,8 +20,8 @@
   <div id="btnsContainer">
     <button class="btn" id="proceedBtn" *ngIf="userService.role === 'pharmacist'">Завърши</button>
     <button class="btn" id="proceedBtn">Завърши</button>
-    <button class="btn" id="editBtn">Редактирай</button>
-    <button class="btn" id="cancelBtn">Отказ</button>
+<!--    <button class="btn" id="editBtn">Редактирай</button>-->
+    <button class="btn" (click)="DetailsService.deleteMedicament(currentRecord.id)" id="cancelBtn">Изтрий</button>
   </div>
 
 </div>

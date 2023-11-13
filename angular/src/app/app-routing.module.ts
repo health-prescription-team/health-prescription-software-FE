@@ -11,6 +11,7 @@ import {PharmacistComponent} from "./pharmacist/components/pharmacist/pharmacist
 import { ProfileComponent } from './patient/components/profile/profile.component';
 import { AddMedicineComponent } from './pharmacy/add-medicine/add-medicine.component';
 import { DetailsComponent } from './shared/components/details/details.component';
+import {CatalogMedicamentsComponent} from "./shared/components/catalog-medicaments/catalog-medicaments.component";
 
 const routes: Routes = [
   {
@@ -122,6 +123,11 @@ const routes: Routes = [
     path:'details/:id',
     pathMatch:"full",
     component:DetailsComponent
+  },
+  {
+    path:'catalog',
+    pathMatch:"full",
+    component:CatalogMedicamentsComponent
   }
 ];
 

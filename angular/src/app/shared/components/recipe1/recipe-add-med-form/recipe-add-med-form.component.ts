@@ -1,4 +1,13 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnChanges,
+  Output,
+  Renderer2, SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {NgModel} from "@angular/forms";
 import { CacheService } from 'src/app/shared/services/cache.service';
 
@@ -24,6 +33,10 @@ currentmedicine:any = '';
     public CacheService:CacheService,
   ) {
   }
+clearAllFields(){
+
+}
+
   emit(){
     this.currentmedicine = {
       "med":this.selectedMedicine,
@@ -32,6 +45,7 @@ currentmedicine:any = '';
       "evening":this.inputevening.value,
       "additionalInfo":this.inputadditionalInfo.value,
     }
+    console.log(this.currentmedicine)
     this.customEvent.emit(this.currentmedicine);
   }
   ngAfterViewInit() {

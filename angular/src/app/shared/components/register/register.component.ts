@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
 
       reader.onload = (e: any) => {
         const blob = new Blob([e.target.result], { type: file.type });
-        console.log(blob); // You can work with the Blob here
         this.imageBinary = blob
       };
 

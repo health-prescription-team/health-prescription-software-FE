@@ -38,9 +38,9 @@
                 </details>
             </div>
 
-            <app-recipe-add-med-form (nestedFormValues)="nestedFormValues = $event" />
-
-            <button class="btn add-medicine" type="button" (click)="CacheService.showAddMedicineComponent()"
+            <app-recipe-add-med-form />
+<!--          (nestedFormValues)="CacheService.nestedFormValues = $event"-->
+          <button class="btn add-medicine" type="button" (click)="CacheService.showAddMedicineComponent()"
                 *ngIf="CacheService.displayAddMedicine== 'flex'? false:true">Добави
                 лекарство</button>
 

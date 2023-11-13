@@ -5,53 +5,20 @@
 
     <div class="all-meds">
 
-        <div class="medicament">
+        <div *ngFor="let med of all; let index = index" class="medicament">
             <div class="group">
-                <p>Общи лекарства</p>
+                <p>{{med.name}}</p>
             </div>
             <div class="img">
                 <img src="https://static.framar.bg/product/sopharma-analgin-tabletki-metamizol-natrii-bolka-temperatura.jpg" alt="med img">
             </div>
             <div class="details">
-                <button routerLink="/details/4" class="btn details-btn">Детайли</button>
+                <button [routerLink]="'/details/'" class="btn details-btn">Детайли</button>
+
             </div>
         </div>
 
-        <div class="medicament">
-            <div class="group">
-                <p>Общи лекарства</p>
-            </div>
-            <div class="img">
-                <img src="https://static.framar.bg/product/sopharma-analgin-tabletki-metamizol-natrii-bolka-temperatura.jpg" alt="med img">
-            </div>
-            <div class="details">
-                <button class="btn details-btn">Детайли</button>
-            </div>
-        </div>
 
-        <div class="medicament">
-            <div class="group">
-                <p>Общи лекарства</p>
-            </div>
-            <div class="img">
-                <img src="https://static.framar.bg/product/sopharma-analgin-tabletki-metamizol-natrii-bolka-temperatura.jpg" alt="med img">
-            </div>
-            <div class="details">
-                <button class="btn details-btn">Детайли</button>
-            </div>
-        </div>
-
-        <div class="medicament">
-            <div class="group">
-                <p>Общи лекарства</p>
-            </div>
-            <div class="img">
-                <img src="https://static.framar.bg/product/sopharma-analgin-tabletki-metamizol-natrii-bolka-temperatura.jpg" alt="med img">
-            </div>
-            <div class="details">
-                <button  class="btn details-btn">Детайли</button>
-            </div>
-        </div>
 
     </div>
 </div>

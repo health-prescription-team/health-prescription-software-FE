@@ -2,7 +2,7 @@
   <select (change)="emit()" id="selectMedInput" name="selectMedInput" class="select"
   #inputselectMedInput="ngModel"
   required
-  [(ngModel)]="selectedMedicine">
+          [(ngModel)] = CacheService.nestedFormValues.med>
     <option value="Изберете лекарство" selected disabled>Изберете лекарство</option>
     <option value="2">2</option>
 </select>
@@ -11,22 +11,22 @@
     <input (input)="emit()" class="intake-input" type="text" placeholder="Сутрин..." id="morning" name="morning"
     #inputmorning="ngModel"
     required
-    ngModel>
+    [(ngModel)] = CacheService.nestedFormValues.morning>
     <input (input)="emit()" class="intake-input" type="text" placeholder="Обед..." id="midday" name="midday"
     #inputmidday="ngModel"
     required
-    ngModel>
+           [(ngModel)] = CacheService.nestedFormValues.midday>
     <input (input)="emit()" class="intake-input" type="text" placeholder="Вечер..." id="evening" name="evening"
     #inputevening="ngModel"
     required
-    ngModel>
+    [(ngModel)] = CacheService.nestedFormValues.evening>
   </div>
   <h4>Допълнителни бележки</h4>
   <textarea (input)="emit()" id="additionalInfo" placeholder="Допълнителна информация..."  name="additionalInfo"
   #inputadditionalInfo="ngModel"
-  ngModel></textarea>
+            [(ngModel)] = CacheService.nestedFormValues.additionalInfo></textarea>
   <div id="btns-container">
-    <button class="btn" id="proceedBtn" type="submit" (click)="CacheService.hideAddMedicineComponent(currentmedicine)">Предпиши</button>
+    <button class="btn" id="proceedBtn" type="submit" (click)="CacheService.addMedicine(CacheService.nestedFormValues)">Предпиши</button>
     <button class="btn" id="cancelBtn" (click)="CacheService.hideAddMedicineComponent(currentmedicine)" [attr.idMedicine]="">Отказ</button>
   </div>
 </div>
