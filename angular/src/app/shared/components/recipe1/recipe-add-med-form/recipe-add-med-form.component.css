@@ -27,11 +27,17 @@
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
+  overflow: scroll;
 }
 
 #selectMedInput:focus {
   outline: none;
 }
+
+.search-div {
+  display: flex;
+}
+
 
 h4 {
   align-self: flex-start;
@@ -119,7 +125,7 @@ h4 {
 
   #selectMedInput {
     border: 1px solid #052d46;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     appearance: auto;
     -webkit-appearance: auto;
   }

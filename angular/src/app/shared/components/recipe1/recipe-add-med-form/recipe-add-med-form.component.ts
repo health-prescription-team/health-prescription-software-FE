@@ -45,11 +45,14 @@ clearAllFields(){
       "evening":this.inputevening.value,
       "additionalInfo":this.inputadditionalInfo.value,
     }
-    console.log(this.currentmedicine)
     this.customEvent.emit(this.currentmedicine);
   }
   ngAfterViewInit() {
     this.setStyles()
+  }
+  searchHandler(seacrchWord:any){
+    console.log(seacrchWord.value);
+  
   }
   setStyles(){
     this.Renderer2.setStyle(this.ElementRef.nativeElement,"display","flex")

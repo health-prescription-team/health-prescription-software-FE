@@ -10,10 +10,10 @@
                 <p>{{med.name}}</p>
             </div>
             <div class="img">
-                <img src="https://static.framar.bg/product/sopharma-analgin-tabletki-metamizol-natrii-bolka-temperatura.jpg" alt="med img">
+                <img [src]="'data:image/png;base64,'+ med.medicineImageBytes" alt="med img">
             </div>
             <div class="details">
-                <button [routerLink]="'/details/'" class="btn details-btn">Детайли</button>
+                <button [routerLink]="['/details', med.id]" class="btn details-btn">Детайли</button>
 
             </div>
         </div>

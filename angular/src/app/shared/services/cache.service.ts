@@ -24,6 +24,7 @@ export class CacheService {
   }
   addMedicine(currentmedicine:any){
     this.allMedicinesAdded.push({...currentmedicine})
+    
     this.hideAddMedicineComponent(currentmedicine)
   }
 

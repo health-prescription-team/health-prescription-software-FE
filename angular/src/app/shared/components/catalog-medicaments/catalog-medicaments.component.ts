@@ -12,7 +12,12 @@ constructor(
 ) {
 }
 all:any
+binaryToPng(binary: any) {
+            
+  return 'data:image/png;base64,' + (binary);
+}
 ngAfterViewInit(){
+
   this.CatalogService.getAll().subscribe(
     (res:any)=>{
       this.all = res.medicines
