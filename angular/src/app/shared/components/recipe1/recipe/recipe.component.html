@@ -8,9 +8,9 @@
                         #inputpatient="ngModel" required ngModel>
                 </div>
                 <div class="field">
-                    <label for="patientАge">Години: </label>
-                    <input type="text" id="patientАge" placeholder="Години" type="text" name="patientАge"
-                        id="patientАge" #inputpatientАge="ngModel" required ngModel>
+                    <label for="patientАge">Години: &asymp;</label>
+                    <input type="text" disabled="" id="patientАge" placeholder="Години" type="text" name="patientАge"
+                        id="patientАge" #inputpatientАge="ngModel" required [(ngModel)] = "years">
                 </div>
                 <div class="field">
                     <label for="doctor">Лекар: </label>
@@ -49,7 +49,7 @@
                 <div class="validity">
                     <div class="start date">
                         <p>Издадена на</p>
-                        <p class="start-date">{{formattedDate}}</p>
+                        <p class="start-date">{{formattedDate}}  </p>
 
                     </div>
                     <div class="end date">
