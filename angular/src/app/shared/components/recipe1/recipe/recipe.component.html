@@ -5,7 +5,7 @@
                 <div class="field">
                     <label for="patient">Пациент: </label>
                     <input type="text" id="patient" placeholder="ЕГН" type="text" name="patient" id="patient"
-                        #inputpatient="ngModel" required ngModel>
+                        #inputpatient="ngModel" (input)="emit(inputpatient.value)" required ngModel>
                 </div>
                 <div class="field">
                     <label for="patientАge">Години: &asymp;</label>
