@@ -82,7 +82,7 @@ export class RecipeComponent implements OnInit,OnChanges {
       
       
          this.recipeService.createRecipe(formData).subscribe((response:any) => {
-          this.idResponse = response.PrescriptionId
+          this.idResponse = response.PrescriptionId;
          },(err) => {
           console.log('ss');
           
@@ -98,7 +98,8 @@ export class RecipeComponent implements OnInit,OnChanges {
       //put new medicine
       const { med, morning, midday, evening, additionalInfo } = allFields;
       // console.log(allFields);
-      //PUT med, morning, midday, evening, additionalInfo
+      //POST WITH PrescriptinId!
+      //  med, morning, midday, evening, additionalInfo
       // console.log(med, morning, midday, evening, additionalInfo);
     }
     // console.log('-->',selectMedInput);
