@@ -4,12 +4,12 @@
             <div class="recipe-header recipe-component">
                 <div class="field">
                     <label for="patient">Пациент: </label>
-                    <input type="text" id="patient" placeholder="ЕГН" type="text" name="patient" id="patient"
+                    <input type="text" id="patient" placeholder="ЕГН"  name="patientEgn" id="patient"
                         #inputpatient="ngModel" (input)="emit(inputpatient.value)" required ngModel>
                 </div>
                 <div class="field">
                     <label for="patientАge">Години: &asymp;</label>
-                    <input type="text" disabled="" id="patientАge" placeholder="Години" type="text" name="patientАge"
+                    <input type="text" disabled id="patientАge" placeholder="Години" type="text" name="patientАge"
                         id="patientАge" #inputpatientАge="ngModel" required [(ngModel)] = "years">
                 </div>
                 <div class="field">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="end date">
                         <p>Валидна до</p>
-                        <input type="date" ngModel name="endDate" #inputEndDate="ngModel">
+                        <input type="date" ngModel name="expiresAt" #inputEndDate="ngModel">
                     </div>
                 </div>
                 <div class="recipe-id" *ngIf="recipeId">

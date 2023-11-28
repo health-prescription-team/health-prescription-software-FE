@@ -24,7 +24,7 @@ export class CacheService {
   }
   addMedicine(currentmedicine:any){
     this.allMedicinesAdded.push({...currentmedicine})
-    
+
     this.hideAddMedicineComponent(currentmedicine)
   }
 
@@ -32,11 +32,12 @@ export class CacheService {
   allMedicinesAdded:any= [];
 
   nestedFormValues= {
-    morning:"",
-    midday:"",
-    evening: "",
-    additionalInfo: "",
-    med:""
+    morningDose:"",
+    measurementUnit:"",
+    lunchTimeDose:"",
+    eveningDose: "",
+    notes: "",
+    medicineId:"4"
   }
 
 }

@@ -4,7 +4,7 @@
     <input (change)="emit()" id="selectMedInput"  type="text" name="selectMedInput" class="select"
     #inputselectMedInput="ngModel"
     required
-    [(ngModel)] = CacheService.nestedFormValues.med
+    [(ngModel)] = CacheService.nestedFormValues.medicineId
     >
     <button (click)="searchHandler(inputselectMedInput)" type="button" class="svg">
       <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
@@ -13,23 +13,30 @@
 
   <h4>Прием</h4>
   <div id="inputs-container">
-    <input  (input)="emit()" class="intake-input" type="text" placeholder="Сутрин..." id="morning" name="morning"
+    <input  (input)="emit()" class="intake-input" type="text" placeholder="Сутрин..." id="morning" name="morningDose"
     #inputmorning="ngModel"
     required
-    [(ngModel)] = CacheService.nestedFormValues.morning>
-    <input (input)="emit()" class="intake-input" type="text" placeholder="Обед..." id="midday" name="midday"
+    [(ngModel)] = CacheService.nestedFormValues.morningDose>
+    <input (input)="emit()" class="intake-input" type="text" placeholder="Обед..." id="midday" name="lunchTimeDose"
     #inputmidday="ngModel"
     required
-           [(ngModel)] = CacheService.nestedFormValues.midday>
-    <input (input)="emit()" class="intake-input" type="text" placeholder="Вечер..." id="evening" name="evening"
+           [(ngModel)] = CacheService.nestedFormValues.lunchTimeDose>
+    <input (input)="emit()" class="intake-input" type="text" placeholder="Вечер..." id="evening" name="eveningDose"
     #inputevening="ngModel"
     required
-    [(ngModel)] = CacheService.nestedFormValues.evening>
+    [(ngModel)] = CacheService.nestedFormValues.eveningDose>
+    <select  (input)="emit()" class="intake-input" type="text" placeholder="Мерна единица" id="measurementUnit" name="measurementUnit"
+            #inputMeasurementUnit="ngModel"
+            required
+            [(ngModel)] = CacheService.nestedFormValues.measurementUnit>
+      <option selected value="ml">ml</option>
+      <option value="mg">mg</option>
+    </select>
   </div>
   <h4>Допълнителни бележки</h4>
   <textarea (input)="emit()" id="additionalInfo" placeholder="Допълнителна информация..."  name="additionalInfo"
   #inputadditionalInfo="ngModel"
-            [(ngModel)] = CacheService.nestedFormValues.additionalInfo></textarea>
+            [(ngModel)] = CacheService.nestedFormValues.notes></textarea>
   <div id="btns-container">
     <button class="btn" id="proceedBtn" type="submit" (click)="CacheService.addMedicine(CacheService.nestedFormValues)">Предпиши</button>
     <button class="btn" id="cancelBtn" (click)="CacheService.hideAddMedicineComponent(currentmedicine)" [attr.idMedicine]="">Отказ</button>

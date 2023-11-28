@@ -8,7 +8,7 @@ export class RecipeService {
 
   constructor(private http:HttpClient) { }
 
- createRecipe(formData:FormData){
+ createRecipe(formData:any){
   return  this.http.post('API/Prescription',formData);
 }
 
