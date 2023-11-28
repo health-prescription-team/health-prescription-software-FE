@@ -32,12 +32,12 @@ export class CacheService {
   allMedicinesAdded:any= [];
 
   nestedFormValues= {
-    morningDose:"",
+    morningDose:0,
     measurementUnit:"",
-    lunchTimeDose:"",
-    eveningDose: "",
+    lunchTimeDose:0,
+    eveningDose: 0,
     notes: "",
-    medicineId:"4"
+    medicineId:1
   }
 
 }
