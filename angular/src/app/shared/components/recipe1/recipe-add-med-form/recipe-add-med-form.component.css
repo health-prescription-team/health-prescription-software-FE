@@ -36,8 +36,20 @@
 
 .search-div {
   display: flex;
+  flex-direction: column;
+  border: 1px solid blue;
 }
 
+.dropdown-list{
+  margin: 0;
+  padding: 10px;
+  text-align: left;
+}
+
+.dropdown-list li{
+  list-style-type: none;
+  color: black;
+}
 
 h4 {
   align-self: flex-start;
@@ -103,7 +115,7 @@ h4 {
 }
 
 #proceedBtn:active,
-#proceedBtn:hover{
+#proceedBtn:hover {
   box-shadow: 2px 3px 4px #447336, inset 2px 3px 4px #447336;
 }
 
@@ -113,7 +125,7 @@ h4 {
 }
 
 #cancelBtn:active,
-#cancelBtn:hover{
+#cancelBtn:hover {
   box-shadow: 2px 3px 4px #8d1d40, inset 2px 3px 4px #8d1d40;
 }
 

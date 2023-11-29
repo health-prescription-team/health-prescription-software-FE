@@ -13,4 +13,8 @@ export class CatalogService {
   getAll(){
     return this.HttpClient.get("API/Medicine")
   }
+
+  getMedicamentsForSearch(){
+    return this.HttpClient.get("API/GetDropwnDownMedicaments")
+  }
 }
