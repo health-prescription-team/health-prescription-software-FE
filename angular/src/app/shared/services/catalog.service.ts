@@ -14,7 +14,4 @@ export class CatalogService {
     return this.HttpClient.get("API/Medicine")
   }
 
-  getMedicamentsForSearch(){
-    return this.HttpClient.get("API/GetDropwnDownMedicaments")
-  }
 }

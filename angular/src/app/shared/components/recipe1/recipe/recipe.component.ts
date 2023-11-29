@@ -87,7 +87,7 @@ export class RecipeComponent implements OnInit,OnChanges {
           patientEgn:allFields.patientEgn,
           age:allFields.patientАge,
           diagnosis:allFields.diagnosis,
-          expiresAt:allFields.expiresAt,
+          expiresAt:allFields.expiresAt || null,
           prescriptionDetails:this.CacheService.allMedicinesAdded,
 
         }

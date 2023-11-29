@@ -12,6 +12,7 @@ import {
 import { NgModel } from '@angular/forms';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { CatalogService } from 'src/app/shared/services/catalog.service';
+import { RecipeService } from 'src/app/shared/services/recipe.service';
 
 @Component({
   selector: 'app-recipe-add-med-form',
@@ -36,7 +37,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     private Renderer2: Renderer2,
     private ElementRef: ElementRef,
     public CacheService: CacheService,
-    private catalogService: CatalogService
+    private recipeService: RecipeService
   ) {
     this.filteredResults = this.results;
   }
@@ -54,7 +55,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   }
   ngAfterViewInit() {
     this.setStyles();
-    // this.medicamentsForSearch();
+    this.medicamentsForSearch();
   }
   searchHandler(seacrchWord: any) {
     console.log(seacrchWord.value);
@@ -89,17 +90,22 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     this.searchTerm = option.medicament;
     this.showDropdown = false;
     console.log('id', option.id);
+    this.CacheService.nestedFormValues.medicineId = option.id;
   }
 
-  // medicamentsForSearch() {
-  //   return this.catalogService.getMedicamentsForSearch().subscribe(
-  //     (res) => {
-  //       res = this.results;
-  //       console.log('res', res);
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+  medicamentsForSearch() {
+    if (this.results.length > 0) {
+      return;
+    }
+
+    return this.recipeService.getMedicamentsForSearch().subscribe(
+      (res) => {
+        res = this.results;
+        console.log('res', res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

@@ -37,7 +37,7 @@ export class CacheService {
     lunchTimeDose:0,
     eveningDose: 0,
     notes: "",
-    medicineId:1
+    medicineId:null,
   }
 
 }
