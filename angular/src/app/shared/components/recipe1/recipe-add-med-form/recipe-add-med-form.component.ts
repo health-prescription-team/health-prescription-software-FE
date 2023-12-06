@@ -33,13 +33,16 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   filteredResults: any;
   searchTerm: any;
   showDropdown: boolean = false;
+  results: any;
+
   constructor(
     private Renderer2: Renderer2,
     private ElementRef: ElementRef,
     public CacheService: CacheService,
     private recipeService: RecipeService
   ) {
-    this.filteredResults = this.results;
+    this.medicamentsForSearch();
+    console.log(this.results);
   }
   clearAllFields() {}
 
@@ -69,17 +72,9 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     );
   }
 
-  results = [
-    { medicament: 'Bulgaria', id: 1 },
-    { medicament: 'Belgium', id: 2 },
-    { medicament: 'USA', id: 3 },
-    { medicament: 'Russia', id: 4 },
-    { medicament: 'China', id: 5 },
-  ];
-
   filterResults(): void {
     this.filteredResults = this.results.filter(
-      (res) =>
+      (res:any) =>
         res.medicament &&
         res.medicament.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
@@ -94,18 +89,25 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   }
 
   medicamentsForSearch() {
-    if (this.results.length > 0) {
-      return;
-    }
+    // if (this.results.length > 0) {
+    //   return;
+    // }
 
-    return this.recipeService.getMedicamentsForSearch().subscribe(
-      (res) => {
-        res = this.results;
-        console.log('res', res);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
+  //   return this.recipeService.getMedicamentsForSearch().subscribe(
+  //     (res) => {
+  //       res = this.results;
+  //       console.log('res', res);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   );
+  this.results = [
+    { medicament: 'Bulgaria', id: 1 },
+    { medicament: 'Belgium', id: 2 },
+    { medicament: 'USA', id: 3 },
+    { medicament: 'Russia', id: 4 },
+    { medicament: 'China', id: 5 },
+  ];
+   }
 }
