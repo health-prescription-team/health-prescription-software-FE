@@ -14,7 +14,7 @@
     <div class="dropdown-container">
       <ul *ngIf="showDropdown" class="dropdown-list">
         <li *ngFor="let res of filteredResults" id="res.id" (click)="selectOption(res)">
-          {{ res.medicament }}
+          {{ res.name }}
         </li>
       </ul>
     </div>

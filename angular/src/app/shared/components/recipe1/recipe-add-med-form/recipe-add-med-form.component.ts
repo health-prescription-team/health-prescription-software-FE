@@ -74,9 +74,12 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
 
   filterResults(): void {
     this.filteredResults = this.results.filter(
-      (res:any) =>
-        res.medicament &&
-        res.medicament.toLowerCase().includes(this.searchTerm.toLowerCase())
+      (res:any) =>{
+        
+       return res.name &&
+        res.name.toLowerCase().startsWith(this.searchTerm.toLowerCase())
+        console.log(this.searchTerm)
+      }
     );
     this.showDropdown = true;
   }
@@ -94,9 +97,9 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     // }
 
     return this.recipeService.getMedicamentsForSearch().subscribe(
-      (res) => {
-        res = this.results;
-        console.log('res', res);
+      (res:any) => {
+        this.results = res.medicaments
+        console.log('res', this.results);
       },
       (err) => {
         console.log(err);
