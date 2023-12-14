@@ -36,7 +36,7 @@ export class UserService {
     return this.http.post(loginEndpoint +"/Pharmacy",data)
   }
   loginDoctor(data:FormData){
-    return this.http.post(loginEndpoint +"/Doctor",data)
+    return this.http.post(loginEndpoint +"/Gp",data)
   }
   loginPatient(data:FormData){
     return this.http.post(loginEndpoint +"/Patient",data)
