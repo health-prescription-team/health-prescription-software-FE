@@ -12,6 +12,6 @@ export class RecipeService {
   }
 
   getMedicamentsForSearch() {
-    return this.http.get('API/DynamicSearch');
+    return this.http.get('API/Medicine/DynamicSearch');
   }
 }
