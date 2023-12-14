@@ -102,12 +102,6 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
         console.log(err);
       }
     );
-  // this.results = [
-  //   { medicament: 'Bulgaria', id: 1 },
-  //   { medicament: 'Belgium', id: 2 },
-  //   { medicament: 'USA', id: 3 },
-  //   { medicament: 'Russia', id: 4 },
-  //   { medicament: 'China', id: 5 },
-  // ];
+ 
    }
 }
