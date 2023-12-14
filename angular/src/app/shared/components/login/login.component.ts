@@ -60,9 +60,9 @@ export class LoginComponent implements OnInit {
 
     if (currentPath == 'doctor') {
       this.UserService.loginDoctor(payload).subscribe(
-        (res) => {
+        (res:any) => {
           console.log(res);
-          // localStorage.setItem("token",res.token);
+          localStorage.setItem("token",res.token);
           this.router.navigate([`${currentPath}/recipe/new`]);
         },
         (error) => {
