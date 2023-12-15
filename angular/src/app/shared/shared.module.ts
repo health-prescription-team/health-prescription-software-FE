@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PasswordMatchValidatorDirective } from './validators/password-validators.directive';
 import { PharmacyModule } from '../pharmacy/pharmacy.module';
 import { DetailsComponent } from './components/details/details.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -25,11 +26,15 @@ import { DetailsComponent } from './components/details/details.component';
     RegisterComponent,
     PasswordMatchValidatorDirective,
     DetailsComponent,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
+  ],
+  exports:[
+    HeaderComponent
   ]
 })
 

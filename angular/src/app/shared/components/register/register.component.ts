@@ -66,6 +66,8 @@ export class RegisterComponent implements OnInit {
       this.userService.registerDoctor(payload).subscribe(
         (res:any)=>{
           localStorage.setItem("token",res.token);
+          //@ts-ignore
+          localStorage.setItem("ID",payload.get('Egn'))
           this.router.navigate(['doctor/recipe/new']);
           this.userService.jwtdecrypt(res.token);
         },
@@ -79,6 +81,8 @@ export class RegisterComponent implements OnInit {
 
       this.userService.registerPatient(payload).subscribe(
         (res:any)=>{
+          //@ts-ignore
+          localStorage.setItem("ID",payload.get('Egn'))
           localStorage.setItem("token",res.token);
           this.router.navigate(['patient/profile']);
 
@@ -90,6 +94,8 @@ export class RegisterComponent implements OnInit {
     }else if(this.activeRoute.url.split('/')[1] === 'pharmacy'){
       this.userService.registerPharmacy(payload).subscribe(
         (res:any)=>{
+          //@ts-ignore
+          localStorage.setItem("ID",payload.get('Egn'))
           localStorage.setItem("token",res.token);
           this.router.navigate(['pharmacy/add-medicine']);
         },
@@ -103,6 +109,8 @@ export class RegisterComponent implements OnInit {
 
       this.userService.registerPharmacist(payload).subscribe(
         (res:any)=>{
+          //@ts-ignore
+          localStorage.setItem("ID",payload.get('Egn'))
           localStorage.setItem("token",res.token);
           this.router.navigate(['pharmacist/search']);
         },

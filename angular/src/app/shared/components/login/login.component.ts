@@ -72,7 +72,11 @@ export class LoginComponent implements OnInit {
     }
     if (currentPath == 'patient') {
       this.UserService.loginPatient(payload).subscribe(
-        (res) => {
+        (res:any) => {
+          
+          localStorage.setItem("token",res.token);
+          //@ts-ignore
+          localStorage.setItem("ID",payload.get('Egn'))
           this.router.navigate([`${currentPath}/profile`]);
         },
         (error) => {
@@ -82,7 +86,8 @@ export class LoginComponent implements OnInit {
     }
     if (currentPath == 'pharmacist') {
       this.UserService.loginPharmacist(payload).subscribe(
-        (res) => {
+        (res:any) => {
+          localStorage.setItem("token",res.token);
           this.router.navigate([`${currentPath}/search`]);
         },
         (error) => {
@@ -92,7 +97,8 @@ export class LoginComponent implements OnInit {
     }
     if (currentPath == 'pharmacy') {
       this.UserService.loginPharmacy(payload).subscribe(
-        (res) => {
+        (res:any) => {
+          localStorage.setItem("token",res.token);
           this.router.navigate([`${currentPath}/add-medicine`]);
         },
         (error) => {

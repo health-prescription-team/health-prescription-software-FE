@@ -26,7 +26,7 @@ import { FormsModule, NgForm } from "@angular/forms";
     PharmacistModule,
     PharmacyModule,
     PatientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {

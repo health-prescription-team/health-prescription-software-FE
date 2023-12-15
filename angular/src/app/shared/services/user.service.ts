@@ -47,5 +47,6 @@ export class UserService {
     const decodedToken = jwtDecode(token);
     //@ts-ignore
     this.role=decodedToken['role'];
+    return decodedToken
   }
 }
