@@ -74,20 +74,16 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
 
   filterResults(): void {
     this.filteredResults = this.results.filter(
-      (res:any) =>{
-        
-       return res.name &&
+      (res: any) =>
+        res.name &&
         res.name.toLowerCase().startsWith(this.searchTerm.toLowerCase())
-        console.log(this.searchTerm)
-      }
     );
     this.showDropdown = true;
   }
 
   selectOption(option: any): void {
-    this.searchTerm = option.medicament;
+    this.searchTerm = option.name;
     this.showDropdown = false;
-    console.log('id', option.id);
     this.CacheService.nestedFormValues.medicineId = option.id;
   }
 
@@ -97,14 +93,12 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     // }
 
     return this.recipeService.getMedicamentsForSearch().subscribe(
-      (res:any) => {
-        this.results = res.medicaments
-        console.log('res', this.results);
+      (res: any) => {
+        this.results = res.medicaments;
       },
       (err) => {
         console.log(err);
       }
     );
- 
-   }
+  }
 }
