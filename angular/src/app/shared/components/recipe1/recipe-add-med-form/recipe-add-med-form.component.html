@@ -1,7 +1,7 @@
 <div class="form" [style.display]="CacheService.displayAddMedicine">
   <div class="search-div">
 
-    <input (change)="emit()" id="selectMedInput"  type="text" name="selectMedInput" class="select"
+    <input (change)="emit()" (mousedown)="medicamentsForSearch()" id="selectMedInput"  type="text" name="selectMedInput" class="select"
     #inputselectMedInput="ngModel"
     required
     [(ngModel)] = "searchTerm"
@@ -47,7 +47,7 @@
   #inputadditionalInfo="ngModel"
             [(ngModel)] = CacheService.nestedFormValues.notes></textarea>
   <div id="btns-container">
-    <button class="btn" id="proceedBtn" type="submit" (click)="CacheService.addMedicine(CacheService.nestedFormValues)">Предпиши</button>
-    <button class="btn" id="cancelBtn" (click)="CacheService.hideAddMedicineComponent(currentmedicine)" [attr.idMedicine]="">Отказ</button>
+    <button class="btn" id="proceedBtn" type="button" (click)="CacheService.addMedicine(CacheService.nestedFormValues,nameCurrentMedicines)">Предпиши</button>
+    <button class="btn" id="cancelBtn" type="button" (click)="CacheService.hideAddMedicineComponent(currentmedicine)" [attr.idMedicine]="">Отказ</button>
   </div>
 </div>

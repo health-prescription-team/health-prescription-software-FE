@@ -34,15 +34,14 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   searchTerm: any;
   showDropdown: boolean = false;
   results: any;
+  nameCurrentMedicines: any;
 
   constructor(
     private Renderer2: Renderer2,
     private ElementRef: ElementRef,
     public CacheService: CacheService,
     private recipeService: RecipeService
-  ) {
-    this.medicamentsForSearch();
-  }
+  ) { }
   clearAllFields() {}
 
   emit() {
@@ -57,7 +56,6 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   }
   ngAfterViewInit() {
     this.setStyles();
-    this.medicamentsForSearch();
   }
   searchHandler(seacrchWord: any) {
     console.log(seacrchWord.value);
@@ -84,6 +82,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     this.searchTerm = option.name;
     this.showDropdown = false;
     this.CacheService.nestedFormValues.medicineId = option.id;
+    this.nameCurrentMedicines=option.name;
   }
 
   medicamentsForSearch() {
@@ -98,8 +97,11 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
       (err) => {
         if(err.status===401){
           this.CacheService.logout();
+        }else{
+          console.log(err);
         }
       }
     );
   }
+
 }

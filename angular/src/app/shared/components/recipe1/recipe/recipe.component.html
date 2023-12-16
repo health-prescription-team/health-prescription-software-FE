@@ -30,7 +30,7 @@
             <div class="recipe-body recipe-component" *ngFor="let med of CacheService.allMedicinesAdded">
                 <details class="current-medicine">
                     <summary>
-                        <h4>{{med.med}}</h4>
+                        <h4>{{med.medicineId}}</h4>
                     </summary>
 
                     <app-recipe-info-med [med]="med" />
