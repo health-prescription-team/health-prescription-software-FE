@@ -70,7 +70,6 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   }
 
   filterResults(): void {
-    console.log(this.results)
     this.filteredResults = this.results.filter(
       (res: any) =>
         res.name &&
@@ -94,6 +93,8 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     return this.recipeService.getMedicamentsForSearch().subscribe(
       (res: any) => {
         this.results = res.medicaments;
+        this.filteredResults = this.results
+        this.showDropdown = true
       },
       (err) => {
         if(err.status===401){
