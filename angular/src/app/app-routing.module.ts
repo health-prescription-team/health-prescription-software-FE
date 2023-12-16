@@ -26,6 +26,10 @@ const routes: Routes = [
     component:HomeComponent
   },
   {
+    path:"recipeDetails/:id",
+    component: RecipeComponent
+  },
+  {
     //doctor
     path:"doctor",
     component:DoctorComponent,

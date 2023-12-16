@@ -27,13 +27,13 @@
             </div>
 
 
-            <div class="recipe-body recipe-component" *ngFor="let med of CacheService.allMedicinesAdded">
+            <div class="recipe-body recipe-component" *ngFor="let med of CacheService.allMedicinesAdded; let index = index">
                 <details class="current-medicine">
                     <summary>
                         <h4>{{med.medicineId}}</h4>
                     </summary>
 
-                    <app-recipe-info-med [med]="med" />
+                    <app-recipe-info-med [med]="med" [index] = "index" />
 
                 </details>
             </div>

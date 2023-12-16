@@ -70,6 +70,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   }
 
   filterResults(): void {
+    console.log(this.results)
     this.filteredResults = this.results.filter(
       (res: any) =>
         res.name &&

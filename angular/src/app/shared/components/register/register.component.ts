@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
         console.log(e)
       })
 
-    payload.delete("rePassword")
+    // payload.delete("rePassword")
 
     if(this.activeRoute.url.split('/')[1] === 'doctor'){
 
@@ -109,7 +109,7 @@ export class RegisterComponent implements OnInit {
 
       this.userService.registerPharmacist(payload).subscribe(
         (res:any)=>{
-          //@ts-ignore
+          // @ts-ignore
           localStorage.setItem("ID",payload.get('Egn'))
           localStorage.setItem("token",res.token);
           this.router.navigate(['pharmacist/search']);

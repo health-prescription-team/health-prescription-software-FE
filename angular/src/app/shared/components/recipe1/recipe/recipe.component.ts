@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { RecipeService } from 'src/app/shared/services/recipe.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-recipe',
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./recipe.component.css'],
 })
 export class RecipeComponent implements OnInit, OnChanges {
-  recipeId: string = '';
+  recipeId: string|null = '';
   inputselectMedInput: string = '';
 
   date = new Date();
@@ -23,10 +24,22 @@ export class RecipeComponent implements OnInit, OnChanges {
     public CacheService: CacheService,
     private http: HttpClient,
     private recipeService: RecipeService,
+    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     this.service.jwtdecrypt(token!);
+
+
+    this.route.paramMap.subscribe(params => {
+      this.recipeId = params.get('id');
+      console.log('ID from URL:', this.recipeId);
+    });
+
+
+
+
+
   }
   ngOnChanges(changes: SimpleChanges) {
     console.log('change');
