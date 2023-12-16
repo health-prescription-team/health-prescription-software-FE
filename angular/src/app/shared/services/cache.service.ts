@@ -40,4 +40,12 @@ export class CacheService {
     medicineId:"",
   }
 
+
+  logout() {
+    console.log('logout');
+    localStorage.removeItem('token');
+    localStorage.removeItem('ID');
+    this.router.navigate(['/']);
+
+  }
 }

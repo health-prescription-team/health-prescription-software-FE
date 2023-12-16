@@ -42,7 +42,6 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     private recipeService: RecipeService
   ) {
     this.medicamentsForSearch();
-    console.log(this.results);
   }
   clearAllFields() {}
 
@@ -97,7 +96,9 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
         this.results = res.medicaments;
       },
       (err) => {
-        console.log(err);
+        if(err.status===401){
+          this.CacheService.logout();
+        }
       }
     );
   }
