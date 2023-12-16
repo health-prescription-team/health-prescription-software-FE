@@ -2,20 +2,20 @@
   <div id="dayTimesContainer">
     <div class="dayTimeContainer">
       <h4 class="dayTimeName">Сутрин</h4>
-      <p class="dayTimeInfo">{{currentRecord.morning}}</p>
+      <p class="dayTimeInfo">{{currentRecord.morningDose}}</p>
     </div>
     <div class="dayTimeContainer">
       <h4 class="dayTimeName">Обед</h4>
-      <p class="dayTimeInfo">{{currentRecord.midday}}</p>
+      <p class="dayTimeInfo">{{currentRecord.lunchTimeDose}}</p>
     </div>
     <div class="dayTimeContainer">
       <h4 class="dayTimeName">Вечер</h4>
-      <p class="dayTimeInfo">{{currentRecord.evening}}</p>
+      <p class="dayTimeInfo">{{currentRecord.eveningDose}}</p>
     </div>
   </div>
   <div id="additionalInfoContainer">
     <h4 id="additionalInfoHeading">Допълнителни бележки</h4>
-    <p id="additionalInfo">{{currentRecord.additionalInfo}}</p>
+    <p id="additionalInfo">{{currentRecord.notes}}</p>
   </div>
   <div id="btnsContainer">
     <button class="btn" id="proceedBtn" (click)="finishMedicine()" *ngIf="userService.role === 'pharmacist'">Завърши</button>
