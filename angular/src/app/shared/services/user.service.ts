@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {API_URL, loginEndpoint, registerEndpoint} from '../constants';
+import {API_URL, loginEndpoint, prescriptionEndpoint, registerEndpoint} from '../constants';
 import  * as jwt  from 'jsonwebtoken';
 import {jwtDecode} from 'jwt-decode';
 
@@ -48,5 +48,10 @@ export class UserService {
     //@ts-ignore
     this.role=decodedToken['role'];
     return decodedToken
+  }
+
+  getProfile(personalId:any){
+    return this.http.get(prescriptionEndpoint+'?patientEgn='+personalId)
+    //Prescription?patientEgn=333333333
   }
 }

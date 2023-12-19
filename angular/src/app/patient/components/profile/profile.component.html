@@ -24,41 +24,23 @@
 
     <div class="profile-body">
 
-        <div class="recipe">
-            <h4>Рецепта 01.10.2023</h4>
+        <div class="recipe" *ngFor="let prescription of prescriptions">
+            <h4>{{prescription.createdAt}}</h4>
             <div class="recipe-body">
                 <div class="meds">
                     <p>Предписани лекарства:</p>
                     <ul>
-                        <li>Аналгин</li>
-                        <li>Парацетамол</li>
-                        <li>Аспирин</li>
+                        <li *ngFor="let medicament of prescription.medicaments">{{medicament}}</li>
                     </ul>
                 </div>
                 <div class="details">
-                    <p>Валидна до: 01.11.2023</p>
-                    <button>Детайли</button>
+                    <p>Валидна до: {{prescription.expiresAt }}</p>
+                    <button [routerLink]="'/recipe/' + prescription.prescriptionId">Детайли</button>
                 </div>
             </div>
         </div>
 
-        <div class="recipe">
-            <h4>Рецепта 01.10.2023</h4>
-            <div class="recipe-body">
-                <div class="meds">
-                    <p>Предписани лекарства:</p>
-                    <ul>
-                        <li>Аналгин</li>
-                        <li>Парацетамол</li>
-                        <li>Аспирин</li>
-                    </ul>
-                </div>
-                <div class="details">
-                    <p>Валидна до: 01.11.2023</p>
-                    <button>Детайли</button>
-                </div>
-            </div>
-        </div>
+
     </div>
 
 </div>
