@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { RecipeService } from 'src/app/shared/services/recipe.service';
 import { UserService } from 'src/app/shared/services/user.service';
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe',
@@ -12,12 +12,13 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./recipe.component.css'],
 })
 export class RecipeComponent implements OnInit, OnChanges {
-  recipeId: string|null = '';
+  recipeId: string | null = '';
   inputselectMedInput: string = '';
 
   date = new Date();
   options: any = { day: 'numeric', month: 'numeric', year: 'numeric' };
   formattedDate = this.date.toLocaleDateString(undefined, this.options);
+  currentRecipe: any;
 
   constructor(
     private service: UserService,
@@ -30,16 +31,18 @@ export class RecipeComponent implements OnInit, OnChanges {
     const token = localStorage.getItem('token');
     this.service.jwtdecrypt(token!);
 
-
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.recipeId = params.get('id');
       console.log('ID from URL:', this.recipeId);
     });
 
-
-
-
-
+    if (this.recipeId) {
+      console.log("this.recipeId", this.recipeId);
+      this.recipeService.getRecipe(this.recipeId).subscribe((res)=>{
+        this.currentRecipe=res;
+        console.log(this.currentRecipe);
+      })
+    }
   }
   ngOnChanges(changes: SimpleChanges) {
     console.log('change');
@@ -115,7 +118,7 @@ export class RecipeComponent implements OnInit, OnChanges {
     } else {
       //put new medicine
       const { med, morning, midday, evening, additionalInfo } = allFields;
-      console.log("allFields", allFields);
+      console.log('allFields', allFields);
       //POST WITH PrescriptinId!
       //  med, morning, midday, evening, additionalInfo
       // console.log(med, morning, midday, evening, additionalInfo);
