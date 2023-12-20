@@ -18,7 +18,11 @@ export class RecipeComponent implements OnInit, OnChanges {
   date = new Date();
   options: any = { day: 'numeric', month: 'numeric', year: 'numeric' };
   formattedDate = this.date.toLocaleDateString(undefined, this.options);
-  currentRecipe: any;
+  // console.log(formattedDat
+  
+  currentRecipe: any = {
+    patienEgn:''
+  };
 
   constructor(
     private service: UserService,
@@ -30,6 +34,7 @@ export class RecipeComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     this.service.jwtdecrypt(token!);
+  // console.log(this.formattedDate);
 
     this.route.paramMap.subscribe((params) => {
       this.recipeId = params.get('id');
