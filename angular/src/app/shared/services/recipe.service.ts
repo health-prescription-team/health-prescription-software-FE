@@ -14,4 +14,8 @@ export class RecipeService {
   getMedicamentsForSearch() {
     return this.http.get('API/Medicine/DynamicSearch');
   }
+
+  getRecipe(id:string){
+    return this.http.get(`API/Prescription/${id}`)
+  }
 }

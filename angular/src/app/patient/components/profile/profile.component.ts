@@ -22,7 +22,6 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfile(egn: any) {
-    console.log(egn);
     this.userService.getProfile(this.egn).subscribe(
       (res) => {
         console.log(res);
