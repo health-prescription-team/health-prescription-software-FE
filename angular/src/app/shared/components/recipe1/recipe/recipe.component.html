@@ -5,7 +5,7 @@
                 <div class="field">
                     <label for="patient">Пациент: </label>
                     <input type="text" id="patient" placeholder="ЕГН"  name="patientEgn" id="patient"
-                        #inputpatient="ngModel" (input)="emit(inputpatient.value)" required ngModel >
+                        #inputpatient="ngModel" (input)="emit(inputpatient.value)" required ngModel [(ngModel)] = currentRecipe.patientEgn >
                 </div>
                 <div class="field">
                     <label for="patientАge">Години: &asymp;</label>
@@ -30,11 +30,11 @@
             <div class="recipe-body recipe-component" *ngFor="let med of CacheService.allMedicinesAdded; let index = index">
                 <details class="current-medicine">
                     <summary>
-                        <h4>{{med.name}}</h4>
+                        <h4>{{med.medicineName}}</h4>
                         <!-- {{med | json}} -->
                     </summary>
 
-                    <app-recipe-info-med [med]="med" [index] = "index" />
+                    <app-recipe-info-med [currentRecipe] = "currentRecipe" [med]="med" [index] = "index" />
 
                 </details>
             </div>

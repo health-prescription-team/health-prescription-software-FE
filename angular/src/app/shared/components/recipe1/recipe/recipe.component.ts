@@ -38,8 +38,14 @@ export class RecipeComponent implements OnInit, OnChanges {
 
     if (this.recipeId) {
       console.log("this.recipeId", this.recipeId);
-      this.recipeService.getRecipe(this.recipeId).subscribe((res)=>{
-        this.currentRecipe=res;
+      this.recipeService.getRecipe(this.recipeId).subscribe((res:any)=>{
+        console.log(res.prescriptionDetails);
+        if(Object.values(res).some(x => x === '')) {
+          return
+        }
+        this.currentRecipe = res
+        this.CacheService.allMedicinesAdded=res.prescriptionDetails;
+
         console.log(this.currentRecipe);
       })
     }

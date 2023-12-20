@@ -23,7 +23,7 @@ export class CacheService {
 
   }
   addMedicine(currentmedicine:any, name:any){
-    currentmedicine.name = name
+    currentmedicine.medicineName = name
     this.allMedicinesAdded.push({...currentmedicine})
     
     

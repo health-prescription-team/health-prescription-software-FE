@@ -12,6 +12,8 @@ export class RecipeInfoMedComponent implements AfterViewInit{
 
 @Input('med') currentRecord:any;
 @Input('index') index:any;
+@Input('currentRecipe') currentRecipe:any;
+
 
   constructor(
   private  Renderer2:Renderer2,
