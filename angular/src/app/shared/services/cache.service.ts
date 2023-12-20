@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 export class CacheService {
   constructor( private router:Router) {}
   displayAddMedicine: string = 'none';
+  medName:string = ''
 
   showAddMedicineComponent() {
     this.displayAddMedicine = 'flex';
@@ -22,7 +23,10 @@ export class CacheService {
 
   }
   addMedicine(currentmedicine:any, name:any){
+    currentmedicine.name = name
     this.allMedicinesAdded.push({...currentmedicine})
+    
+    
     this.hideAddMedicineComponent(name)
   }
 
