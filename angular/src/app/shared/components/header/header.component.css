@@ -3,12 +3,12 @@ body {
     padding: 0;
     margin: 0;
   }
-  
+
   small {
     font-size: 12px;
     color: rgba(0, 0, 0, 0.4);
   }
-  
+
   h1 {
     text-align: center;
     padding: 50px 0;
@@ -18,34 +18,33 @@ body {
     color: inherit;
     font-size: 40px;
   }
-  
+
   /* By Dominik Biedebach @domobch */
-  
+
   h2 {
    color: rgb(0, 0, 0);
    margin-left: 50px;
   }
-  
+
   .center {
     text-align: center;
   }
-  
+
   /* By Dominik Biedebach @domobch */
-  
+
   section {
     /* height: 100vh; */
   }
-  
+
   /* NAVIGATION */
   nav {
     /* width: 80%; */
     margin: 0 auto;
-    background: #fff;
+    background: #1d1c1c;
     /* padding: 50px 0; */
     box-shadow: 0px 5px 0px #dedede;
-    background: transparent;
   }
-  
+
   /* By Dominik Biedebach @domobch */
   nav ul {
     list-style: none;
@@ -72,10 +71,10 @@ body {
     color: #555;
     cursor: pointer;
   }
-  
+
   /* By Dominik Biedebach @domobch */
-  
-  
+
+
   /* stroke */
   nav.stroke ul li ,
   nav.fill ul li  {
@@ -97,12 +96,12 @@ body {
   nav.stroke ul li:hover:after {
     width: 100%;
   }
-  
+
   nav.fill ul li  {
     transition: all 2s;
   }
   /* By Dominik Biedebach @domobch */
-  
+
   nav.fill ul li:after {
     text-align: left;
     content: '.';
@@ -120,7 +119,7 @@ body {
     -moz-animation: fill 1s forwards;
     opacity: 1;
   }
-  
+
   /* Circle */
   nav.circle ul li {
     position: relative;
@@ -146,7 +145,7 @@ body {
   nav.circle ul li:hover:after {
     -webkit-animation: circle 1.5s ease-in forwards;
   }
-  
+
   /* SHIFT */
   nav.shift ul li  {
     position:relative;
@@ -177,9 +176,9 @@ body {
     visibility: visible;
     height: 100%;
   }
-  
+
   /* By Dominik Biedebach @domobch */
-  
+
   /* Blend */
   nav.blend ul li  {
     position: relative;
@@ -211,24 +210,24 @@ body {
   nav.blend ul li:after {
     right: 0;
   }
-  
+
   nav.blend ul li:hover:after,
   nav.blend ul li:hover:before {
     width: 100%;
   }
-  
+
   /* DROWN */
-  
+
   nav.drown ul li  {
     position: relative;
     overflow: hidden;
     z-index: 1;
   }
-  
+
   nav.drown ul li:hover {
     color: #fff;
   }
-  
+
   nav.drown ul li:before {
     background: #fff;
     content: '.';
@@ -247,9 +246,9 @@ body {
     top: 0;
     background: #89C52B;
   }
-  
-  
-  
+
+
+
   /* Keyframes */
   @-webkit-keyframes fill {
     0% {
@@ -266,7 +265,7 @@ body {
       background: #2ECC71;
     }
   }
-  
+
   /* Keyframes */
   @-webkit-keyframes circle {
     0% {
@@ -294,4 +293,3 @@ body {
       border-radius: 0;
     }
   }
-  
