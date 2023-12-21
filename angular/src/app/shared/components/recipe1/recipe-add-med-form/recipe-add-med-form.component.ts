@@ -84,11 +84,15 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     this.CacheService.nestedFormValues.medicineId = option.id;
     this.nameCurrentMedicines=option.name;
   }
+  hideDropDown(){
+      this.showDropdown = false;
+  }
 
   medicamentsForSearch() {
     // if (this.results.length > 0) {
     //   return;
     // }
+
 
     return this.recipeService.getMedicamentsForSearch().subscribe(
       (res: any) => {

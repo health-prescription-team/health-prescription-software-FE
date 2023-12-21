@@ -85,6 +85,8 @@ export class RecipeComponent implements OnInit, OnChanges {
 
   recipeInfo(form: NgForm) {
     //POST
+    if(form.invalid) return
+    
     const { patient, patientАge, diagnosis } = form.value;
     const allFields = {
       ...form.value,

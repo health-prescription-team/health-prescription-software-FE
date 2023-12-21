@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PharmacyService } from '../services/pharmacy.service';
+import { CacheService } from 'src/app/shared/services/cache.service';
 @Component({
   selector: 'app-add-medicine',
   templateUrl: './add-medicine.component.html',
@@ -46,7 +47,7 @@ addMedicine(form:NgForm){
   payload.forEach(el=>console.log(el))
   payload.delete("MedicineFile")
   payload.append("MedicineFile",this.imageBinary)
-  payload.append("MedicineCompany","ddd")
+  payload.append("MedicineCompany",'name')
 
 
   this.pharmacyService.addMeidicine(payload).subscribe({

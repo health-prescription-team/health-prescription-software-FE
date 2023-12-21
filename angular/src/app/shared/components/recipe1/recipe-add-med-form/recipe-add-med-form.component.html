@@ -1,4 +1,4 @@
-<div class="form" [style.display]="CacheService.displayAddMedicine">
+<div (click)="hideDropDown()" class="form" [style.display]="CacheService.displayAddMedicine">
   <div class="search-div">
 
     <input (change)="emit()" (mousedown)="medicamentsForSearch()" id="selectMedInput"  type="text" name="selectMedInput" class="select"
