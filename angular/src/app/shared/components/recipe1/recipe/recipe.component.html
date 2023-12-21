@@ -4,8 +4,20 @@
             <div class="recipe-header recipe-component">
                 <div class="field">
                     <label for="patient">Пациент: </label>
-                    <input type="text" id="patient" placeholder="ЕГН"  name="patientEgn" id="patient"
-                        #inputpatient="ngModel" (input)="emit(inputpatient.value)" required ngModel [(ngModel)] = currentRecipe.patientEgn >
+                    <div class="inputAndError">
+
+                        <input type="text" id="patient" placeholder="ЕГН"  name="patientEgn" id="patient"
+                        #inputpatient="ngModel" minlength="10" maxlength="10" (input)="emit(inputpatient.value)" required ngModel [(ngModel)] = currentRecipe.patientEgn >
+                        
+                        <ng-container *ngIf="inputpatient.touched">
+                            <p class="error" *ngIf="inputpatient?.errors?.['required']">
+                                Id is required.
+                            </p>
+                            <p class="error" *ngIf="inputpatient?.errors?.['minlength'] || inputpatient?.errors?.['maxlength'] ">
+                                Please enter correct Id
+                            </p>
+                        </ng-container>
+                    </div>
                 </div>
                 <div class="field">
                     <label for="patientАge">Години: &asymp;</label>
@@ -14,14 +26,32 @@
                 </div>
                 <div class="field">
                     <label for="doctor">Лекар: </label>
-                    <input type="text" id="doctor" placeholder="Димитър Георгиев Стоянов" type="text" name="doctor"
+                    <div class="inputAndError">
+
+                        <input type="text" id="doctor" placeholder="Димитър Георгиев Стоянов" type="text" name="doctor"
                         id="doctor" #inputdoctor="ngModel" required ngModel>
+                        <ng-container *ngIf="inputdoctor.touched">
+                            <p class="error" *ngIf="inputdoctor?.errors?.['required']">
+                                All fields are required!
+                            </p>
+                        </ng-container>
+                    </div>
                 </div>
 
                 <div class="field diagnosis-field">
                     <label for="diagnosis">Диагноза: </label>
+                    <div class="inputAndError">
                     <input type="text" id="diagnosis" placeholder="Кашлица" type="text" name="diagnosis" id="diagnosis"
                         #inputdiagnosis="ngModel" required ngModel>
+
+                        
+
+                            <ng-container *ngIf="inputdiagnosis.touched">
+                                <p class="error" *ngIf="inputdiagnosis?.errors?.['required']">
+                                    All fields are required!
+                                </p>
+                            </ng-container>
+                        </div>
                 </div>
                 <button class="btn add-recipe" type="submit">Създай рецепта</button>
             </div>

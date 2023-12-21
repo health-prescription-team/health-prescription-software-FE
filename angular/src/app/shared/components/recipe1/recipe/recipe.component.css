@@ -46,6 +46,9 @@
 .field input:focus {
   outline: none;
 }
+.error {
+  color: rgb(158, 12, 12);
+}
 
 .btn {
   display: inline-block;

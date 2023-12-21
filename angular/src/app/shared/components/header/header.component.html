@@ -8,6 +8,7 @@
       <!-- <li>About</li> -->
       <li (click) = logout()>Logout</li>
       <li *ngIf="role === 'Pharmacy'" routerLink="/pharmacy/add-medicine">Add medicaments</li>
+      <li *ngIf="role === 'Patient'" routerLink="/patient/profile">Profile</li>
       <!-- <li><a href="#">Nice staff</a></li> -->
     </ul>
   </nav>
