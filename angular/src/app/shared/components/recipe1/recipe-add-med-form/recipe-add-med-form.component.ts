@@ -34,6 +34,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   searchTerm: any;
   showDropdown: boolean = false;
   results: any;
+  isDropdownError:boolean = false
   nameCurrentMedicines: any;
 
   constructor(
@@ -79,6 +80,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   }
 
   selectOption(option: any): void {
+    this.isDropdownError = false
     this.searchTerm = option.name;
     this.showDropdown = false;
     this.CacheService.nestedFormValues.medicineId = option.id;
@@ -86,6 +88,12 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   }
   hideDropDown(){
       this.showDropdown = false;
+      if(!this.nameCurrentMedicines){
+        this.isDropdownError = true
+      }
+    // setTimeout(()=>{
+    // },0)
+
   }
 
   medicamentsForSearch() {

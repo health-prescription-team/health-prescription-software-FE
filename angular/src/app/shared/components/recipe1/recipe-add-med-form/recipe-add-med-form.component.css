@@ -74,6 +74,10 @@ h4 {
   outline: none;
 }
 
+.error {
+  color: rgb(158, 12, 12);
+}
+
 #inputs-container {
   display: flex;
   flex-direction: column;
