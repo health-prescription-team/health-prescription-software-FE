@@ -17,15 +17,10 @@ export class DetailsService {
     return this.HttpClient.get(medicineEndpoint+`/${id}`)
   }
   deleteMedicament(id:string){
-    this.HttpClient.delete("api/", {body:id}).subscribe(
-      (res)=>{
+   
         const index = this.CacheService.allMedicinesAdded.findIndex((el:any)=>el.id===id)
         this.CacheService.allMedicinesAdded.splice(index,1)
-      },
-      (error)=>{
-        console.log(error)
-      }
-    )
+  
 
   }
 }
