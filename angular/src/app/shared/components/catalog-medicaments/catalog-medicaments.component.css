@@ -26,6 +26,8 @@
 
   .medicament{
       margin-top: 20px;
+      width: 200px;
+      height: auto;
   }
 
   .group p{
@@ -35,9 +37,11 @@
   }
 
   .img img{
-      width: 200px;
+      display: block;
+      width: 100%;
+      height: auto;
   }
-
+ 
 
 
   .btn{
@@ -47,4 +51,5 @@
       background: grey;
       color: white;
       font-weight: 600;
+      cursor: pointer;
   }

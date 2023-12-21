@@ -18,7 +18,6 @@ export class RecipeComponent implements OnInit, OnChanges {
   date = new Date();
   options: any = { day: 'numeric', month: 'numeric', year: 'numeric' };
   formattedDate = this.date.toLocaleDateString(undefined, this.options);
-  // console.log(formattedDat
   
   currentRecipe: any = {
     patienEgn:''

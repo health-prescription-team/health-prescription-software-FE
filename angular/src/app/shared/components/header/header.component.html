@@ -5,10 +5,10 @@
     <h2>You are: {{role}}</h2>
     <ul>
       <li routerLink="/catalog">Catalog</li>
-      <li>About</li>
+      <!-- <li>About</li> -->
       <li (click) = logout()>Logout</li>
-      <!-- <li><a href="#">More</a></li>
-      <li><a href="#">Nice staff</a></li> -->
+      <li *ngIf="role === 'Pharmacy'" routerLink="/pharmacy/add-medicine">Add medicaments</li>
+      <!-- <li><a href="#">Nice staff</a></li> -->
     </ul>
   </nav>
 </section>
