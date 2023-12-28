@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Input, Renderer2} from '@angular/core';
-import { UserService } from 'src/app/shared/services/user.service';
+import { UserService } from '../../../services/user.service';
 import {DetailsService} from "../../../services/details.service";
 import {CacheService} from "../../../services/cache.service";
 
@@ -21,28 +21,21 @@ export class RecipeInfoMedComponent implements AfterViewInit{
   private  ElementRef:ElementRef,
   public userService:UserService,
   public DetailsService:DetailsService,
-  private cacheService:CacheService
   ) {
   }
-  medicine:any
   ngAfterViewInit() {
     this.setStyles()
   }
   finishMedicine(){
-    this.medicine = this.CacheService.allMedicinesAdded[this.index]
-    this.CacheService.allMedicinesAdded[this.index] = {...this.medicine, isFinished:true}
+    let medicine = this.CacheService.allMedicinesAdded[this.index]
+    this.CacheService.allMedicinesAdded[this.index] = {...medicine, isFinished:true}
   }
   setStyles(){
     this.Renderer2.setStyle(this.ElementRef.nativeElement,"display","flex")
     this.Renderer2.setStyle(this.ElementRef.nativeElement,"justify-content","center")
   }
-  editCurrentMedicament(){
-    console.log('toggle');
-    this.CacheService.showAddMedicineComponent();
-    this.CacheService.nestedFormValues =  this.CacheService.allMedicinesAdded[this.index]
-    console.log( this.CacheService.nestedFormValues);
-    
-    
+  editCurrentMed(){
+    console.log('edit Current Med');
     
   }
 }

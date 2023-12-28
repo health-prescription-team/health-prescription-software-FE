@@ -22,6 +22,7 @@ export class RecipeComponent implements OnInit, OnChanges {
   currentRecipe: any = {
     patienEgn:''
   };
+  isPopUp:boolean = false;
 
   constructor(
     private service: UserService,
@@ -150,4 +151,12 @@ export class RecipeComponent implements OnInit, OnChanges {
     const medicines = { ...form.value, ...this.CacheService.nestedFormValues };
     console.log('medicines', medicines);
   }
+
+  editRecipe(){
+    // this.isPopUp = true;
+    console.log('eddd');
+   
+    
+  }
+
 }

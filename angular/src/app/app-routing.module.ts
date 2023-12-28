@@ -65,7 +65,7 @@ const routes: Routes = [
       },
       {
         //patient profile
-        path: 'profile',
+        path: 'profile/:id',
         pathMatch: 'full',
         component: ProfileComponent,
       },

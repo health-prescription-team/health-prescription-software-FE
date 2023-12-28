@@ -1,3 +1,5 @@
+
+
 <div class="container">
     <div class="recipe-form">
         <form #form="ngForm" (ngSubmit)="recipeInfo(form)">
@@ -53,7 +55,11 @@
                             </ng-container>
                         </div>
                 </div>
-                <button class="btn add-recipe" type="submit">Създай рецепта</button>
+                <div>
+
+                    <button class="btn add-recipe" type="submit">Създай рецепта</button>
+                    <button class="btn add-recipe" (click)="editRecipe()">Редактирай рецепта</button>
+                </div>
             </div>
 
 
