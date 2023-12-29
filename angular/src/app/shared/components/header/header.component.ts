@@ -33,4 +33,11 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.cacheService.logout();
   }
+
+  greetings:any={
+    'GP': 'д-р',
+    'Patient': 'г-н/г-жо',
+    'Pharmacy': 'г-н/г-жо',
+    'Pharmacist': 'г-н/г-жо'
+  }
 }

@@ -22,8 +22,10 @@ body {
   /* By Dominik Biedebach @domobch */
 
   h2 {
-   color: rgb(0, 0, 0);
-   margin-left: 50px;
+   color: rgb(10, 38, 196);
+   /* text-shadow: 1px 1px 0  rgb(23, 49, 200), -1px -1px 0 rgb(23, 49, 200), 1px -1px 0 rgb(23, 49, 200), -1px 1px 0 rgb(23, 49, 200); */
+   margin: 10px 40px;
+   letter-spacing: 0.8px;
   }
 
   .center {
