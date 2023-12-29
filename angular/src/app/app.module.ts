@@ -13,6 +13,7 @@ import {TokenInterceptor} from "./shared/interceptors/token.interceptor";
 import {ApiInterceptor} from "./shared/interceptors/api.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import { FormsModule, NgForm } from "@angular/forms";
+import { LoadingInterceptor } from './shared/interceptors/loader.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,11 @@ import { FormsModule, NgForm } from "@angular/forms";
       useClass: ApiInterceptor, // Add your interceptor class here
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor, // Add your interceptor class here
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })

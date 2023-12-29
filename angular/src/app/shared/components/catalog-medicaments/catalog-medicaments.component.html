@@ -4,7 +4,7 @@
     </div>
 
     <div class="all-meds">
-
+        <app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
         <div *ngFor="let med of all; let index = index" class="medicament">
             <div class="group">
                 <p>{{med.name}}</p>

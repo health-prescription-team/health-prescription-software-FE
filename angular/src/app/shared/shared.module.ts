@@ -12,6 +12,7 @@ import { PasswordMatchValidatorDirective } from './validators/password-validator
 import { PharmacyModule } from '../pharmacy/pharmacy.module';
 import { DetailsComponent } from './components/details/details.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 
@@ -27,6 +28,7 @@ import { HeaderComponent } from './components/header/header.component';
     PasswordMatchValidatorDirective,
     DetailsComponent,
     HeaderComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { HeaderComponent } from './components/header/header.component';
     RouterModule,
   ],
   exports:[
-    HeaderComponent
+    HeaderComponent,
+    LoaderComponent,
   ]
 })
 
