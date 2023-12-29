@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DetailsService } from '../../services/details.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { LoaderService } from '../../services/loader.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -13,7 +14,8 @@ export class DetailsComponent implements OnInit {
     private DetailsService: DetailsService,
     private sanitizer: DomSanitizer,
     private renderer: Renderer2,
-    private el: ElementRef
+    private el: ElementRef,
+    public ls:LoaderService
   ) {}
   currentMedicine!: any;
   imageSrc!: any;
@@ -43,21 +45,21 @@ export class DetailsComponent implements OnInit {
           this.currentMedicine = res;
           console.log(this.currentMedicine);
           this.imagebytes = res.medicineImageBytes;
-          
+
           function binaryToPng(binary: any) {
-            
+
             return 'data:image/png;base64,' + (binary);
           }
 
           const result = binaryToPng(this.imagebytes)
           console.log(result);
           this.imageSrc = result
-          
+
 
           const binaryToPngResult = binaryToPng(this.imagebytes);
           this.imageSrc = binaryToPngResult
           // console.log(binaryToPngResult);
-          
+
 
           const reader = new FileReader();
 
