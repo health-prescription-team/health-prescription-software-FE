@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("token",res.token);
           //@ts-ignore
           localStorage.setItem("ID",payload.get('Egn'))
-          this.router.navigate([`${currentPath}/profile`]);
+          this.router.navigate([`${currentPath}/profile/${payload.get('Egn')}`]);
         },
         (error) => {
           alert('Something went wrong');

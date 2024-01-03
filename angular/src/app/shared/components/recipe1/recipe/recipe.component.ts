@@ -22,6 +22,7 @@ export class RecipeComponent implements OnInit, OnChanges {
   currentRecipe: any = {
     patienEgn: '',
   };
+  isPopUp:boolean = false;
 
   constructor(
     private service: UserService,
@@ -154,6 +155,11 @@ export class RecipeComponent implements OnInit, OnChanges {
     console.log('medicines', medicines);
   }
 
+  editRecipe(){
+    // this.isPopUp = true;
+    console.log('eddd');
+  }
+
   doctor:any=''
 
   getDataFromToken(){
@@ -163,6 +169,6 @@ export class RecipeComponent implements OnInit, OnChanges {
       console.log(token);
     }
 
-  }
+
 
 }

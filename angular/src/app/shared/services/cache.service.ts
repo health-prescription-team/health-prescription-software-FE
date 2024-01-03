@@ -29,14 +29,22 @@ export class CacheService {
        this.hideAddMedicineComponent(name)
 
     }
-
-
   }
+  editMedicine(currentmedicine:any, name:any){
+      console.log(currentmedicine.medicineId);
+      currentmedicine.medicineName = name
 
+      // 0
+      const indexOfCurrentRecord = (this.allMedicinesAdded.findIndex((x:any) => x.medicineId === currentmedicine.medicineId))
+      this.allMedicinesAdded[indexOfCurrentRecord] = currentmedicine
+      
+  }
+  
 
   allMedicinesAdded:any= [];
 
   nestedFormValues= {
+    medicineName:"",
     morningDose:0,
     measurementUnit:"mg",
     lunchTimeDose:0,

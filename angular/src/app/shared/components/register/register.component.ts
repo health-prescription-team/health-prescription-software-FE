@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
           //@ts-ignore
           localStorage.setItem("ID",payload.get('Egn'))
           localStorage.setItem("token",res.token);
-          this.router.navigate(['patient/profile']);
+          this.router.navigate([`patient/profile/${payload.get('Egn')}`]);
 
         },
         (error)=>{

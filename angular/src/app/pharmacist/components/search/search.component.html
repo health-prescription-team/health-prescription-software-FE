@@ -1,17 +1,17 @@
 <div class="wrapper">
-  <form class="form" #form="ngForm">
-    <label class="heading" for="recipeNumber">Номер на рецепта:</label>
+  <form  class="form" #form="ngForm">
+    <label class="heading" for="recipeNumber">ЕГН на пациент:</label>
     <input
-      id="recipeNumber"
+      id="egn"
       type="text"
       required
       ngModel
-      name="recipeNumber"
-      #recipeNumber="ngModel"
+      name="egn"
+      #egn="ngModel"
     >
     <div *ngIf="form.controls['recipeNumber']?.touched && form.controls['recipeNumber'].invalid">
       <div *ngIf="form.controls['recipeNumber'].errors?.['required']" class="error">Recipe number is required.</div>
     </div>
-    <button class="btn" type="submit">Намери рецепта</button>
+    <button class="btn" (click)="findPatient(egn.value)" type="submit">Намери пациент</button>
   </form>
 </div>
