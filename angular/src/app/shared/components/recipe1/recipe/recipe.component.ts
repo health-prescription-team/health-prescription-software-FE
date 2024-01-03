@@ -18,9 +18,9 @@ export class RecipeComponent implements OnInit, OnChanges {
   date = new Date();
   options: any = { day: 'numeric', month: 'numeric', year: 'numeric' };
   formattedDate = this.date.toLocaleDateString(undefined, this.options);
-  
+
   currentRecipe: any = {
-    patienEgn:''
+    patienEgn: '',
   };
 
   constructor(
@@ -33,7 +33,7 @@ export class RecipeComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     this.service.jwtdecrypt(token!);
-  // console.log(this.formattedDate);
+    // console.log(this.formattedDate);
 
     this.route.paramMap.subscribe((params) => {
       this.recipeId = params.get('id');
@@ -41,18 +41,21 @@ export class RecipeComponent implements OnInit, OnChanges {
     });
 
     if (this.recipeId) {
-      console.log("this.recipeId", this.recipeId);
-      this.recipeService.getRecipe(this.recipeId).subscribe((res:any)=>{
+      console.log('this.recipeId', this.recipeId);
+      this.recipeService.getRecipe(this.recipeId).subscribe((res: any) => {
         console.log(res.prescriptionDetails);
-        if(Object.values(res).some(x => x === '')) {
-          return
+        if (Object.values(res).some((x) => x === '')) {
+          return;
         }
-        this.currentRecipe = res
-        this.CacheService.allMedicinesAdded=res.prescriptionDetails;
+        this.currentRecipe = res;
+        this.CacheService.allMedicinesAdded = res.prescriptionDetails;
 
+        this.years =  this.ageFormula(res.patientEgn);
         console.log(this.currentRecipe);
-      })
+      });
     }
+
+    this.getDataFromToken()
   }
   ngOnChanges(changes: SimpleChanges) {
     console.log('change');
@@ -85,8 +88,8 @@ export class RecipeComponent implements OnInit, OnChanges {
 
   recipeInfo(form: NgForm) {
     //POST
-    if(form.invalid) return
-    
+    if (form.invalid) return;
+
     const { patient, patientАge, diagnosis } = form.value;
     const allFields = {
       ...form.value,
@@ -150,4 +153,16 @@ export class RecipeComponent implements OnInit, OnChanges {
     const medicines = { ...form.value, ...this.CacheService.nestedFormValues };
     console.log('medicines', medicines);
   }
+
+  doctor:any=''
+
+  getDataFromToken(){
+    const token = localStorage.getItem('token');
+    if(token){
+      const tokenInfo = this.service.jwtdecrypt(token);
+      console.log(token);
+    }
+
+  }
+
 }

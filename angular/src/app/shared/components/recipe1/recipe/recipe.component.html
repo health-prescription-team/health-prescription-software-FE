@@ -8,7 +8,7 @@
 
                         <input type="text" id="patient" placeholder="ЕГН"  name="patientEgn" id="patient"
                         #inputpatient="ngModel" minlength="10" maxlength="10" (input)="emit(inputpatient.value)" required ngModel [(ngModel)] = currentRecipe.patientEgn >
-                        
+
                         <ng-container *ngIf="inputpatient.touched">
                             <p class="error" *ngIf="inputpatient?.errors?.['required']">
                                 Id is required.
@@ -29,7 +29,7 @@
                     <div class="inputAndError">
 
                         <input type="text" id="doctor" placeholder="Димитър Георгиев Стоянов" type="text" name="doctor"
-                        id="doctor" #inputdoctor="ngModel" required ngModel>
+                        id="doctor" #inputdoctor="ngModel" required [(ngModel)]="doctor">
                         <ng-container *ngIf="inputdoctor.touched">
                             <p class="error" *ngIf="inputdoctor?.errors?.['required']">
                                 All fields are required!
@@ -44,7 +44,7 @@
                     <input type="text" id="diagnosis" placeholder="Кашлица" type="text" name="diagnosis" id="diagnosis"
                         #inputdiagnosis="ngModel" required ngModel>
 
-                        
+
 
                             <ng-container *ngIf="inputdiagnosis.touched">
                                 <p class="error" *ngIf="inputdiagnosis?.errors?.['required']">
