@@ -14,7 +14,7 @@ export class CatalogMedicamentsComponent implements AfterViewInit {
     return 'data:image/png;base64,' + binary;
   }
   ngAfterViewInit() {
-    this.CatalogService.getAll().subscribe(
+    this.CatalogService.getAll(this.searchTerm, this.pageNumber, this.entriesPerPage).subscribe(
       (res: any) => {
         this.all = res.medicines;
       },
@@ -23,5 +23,8 @@ export class CatalogMedicamentsComponent implements AfterViewInit {
       }
     );
   }
+  entriesPerPage:string='10';
+  searchTerm:string='Аналгин';
+  pageNumber:string='1'
 
 }
