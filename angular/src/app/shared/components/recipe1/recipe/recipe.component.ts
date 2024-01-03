@@ -168,7 +168,5 @@ export class RecipeComponent implements OnInit, OnChanges {
       const tokenInfo = this.service.jwtdecrypt(token);
       console.log(token);
     }
-
-
-
+  }
 }
