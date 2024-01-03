@@ -45,8 +45,8 @@ addMedicine(form:NgForm){
   if(form.invalid) return
   const payload = this.getFormData(form.value)
   payload.forEach(el=>console.log(el))
-  payload.delete("MedicineFile")
-  payload.append("MedicineFile",this.imageBinary)
+  payload.delete("MedicineImage")
+  payload.append("MedicineImage",this.imageBinary)
   payload.append("MedicineCompany",'name')
 
 
