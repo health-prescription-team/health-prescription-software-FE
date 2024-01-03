@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnChanges,
   Output,
   Renderer2,
@@ -29,13 +30,16 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   @ViewChild('inputevening') inputevening!: NgModel;
   @Output('nestedFormValues') customEvent = new EventEmitter<object>();
 
+  @Input ('recipeId') recipeId!:string;
+
   currentmedicine: any = '';
-  filteredResults: any;
+  filteredResults: any =[]
   searchTerm: any;
   showDropdown: boolean = false;
   results: any;
   isDropdownError:boolean = false
   nameCurrentMedicines: any;
+
 
   constructor(
     private Renderer2: Renderer2,
@@ -105,7 +109,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     return this.recipeService.getMedicamentsForSearch().subscribe(
       (res: any) => {
         this.results = res.medicaments;
-        this.filteredResults = this.results
+        // this.filteredResults = this.results
         this.showDropdown = true
       },
       (err) => {

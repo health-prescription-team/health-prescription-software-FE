@@ -49,10 +49,11 @@ export class RecipeComponent implements OnInit, OnChanges {
           return;
         }
         this.currentRecipe = res;
+        this.currentRecipe.id=this.recipeId;
+
         this.CacheService.allMedicinesAdded = res.prescriptionDetails;
 
         this.years =  this.ageFormula(res.patientEgn);
-        console.log(this.currentRecipe);
       });
     }
 
@@ -157,7 +158,10 @@ export class RecipeComponent implements OnInit, OnChanges {
 
   editRecipe(){
     // this.isPopUp = true;
-    console.log('eddd');
+    this.recipeService.editRecipe(this.currentRecipe).subscribe((res)=>{
+      console.log('res edit', res);
+    })
+
   }
 
   doctor:any=''

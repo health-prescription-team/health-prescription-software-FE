@@ -15,7 +15,11 @@ export class RecipeService {
     return this.http.get('API/Medicine/DynamicSearch');
   }
 
-  getRecipe(id:string){
-    return this.http.get(`API/Prescription/${id}`)
+  getRecipe(id: string) {
+    return this.http.get(`API/Prescription/${id}`);
+  }
+
+  editRecipe(formData: any) {
+    return this.http.put('API/Prescription', formData);
   }
 }
