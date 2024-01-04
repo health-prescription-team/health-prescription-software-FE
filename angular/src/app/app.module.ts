@@ -14,6 +14,7 @@ import {ApiInterceptor} from "./shared/interceptors/api.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import { FormsModule, NgForm } from "@angular/forms";
 import { LoadingInterceptor } from './shared/interceptors/loader.interceptor';
+import { authErrorInterceptor } from './shared/interceptors/authError.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,11 @@ import { LoadingInterceptor } from './shared/interceptors/loader.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor, // Add your interceptor class here
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: authErrorInterceptor, // Add your interceptor class here
       multi: true,
     }
   ],
