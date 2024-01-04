@@ -54,7 +54,7 @@ export class CatalogMedicamentsComponent implements OnInit {
       this.pageNumber--;
     }
 
-    // this.searchMed()
+    this.searchMed()
   }
 
 }
