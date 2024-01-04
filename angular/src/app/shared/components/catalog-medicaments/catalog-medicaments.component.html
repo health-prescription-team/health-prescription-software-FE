@@ -1,11 +1,14 @@
 <div class="component">
     <div class="search">
-        <input type="text" placeholder="Лекарство" [(ngModel)]="searchTerm">
+        <form #form="ngForm">
+            <input type="text" placeholder="Лекарство" [(ngModel)]="searchTerm" id="searchTerm" name="searchTerm" />
+            <button type="submit" (click)="searchMed()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
     </div>
 
     <div class="all-meds">
         <app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
-        <div *ngFor="let med of all; let index = index" class="medicament">
+        <div *ngFor="let med of allMedicaments; let index = index" class="medicament">
             <div class="group">
                 <p>{{med.name}}</p>
             </div>
@@ -17,8 +20,15 @@
 
             </div>
         </div>
-
-
-
     </div>
+
+    <div class="pagination">
+        <!-- <button (click)="goToPage(1)" [disabled]="pageNumber === 1">First</button> -->
+        <button class="pagination-btn" (click)="goToPage(pageNumber - 1)" [disabled]="pageNumber === 1"> &#171;</button>
+
+        <div class="page-number">{{ pageNumber }}</div>
+
+        <button class="pagination-btn" (click)="goToPage(pageNumber + 1)" [disabled]="pageNumber === maxPage">&#187;</button>
+        <!-- <button (click)="goToPage(maxPage)" [disabled]="pageNumber === maxPage">Last</button> -->
+      </div>
 </div>

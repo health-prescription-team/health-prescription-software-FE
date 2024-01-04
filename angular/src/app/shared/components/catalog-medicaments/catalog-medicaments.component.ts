@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CatalogService } from '../../services/catalog.service';
 import { LoaderService } from '../../services/loader.service';
 
@@ -7,24 +7,54 @@ import { LoaderService } from '../../services/loader.service';
   templateUrl: './catalog-medicaments.component.html',
   styleUrls: ['./catalog-medicaments.component.css'],
 })
-export class CatalogMedicamentsComponent implements AfterViewInit {
-  constructor(private CatalogService: CatalogService, public loaderService: LoaderService) {}
-  all: any;
+
+export class CatalogMedicamentsComponent implements OnInit {
+  entriesPerPage: number = 10;
+  searchTerm: string = '';
+  pageNumber: number = 1;
+  maxPage: number =0;
+  medicinesCount: number =0;
+  allMedicaments: any;
+
+  constructor(
+    private CatalogService: CatalogService,
+    public loaderService: LoaderService
+  ) {}
+
   binaryToPng(binary: any) {
     return 'data:image/png;base64,' + binary;
   }
-  ngAfterViewInit() {
-    this.CatalogService.getAll(this.searchTerm, this.pageNumber, this.entriesPerPage).subscribe(
+
+  ngOnInit(): void {
+    this.searchMed();
+  }
+
+  searchMed() {
+    this.allMedicaments = [];
+    this.CatalogService.getMedications(
+      this.searchTerm,
+      this.pageNumber,
+      this.entriesPerPage
+    ).subscribe(
       (res: any) => {
-        this.all = res.medicines;
+        this.allMedicaments = res.medicines;
+        this.medicinesCount = res.medicinesCount;
+        this.maxPage = Math.ceil(this.medicinesCount/this.entriesPerPage);
       },
       (error) => {
         console.log(error);
       }
     );
   }
-  entriesPerPage:string='10';
-  searchTerm:string='Аналгин';
-  pageNumber:string='1'
+
+  goToPage(newPage: number) {
+    if (newPage > this.pageNumber) {
+      this.pageNumber++;
+    } else if (newPage < this.pageNumber) {
+      this.pageNumber--;
+    }
+
+    // this.searchMed()
+  }
 
 }

@@ -10,7 +10,7 @@ export class CatalogService {
     private HttpClient:HttpClient
   ) { }
 
-  getAll(searchTerm:string, pageNumber:string, entriesPerPage:string){
+  getMedications(searchTerm:string, pageNumber:number, entriesPerPage:number){
     return this.HttpClient.get(`API/Medicine?SearchTerm=${searchTerm}&PageNumber=${pageNumber}&EntriesPerPage=${entriesPerPage}`)
 
   }
