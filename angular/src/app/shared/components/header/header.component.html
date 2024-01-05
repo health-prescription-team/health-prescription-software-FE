@@ -3,12 +3,15 @@
   <nav class="stroke">
     <h2>Здравейте, {{greetings[role]}} {{name}}</h2>
     <ul>
-      <li routerLink="/catalog">Catalog</li>
       <!-- <li>About</li> -->
-      <li (click) = logout()>Logout</li>
-      <li *ngIf="role === 'Pharmacy'" routerLink="/pharmacy/add-medicine">Add medicaments</li>
-      <li *ngIf="role === 'Patient'" routerLink="/patient/profile">Profile</li>
+      <!-- <li *ngIf="role === 'Pharmacy'" routerLink="/pharmacy/add-medicine">Add medicaments</li> -->
+      <li routerLink="/patient/profile">Профил</li>
+      <li routerLink="/catalog">Каталог</li>
+      <li routerLink="/pharmacy/add-medicine">Добави лекарство</li>
+      <li routerLink="/doctor/recipe/new">Създай рецепта</li>
+      <li routerLink="/pharmacist/search">Намери рецепта</li>
       <!-- <li><a href="#">Nice staff</a></li> -->
+      <li (click) = logout()>Излез</li>
     </ul>
   </nav>
 </section>
