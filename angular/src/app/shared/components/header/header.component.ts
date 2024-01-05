@@ -15,16 +15,18 @@ export class HeaderComponent implements OnInit {
   ) {}
   name: string = '';
   role: string = '';
+  id:string = '';
   // email:string = '';
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const allData = this.userService.jwtdecrypt(token!);
-    console.log(allData);
+    console.log('allData', allData);
 
     // this.email = allData['email'];
     this.name = allData['unique_name'];
     this.role = allData['role'];
+    this.id=allData['nameId']
     if(!this.name){
       this.name = allData['email'];
     }

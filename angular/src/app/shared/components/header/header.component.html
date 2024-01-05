@@ -5,7 +5,7 @@
     <ul>
       <!-- <li>About</li> -->
       <!-- <li *ngIf="role === 'Pharmacy'" routerLink="/pharmacy/add-medicine">Add medicaments</li> -->
-      <li routerLink="/patient/profile">Профил</li>
+      <li  [routerLink]="['/patient/profile', id]" >Профил</li>
       <li routerLink="/catalog">Каталог</li>
       <li routerLink="/pharmacy/add-medicine">Добави лекарство</li>
       <li routerLink="/doctor/recipe/new">Създай рецепта</li>
