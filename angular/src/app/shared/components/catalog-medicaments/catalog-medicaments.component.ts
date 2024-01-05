@@ -9,7 +9,7 @@ import { LoaderService } from '../../services/loader.service';
 })
 
 export class CatalogMedicamentsComponent implements OnInit {
-  entriesPerPage: number = 10;
+  entriesPerPage: number = 1;
   searchTerm: string = '';
   pageNumber: number = 1;
   maxPage: number =0;

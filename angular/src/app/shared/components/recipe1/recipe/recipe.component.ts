@@ -21,8 +21,11 @@ export class RecipeComponent implements OnInit, OnChanges {
 
   currentRecipe: any = {
     patienEgn: '',
+    egn: '',
   };
   isPopUp:boolean = false;
+
+  isEditRecipe:boolean = false;
 
   constructor(
     private service: UserService,
@@ -101,16 +104,8 @@ export class RecipeComponent implements OnInit, OnChanges {
     // console.log(patient, patientАge, diagnosis);
 
     if (!this.recipeId) {
-      // response => ID
-      // const formData = new FormData()
-      // formData.append("Diagnosis",allFields.diagnosis)
-      // formData.append("GpName",allFields.doctor)
-      // formData.append("CreatedAt",'20.11.2023')
-      // formData.append("EGN",allFields.patient)
-      // formData.append("EndedDate",allFields.endDate);
+      this.isEditRecipe=false;
 
-      // formData.append("Age",(years).toString());
-      // formData.append("PacientId","395ddc52-cbf9-4406-ae94-9b3eb7f5c255");
       this.ageFormula(this.years);
 
       allFields.patientАge = this.years;
@@ -133,12 +128,11 @@ export class RecipeComponent implements OnInit, OnChanges {
 
       //this.rescipeID = response.ID;
     } else {
-      //put new medicine
+      this.isEditRecipe=true;
+
       const { med, morning, midday, evening, additionalInfo } = allFields;
       console.log('allFields', allFields);
-      //POST WITH PrescriptinId!
-      //  med, morning, midday, evening, additionalInfo
-      // console.log(med, morning, midday, evening, additionalInfo);
+
     }
     // console.log('-->',selectMedInput);
   }
@@ -164,13 +158,14 @@ export class RecipeComponent implements OnInit, OnChanges {
 
   }
 
-  doctor:any=''
+  doctor:string=''
 
   getDataFromToken(){
     const token = localStorage.getItem('token');
     if(token){
       const tokenInfo = this.service.jwtdecrypt(token);
-      console.log(token);
+      console.log(tokenInfo);
+      this.doctor=tokenInfo['unique_name']
     }
   }
 }

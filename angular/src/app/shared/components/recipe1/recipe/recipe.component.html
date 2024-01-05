@@ -30,8 +30,8 @@
                     <label for="doctor">Лекар: </label>
                     <div class="inputAndError">
 
-                        <input type="text" id="doctor" placeholder="Димитър Георгиев Стоянов" type="text" name="doctor"
-                        id="doctor" #inputdoctor="ngModel" required [(ngModel)]="doctor">
+                        <input type="text" id="doctor" type="text" name="doctor"
+                        id="doctor" #inputdoctor="ngModel" required [(ngModel)]="doctor" disabled>
                         <ng-container *ngIf="inputdoctor.touched">
                             <p class="error" *ngIf="inputdoctor?.errors?.['required']">
                                 All fields are required!
@@ -55,10 +55,10 @@
                             </ng-container>
                         </div>
                 </div>
-                <div>
+                <div class="button-container">
 
                     <button class="btn add-recipe" type="submit">Създай рецепта</button>
-                    <button class="btn add-recipe" type="button" (click)="editRecipe()">Редактирай рецепта</button>
+                    <button *ngIf="isEditRecipe" class="btn add-recipe" type="button" (click)="editRecipe()">Редактирай рецепта</button>
                 </div>
             </div>
 

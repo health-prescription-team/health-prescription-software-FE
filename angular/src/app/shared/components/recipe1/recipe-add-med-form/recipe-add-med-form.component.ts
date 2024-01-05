@@ -30,15 +30,15 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   @ViewChild('inputevening') inputevening!: NgModel;
   @Output('nestedFormValues') customEvent = new EventEmitter<object>();
 
-  @Input ('recipeId') recipeId!:string;
+  @Input('recipeId') recipeId!: string;
+  @Input('isEditRecipe') isEditRecipe!: string;
 
   currentmedicine: any = '';
-  filteredResults: any =[]
-  searchTerm: any;
-  showDropdown: boolean = false;
-  results: any;
-  isDropdownError:boolean = false
-  nameCurrentMedicines: any;
+
+  showDropdown: boolean = true;
+
+  isDropdownError: boolean = false;
+
 
 
   constructor(
@@ -46,7 +46,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     private ElementRef: ElementRef,
     public CacheService: CacheService,
     private recipeService: RecipeService
-  ) { }
+  ) {}
   clearAllFields() {}
 
   emit() {
@@ -58,13 +58,13 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
       additionalInfo: this.inputadditionalInfo.value,
     };
     this.customEvent.emit(this.currentmedicine);
+    this.CacheService.isCanceled=false
   }
   ngAfterViewInit() {
     this.setStyles();
+    this.medicamentsForSearch();
   }
-  searchHandler(seacrchWord: any) {
-    console.log(seacrchWord.value);
-  }
+  searchHandler(seacrchWord: any) {}
   setStyles() {
     this.Renderer2.setStyle(this.ElementRef.nativeElement, 'display', 'flex');
     this.Renderer2.setStyle(
@@ -75,29 +75,41 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   }
 
   filterResults(): void {
-    this.filteredResults = this.results.filter(
-      (res: any) =>
-        res.name &&
-        res.name.toLowerCase().startsWith(this.searchTerm.toLowerCase())
-    );
-    this.showDropdown = true;
+    if (this.CacheService.searchTerm) {
+      this.CacheService.filteredResults = this.CacheService.results.filter(
+        (res: any) =>
+          res.name &&
+          res.name.toLowerCase().startsWith(this.CacheService.searchTerm?.toLowerCase())
+      );
+    } else {
+      this.CacheService.filteredResults = [...this.CacheService.results];
+    }
+    setTimeout(() => {
+      this.showDropdown = true;
+    }, 0);
   }
 
   selectOption(option: any): void {
-    this.isDropdownError = false
-    this.searchTerm = option.name;
+    this.isDropdownError = false;
+    this.CacheService.searchTerm = option.name;
     this.showDropdown = false;
     this.CacheService.nestedFormValues.medicineId = option.id;
-    this.nameCurrentMedicines=option.name;
+    this.CacheService.nameCurrentMedicines = option.name;
+
   }
-  hideDropDown(){
+  hideDropDown() {
+    if (!this.CacheService.nameCurrentMedicines) {
+      this.isDropdownError = true;
       this.showDropdown = false;
-      if(!this.nameCurrentMedicines){
-        this.isDropdownError = true
-      }
+    }
     // setTimeout(()=>{
     // },0)
+  }
 
+  dropdown() {
+    setTimeout(() => {
+      this.showDropdown = true;
+    }, 0);
   }
 
   medicamentsForSearch() {
@@ -105,21 +117,19 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     //   return;
     // }
 
-
     return this.recipeService.getMedicamentsForSearch().subscribe(
       (res: any) => {
-        this.results = res.medicaments;
+        this.CacheService.results = res.medicaments;
         // this.filteredResults = this.results
-        this.showDropdown = true
+        // this.showDropdown = true
       },
       (err) => {
-        if(err.status===401){
+        if (err.status === 401) {
           this.CacheService.logout();
-        }else{
+        } else {
           console.log(err);
         }
       }
     );
   }
-
 }

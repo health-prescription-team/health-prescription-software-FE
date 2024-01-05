@@ -13,7 +13,7 @@
       <p class="dayTimeInfo">{{currentRecord.eveningDose}}</p>
     </div>
   </div>
-  <div id="additionalInfoContainer">
+  <div id="additionalInfoContainer" *ngIf="currentRecord.notes">
     <h4 id="additionalInfoHeading">Допълнителни бележки</h4>
     <p id="additionalInfo">{{currentRecord.notes}}</p>
   </div>
@@ -22,7 +22,7 @@
 <!--    <button class="btn" id="proceedBtn">Завърши</button>-->
     <button class="btn" id="editBtn" *ngIf="userService.role === 'doctor'">Редактирай</button>
     <button class="btn" (click)="editCurrentMedicament()" id="editBtn">Редактирай</button>
-    <button class="btn" (click)="DetailsService.deleteMedicament(currentRecord.id)" id="cancelBtn">Изтрий</button>
+    <button class="btn" (click)="DetailsService.deleteMedicament(currentRecord.medicineId)" id="cancelBtn">Изтрий</button>
   </div>
 
 </div>

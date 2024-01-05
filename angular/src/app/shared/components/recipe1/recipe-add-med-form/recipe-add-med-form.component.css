@@ -104,7 +104,6 @@ h4 {
 .intake-input:active,
 .intake-input:focus {
   outline: none;
-  border: none;
 }
 
 .btn {
@@ -166,4 +165,6 @@ h4 {
   #btns-container {
     align-self: center;
   }
+
+
 }

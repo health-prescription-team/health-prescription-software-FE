@@ -153,6 +153,13 @@ input[type="date"],
   max-width: 230px;
   left: 290px;
   top: 50px;
+  background: #808080;
+  box-shadow: 2px 3px 4px #ab9d9d, inset -2px -3px 4px #514d4d;
+}
+
+.add-medicine:hover,
+.add-medicine:active {
+  box-shadow: 2px 3px 4px #ab9d9d, inset 2px 3px 4px #514d4d;
 }
 
 /* ADD NEW MEDICINE */
@@ -180,6 +187,11 @@ details[open]{
 .current-medicine h4 {
   text-align: center;
   /* width: 80%; */
+}
+
+.button-container{
+  display: flex;
+    flex-direction: column-reverse;
 }
 
 @media only screen and (min-width: 600px) {

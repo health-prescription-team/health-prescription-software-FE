@@ -1,12 +1,12 @@
 <div (click)="hideDropDown()" class="form" [style.display]="CacheService.displayAddMedicine">
   <div class="search-div">
 
-    <input (change)="emit()" (mousedown)="medicamentsForSearch()" id="selectMedInput"  type="text" name="selectMedInput" class="select"
+    <input (change)="emit()" (click)="filterResults()" id="selectMedInput"  type="text" name="selectMedInput" class="select"
     #inputselectMedInput="ngModel"
     required
-    [(ngModel)] = "searchTerm"
+    [(ngModel)] = "this.CacheService.searchTerm"
     (ngModelChange)="filterResults()"
-    [(ngModel)] = "this.CacheService.nestedFormValues.medicineName"
+    [(ngModel)] = "this.CacheService.nameCurrentMedicines"
     >
     <!-- [(ngModel)] = 'CacheService.nestedFormValues.medicineId' -->
     <!-- <button (click)="searchHandler(inputselectMedInput)" type="button" class="svg"> -->
@@ -15,13 +15,13 @@
     <div class="dropdown-container">
 
     <ul *ngIf="showDropdown" class="dropdown-list">
-        <li *ngFor="let res of filteredResults" id={{res.id}}   (click)="selectOption(res)">
+        <li *ngFor="let res of this.CacheService.filteredResults" id={{res.id}}  (click)="selectOption(res)">
           {{ res.name }}
         </li>
       </ul>
     </div>
   </div>
-    <ng-container *ngIf="isDropdownError">
+    <ng-container *ngIf="isDropdownError && !CacheService.isCanceled">
       <p class="error">
         Medicine is required.
       </p>
@@ -33,7 +33,7 @@
     #inputmorning="ngModel"
     required
     [(ngModel)] = CacheService.nestedFormValues.morningDose>
-    <ng-container *ngIf="inputmorning.touched">
+    <ng-container *ngIf="inputmorning.touched && !CacheService.isCanceled">
       <p class="error" *ngIf="inputmorning?.errors?.['required']">
         Morning dose is required.
       </p>
@@ -43,7 +43,7 @@
     required
            [(ngModel)] = CacheService.nestedFormValues.lunchTimeDose>
 
-    <ng-container *ngIf="inputmidday.touched">
+    <ng-container *ngIf="inputmidday.touched && !CacheService.isCanceled">
       <p class="error" *ngIf="inputmidday?.errors?.['required']">
         Midday dose is required.
       </p>
@@ -55,7 +55,7 @@
     required
     [(ngModel)] = CacheService.nestedFormValues.eveningDose>
 
-    <ng-container *ngIf="inputevening.touched">
+    <ng-container *ngIf="inputevening.touched && !CacheService.isCanceled">
       <p class="error" *ngIf="inputevening?.errors?.['required']">
         Evening dose is required.
       </p>
@@ -75,8 +75,8 @@
   #inputadditionalInfo="ngModel"
             [(ngModel)] = CacheService.nestedFormValues.notes></textarea>
   <div id="btns-container">
-    <button class="btn" id="proceedBtn" type="button" (click)="CacheService.addMedicine(CacheService.nestedFormValues,nameCurrentMedicines)">Предпиши</button>
-    <button class="btn" id="proceedBtn" type="button" (click)="CacheService.editMedicine(CacheService.nestedFormValues,nameCurrentMedicines)">Редактирай</button>
-    <button class="btn" id="cancelBtn" type="button" (click)="CacheService.hideAddMedicineComponent(currentmedicine, recipeId)" [attr.idMedicine]="">Отказ</button>
+    <button class="btn" id="proceedBtn" type="button" (click)="CacheService.addMedicine(CacheService.nestedFormValues,CacheService.nameCurrentMedicines)">Предпиши</button>
+    <button *ngIf="isEditRecipe" class="btn" id="proceedBtn" type="button" (click)="CacheService.editMedicine(CacheService.nestedFormValues,CacheService.nameCurrentMedicines)">Редактирай</button>
+    <button class="btn" id="cancelBtn" type="button" (click)="CacheService.hideAddMedicineComponent(currentmedicine, recipeId,inputevening)" [attr.idMedicine]="">Отказ</button>
   </div>
 </div>
