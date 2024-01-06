@@ -16,10 +16,13 @@ export class DetailsService {
     return this.HttpClient.get(medicineEndpoint + `/${id}`);
   }
   deleteMedicament(id: string) {
-    console.log("id", id);
     const index = this.CacheService.allMedicinesAdded.findIndex(
       (el: any) => el.medicineId === id
     );
     this.CacheService.allMedicinesAdded.splice(index, 1);
+  }
+
+  delMedicament(id:string){
+return this.HttpClient.delete(medicineEndpoint + `/${id}`)
   }
 }

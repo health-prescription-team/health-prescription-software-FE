@@ -61,4 +61,16 @@ export class DetailsComponent implements OnInit {
       queryParams: { medId: this.productId }
     });
   }
+
+  deleteMedicine(){
+    const confirm = window.confirm('Сигурни ли сте, че желаете да изтриете това лекарство?');
+    if(confirm){
+      this.DetailsService.delMedicament(this.productId).subscribe((res)=>{
+        this.router.navigate(['/catalog'])
+      },
+      (err)=>{
+        console.log(err);
+      })
+    }
+  }
 }

@@ -30,7 +30,7 @@
     </div>
     <div class="buttons">
         <button class="btn edit" (click)="editMedicine()">Редактиране</button>
-        <button class="btn delete">Изтриване</button>
+        <button class="btn delete" (click)="deleteMedicine()">Изтриване</button>
     </div>
 </div>
 <app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
