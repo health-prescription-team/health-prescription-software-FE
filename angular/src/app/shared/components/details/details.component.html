@@ -1,20 +1,78 @@
+<div *ngIf="currentMedicine">
+    <div class="site">
+        <div class="left-box">
+            <div class="product-image">
+                <img src={{imageSrc}} alt="nqma">
 
-<div *ngIf="currentMedicine" class="site">
-
-    <div class="left-box">
-        <div class="product-image">
-            <img src={{imageSrc}} alt="nqma">
-            <!-- <img src="data:image/jpeg;base64,{{imageSrc}}" alt="nqma"> -->
+            </div>
+            <div class="price">
+                <p>{{currentMedicine.price}} лв</p>
+            </div>
+        </div>
+        <div class="right-box">
+            <p class="name">{{currentMedicine.name}}</p>
+            <p class="pharmacyName">{{currentMedicine.pharmacyName}}</p>
+            <div class="details">
+                <button id="detailsMed" (click)="changeContent($event)"
+                    [class.active]="activeButton === 'detailsMed'">Описание</button>
+                <button id="ingredients" (click)="changeContent($event)"
+                    [class.active]="activeButton === 'ingredients'">Съставки</button>
+                <button id="usage" (click)="changeContent($event)"
+                    [class.active]="activeButton === 'usage'">Употреба</button>
+            </div>
+            <div class="content">
+                <p class="detailsMed" [class.active]="activeButton === 'detailsMed'">{{currentMedicine.medicineDetails}}
+                </p>
+                <p class="ingredients" [class.active]="activeButton === 'ingredients'">{{currentMedicine.ingredients}}
+                </p>
+                <p class="usage" [class.active]="activeButton === 'usage'">{{currentMedicine.usage || 'Липсва употреба'}}</p>
+            </div>
 
         </div>
-        <div class="price">
-            <p>{{currentMedicine.price}} лв</p>
-        </div>
+
     </div>
-    <div class="right-box">
-        <p class="name">{{currentMedicine.name}}</p>
-        <p class="details">Описание</p>
-        <p class="content">{{currentMedicine.medicineDetails}}</p>
+    <div class="buttons">
+        <button class="btn edit" (click)="editMedicine()">Редактиране</button>
+        <button class="btn delete">Изтриване</button>
     </div>
 </div>
-<app-loader *ngIf="ls.loading$.source._value"></app-loader>
+<app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
+
+<!-- <div >
+    <div class="site">
+        <div class="left-box">
+            <div class="product-image">
+                <img src='../../../../assets/images/19366.jpg'alt="nqma">
+
+            </div>
+            <div class="price">
+                <p>00 лв</p>
+            </div>
+        </div>
+        <div class="right-box">
+            <p class="name">Име</p>
+            <p class="pharmacyName">Аптека</p>
+            <div class="details">
+                <button id="detailsMed" (click)="changeContent($event)"
+                    [class.active]="activeButton === 'detailsMed'">Описание</button>
+                <button id="ingredients" (click)="changeContent($event)"
+                    [class.active]="activeButton === 'ingredients'">Съставки</button>
+                <button id="usage" (click)="changeContent($event)"
+                    [class.active]="activeButton === 'usage'">Употреба</button>
+            </div>
+            <div class="content">
+                <p class="detailsMed" [class.active]="activeButton === 'detailsMed'">детайли
+                </p>
+                <p class="ingredients" [class.active]="activeButton === 'ingredients'">съставки
+                </p>
+                <p class="usage" [class.active]="activeButton === 'usage'"> 'Липсва употреба'</p>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="buttons">
+        <button class="btn edit" (click)="editMedicine('currentMedicine.id')">Редактиране</button>
+        <button class="btn delete">Изтриване</button>
+    </div>
+</div> -->

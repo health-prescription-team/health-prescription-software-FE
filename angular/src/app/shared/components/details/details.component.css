@@ -1,104 +1,167 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
 html {
-    font: 14px/1.2 'Verdana', sans-serif;
+  font: 14px/1.2 "Verdana", sans-serif;
 }
 
 body {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .site {
-    border: 1px solid black;
-    max-width: 500px;
-    margin: 2em auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    gap: 2em;
-    background-color: #CCC;
+  border: 1px solid black;
+  max-width: 500px;
+  margin: 2em auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 2em;
+  background-color: #ccc;
 }
 
 .product-image {
-    max-width: 100%;
-    width: auto;
+  max-width: 100%;
+  width: auto;
 }
 
 .left-box {
-    /* border: 1px solid red; */
-    flex: 1;
-    /* padding: 10px;  */
+  /* border: 1px solid red; */
+  flex: 1;
+  /* padding: 10px;  */
 }
 
 .price {
-    /* border: 1px solid blue; */
-    text-align: center;
-    font-size: 1.5em;
-    margin-top: 10px;
-    padding: 0.5em;
-    background-color: #717171;
-    color: white;
-    font-weight: 700;
-
+  /* border: 1px solid blue; */
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 10px;
+  padding: 0.5em;
+  background-color: #717171;
+  color: white;
+  font-weight: 700;
 }
 
 .right-box {
-    flex: 1;
-    /* padding: 10px;  */
-    display: flex;
-    align-self: self-start;
-    flex-direction: column;
+  flex: 1;
+  /* padding: 10px;  */
+  display: flex;
+  align-self: self-start;
+  flex-direction: column;
 }
 
 .name {
-    font-size: 1.5em;
-    border-bottom: 1px solid black;
-    background-color: #717171;
-    border-radius: 0.3em;
-    padding: 0.2em;
-    color: whitesmoke;
+  font-size: 1.5em;
+  border-bottom: 1px solid black;
+  background-color: #717171;
+  border-radius: 0.3em;
+  padding: 0.2em;
+  color: whitesmoke;
+}
+
+.pharmacyName{
+    align-self: end;
 }
 
 .details {
-    font-size: 1.2em;
-    margin: 0.3em 0;
-    border-bottom: 1px solid black;
-    background-color: #717171;
-    border-radius: 0.3em;
-    padding: 0.2em;
-    color: whitesmoke;
+  margin: 0.3em 0;
+  border-bottom: 1px solid black;
+  background-color: #717171;
+  border-radius: 0.3em;
+  padding: 0.2em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.content {
-    overflow: auto;
-    height: 150px;
+
+.details button {
+  border: none;
+  background: transparent;
+  color: whitesmoke;
+  padding: 9px 6px;
+  font-size: 13px;
+  cursor: pointer;
 }
+
+.details button.active {
+  border-bottom: 1px solid black;
+}
+
+.content p {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  height: 120px;
+  overflow: auto;
+}
+
+.content p.active {
+  display: block;
+  opacity: 1;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.buttons .btn {
+    display: inline-block;
+    width: 150px;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 9px 7px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff1eb;
+    letter-spacing: 1.5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .buttons .edit{
+    background: #d9b448;
+    box-shadow: 2px 3px 4px #9f8022, inset -2px -3px 4px #9f8022;
+  }
+  .buttons .delete{
+    background: #7a221c;
+    box-shadow: 2px 3px 4px #560b06, inset -2px -3px 4px #560b06;
+  }
 
 @media (max-width: 420px) {
-    .site {
-        flex-direction: column;
-        max-width: 100%;
-    }
+  .site {
+    flex-direction: column;
+    max-width: 100%;
+  }
 
-    .left-box,
-    .right-box {
-        flex: none;
-        width: 100%;
-    }
+  .left-box,
+  .right-box {
+    flex: none;
+    width: 100%;
+  }
 
-    .product-image {
-        max-width: 100%;
-    }
+  .product-image {
+    max-width: 100%;
+  }
+
+  .buttons{
+    flex-direction: column;
+  }
 }
