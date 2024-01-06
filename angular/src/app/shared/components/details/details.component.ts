@@ -32,7 +32,7 @@ export class DetailsComponent implements OnInit {
     this.DetailsService.getMedicine(productId).subscribe(
       (res: any) => {
         this.currentMedicine = res;
-        console.log('this.currentMedicine', this.currentMedicine);
+        // console.log('this.currentMedicine', this.currentMedicine);
         this.imagebytes = res.medicineImageBytes;
         const result = this.binaryToPng(this.imagebytes);
         this.imageSrc = result;

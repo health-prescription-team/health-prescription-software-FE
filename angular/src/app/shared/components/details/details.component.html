@@ -17,15 +17,12 @@
                     [class.active]="activeButton === 'detailsMed'">Описание</button>
                 <button id="ingredients" (click)="changeContent($event)"
                     [class.active]="activeButton === 'ingredients'">Съставки</button>
-                <button id="usage" (click)="changeContent($event)"
-                    [class.active]="activeButton === 'usage'">Употреба</button>
             </div>
             <div class="content">
                 <p class="detailsMed" [class.active]="activeButton === 'detailsMed'">{{currentMedicine.medicineDetails}}
                 </p>
                 <p class="ingredients" [class.active]="activeButton === 'ingredients'">{{currentMedicine.ingredients}}
                 </p>
-                <p class="usage" [class.active]="activeButton === 'usage'">{{currentMedicine.usage || 'Липсва употреба'}}</p>
             </div>
 
         </div>

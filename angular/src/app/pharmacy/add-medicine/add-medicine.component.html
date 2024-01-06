@@ -12,18 +12,28 @@
             #inputName="ngModel"
             required
             ngModel
+            [(ngModel)]="currentMedicine.name"
             >
+            <ng-container *ngIf="inputName.invalid && (inputName.dirty || inputName.touched)">
+                <div class="error-message" *ngIf="inputName?.errors?.['required']">Името е задължително</div>
+                <div class="error-message" *ngIf="inputName?.errors?.['minlength']">Името трябва да е поне 3 символа</div>
+            </ng-container>
         </div>
         <div class="form-group">
-            <textarea
-            type="text"
-            name="ingredients"
-            id="ingredients"
-            placeholder="Съставки..."
-            #inputIngredients="ngModel"
-            required
-            ngModel
+             <textarea
+                type="text"
+                name="ingredients"
+                id="ingredients"
+                placeholder="Съставки..."
+                #inputIngredients="ngModel"
+                required
+                ngModel
+                [(ngModel)]="currentMedicine.ingredients"
             ></textarea>
+            <ng-container *ngIf="inputIngredients.invalid && (inputIngredients.dirty || inputIngredients.touched)">
+                <div class="error-message" *ngIf="inputIngredients?.errors?.['required']">Съставките са задължителни</div>
+                <div class="error-message" *ngIf="inputIngredients?.errors?.['minlength']">Съставките трябва да са поне 3 символа</div>
+            </ng-container>
         </div>
         <div class="form-group">
             <textarea
@@ -34,9 +44,14 @@
             #inputDescription="ngModel"
             required
             ngModel
+            [(ngModel)]="currentMedicine.medicineDetails"
             ></textarea>
+            <ng-container *ngIf="inputDescription.invalid && (inputDescription.dirty || inputDescription.touched)">
+                <div class="error-message" *ngIf="inputDescription?.errors?.['required']">Описанието е задължително</div>
+                <div class="error-message" *ngIf="inputDescription?.errors?.['minlength']">Описанието трябва да е поне 3 символа</div>
+            </ng-container>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <textarea
             type="text"
             name="method"
@@ -45,19 +60,21 @@
             #inputMethod="ngModel"
             required
             ngModel
+            [(ngModel)]="currentMedicine.method"
+
             ></textarea>
-        </div>
+        </div> -->
         <div class="form-group">
             <input
             type="file"
             name="MedicineImage"
             id="image"
-            placeholder="Снимка"
+            placeholder="dsadas"
             #inputImage="ngModel"
-            required
             ngModel
             (change)="handleFileInput($event)"
             >
+            <!-- VALIDATORS -->
         </div>
         <div class="form-group">
             <input
@@ -68,10 +85,14 @@
             #inputPrice="ngModel"
             required
             ngModel
+            [(ngModel)]="currentMedicine.price"
             >
+            <ng-container *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)">
+                <div class="error-message" *ngIf="inputPrice?.errors?.['required']">Цената е задължителна</div>
+            </ng-container>
         </div>
         <div class="form-group">
-            <button type="submit">Добави лекарство</button>
+            <button type="submit">{{ isEditMode ? 'Редактирай' : 'Добави' }} лекарство</button>
         </div>
     </form>
 </div>
