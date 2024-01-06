@@ -5,8 +5,8 @@ import {CacheService} from "../../../services/cache.service";
 
 @Component({
   selector: 'app-recipe-info-med',
-  templateUrl: './recipe-info-med.component.html',
-  styleUrls: ['./recipe-info-med.component.css']
+  templateUrl: '../../recipe1/recipe-add-med-form/recipe-add-med-form.component.html',
+  styleUrls: ['../../recipe1/recipe-add-med-form/recipe-add-med-form.component.css']
 })
 export class RecipeInfoMedComponent implements AfterViewInit{
 
@@ -36,6 +36,6 @@ export class RecipeInfoMedComponent implements AfterViewInit{
   }
   editCurrentMed(){
     console.log('edit Current Med');
-    
+
   }
 }
