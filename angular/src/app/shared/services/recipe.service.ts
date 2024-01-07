@@ -22,4 +22,8 @@ export class RecipeService {
   editRecipe(formData: any) {
     return this.http.put('API/Prescription', formData);
   }
+
+  fulfillRecipe(id: string) {
+    return this.http.post(`API/Prescription/Complete/${id}`,null);
+  }
 }

@@ -57,8 +57,9 @@
                 </div>
                 <div class="button-container">
 
-                    <button class="btn add-recipe" type="submit">Създай рецепта</button>
-                    <button *ngIf="isEditRecipe" class="btn add-recipe" type="button" (click)="editRecipe()">Редактирай рецепта</button>
+                    <button *ngIf="!isEditRecipe  && this.role === 'Gp'" class="btn add-recipe" type="submit">Създай рецепта</button>
+                    <button *ngIf="isEditRecipe && this.role === 'Gp'" class="btn add-recipe" type="button" (click)="editRecipe()">Редактирай рецепта</button>
+                    <button *ngIf="this.role === 'Pharmacist' && !isFulfilled" class="btn fulfill-recipe" type="button" (click)="fulfillRecipe()">Изпълни рецепта</button>
                 </div>
             </div>
 
@@ -77,10 +78,11 @@
 
             <app-recipe-add-med-form [recipeId]="recipeId!" />
 <!--          (nestedFormValues)="CacheService.nestedFormValues = $event"-->
-          <button class="btn add-medicine" type="button" (click)="CacheService.showAddMedicineComponent()"
+            <span *ngIf="!isEditRecipe">
+                <button class="btn add-medicine" type="button" (click)="CacheService.showAddMedicineComponent()"
                 *ngIf="CacheService.displayAddMedicine== 'flex'? false:true">Добави
                 лекарство</button>
-
+            </span>
 
             <div class="recipe-footer recipe-component">
                 <div class="validity">

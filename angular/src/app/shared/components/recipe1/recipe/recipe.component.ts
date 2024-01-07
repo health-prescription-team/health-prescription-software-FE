@@ -23,9 +23,13 @@ export class RecipeComponent implements OnInit, OnChanges {
     patienEgn: '',
     egn: '',
   };
-  isPopUp:boolean = false;
+  isPopUp: boolean = false;
 
-  isEditRecipe:boolean = false;
+  isEditRecipe: boolean = false;
+  isPharmacist: boolean = false;
+  role:string | undefined;
+  isFulfilled: boolean = true;
+
 
   constructor(
     private service: UserService,
@@ -45,22 +49,28 @@ export class RecipeComponent implements OnInit, OnChanges {
     });
 
     if (this.recipeId) {
-      console.log('this.recipeId', this.recipeId);
+      this.isEditRecipe=true;
+
       this.recipeService.getRecipe(this.recipeId).subscribe((res: any) => {
-        console.log(res.prescriptionDetails);
+        console.log('res', res);
         if (Object.values(res).some((x) => x === '')) {
           return;
         }
         this.currentRecipe = res;
-        this.currentRecipe.id=this.recipeId;
+        this.currentRecipe.id = this.recipeId;
 
         this.CacheService.allMedicinesAdded = res.prescriptionDetails;
 
-        this.years =  this.ageFormula(res.patientEgn);
+        this.years = this.ageFormula(res.patientEgn);
+        this.isFulfilled= res.isFulfilled;
+        console.log(' this.isFulfilled',  this.isFulfilled);
       });
+    }else{
+      this.isFulfilled=false
     }
 
-    this.getDataFromToken()
+    this.getDataFromToken();
+    console.log('role', this.role);
   }
   ngOnChanges(changes: SimpleChanges) {
     console.log('change');
@@ -104,8 +114,7 @@ export class RecipeComponent implements OnInit, OnChanges {
     // console.log(patient, patientАge, diagnosis);
 
     if (!this.recipeId) {
-      this.isEditRecipe=false;
-
+      this.isEditRecipe = false;
       this.ageFormula(this.years);
 
       allFields.patientАge = this.years;
@@ -128,11 +137,12 @@ export class RecipeComponent implements OnInit, OnChanges {
 
       //this.rescipeID = response.ID;
     } else {
-      this.isEditRecipe=true;
+      console.log('It is editing');
+
+      this.isEditRecipe = true;
 
       const { med, morning, midday, evening, additionalInfo } = allFields;
       console.log('allFields', allFields);
-
     }
     // console.log('-->',selectMedInput);
   }
@@ -150,22 +160,33 @@ export class RecipeComponent implements OnInit, OnChanges {
     console.log('medicines', medicines);
   }
 
-  editRecipe(){
+  editRecipe() {
     // this.isPopUp = true;
-    this.recipeService.editRecipe(this.currentRecipe).subscribe((res)=>{
+    this.recipeService.editRecipe(this.currentRecipe).subscribe((res) => {
       console.log('res edit', res);
-    })
-
+    });
   }
 
-  doctor:string=''
+  doctor: string = '';
 
-  getDataFromToken(){
+  getDataFromToken() {
     const token = localStorage.getItem('token');
-    if(token){
+    if (token) {
       const tokenInfo = this.service.jwtdecrypt(token);
-      console.log(tokenInfo);
-      this.doctor=tokenInfo['unique_name']
+      this.doctor = tokenInfo['unique_name'];
+      this.role=tokenInfo.role
+      // console.log('tokenInfo', tokenInfo);
     }
   }
+
+  fulfillRecipe() {
+  const confirm = window.confirm("Сигурни ли сте, че желаете да изпълните тази рецепта");
+  if(confirm){
+    this.recipeService.fulfillRecipe(this.recipeId!).subscribe((res)=>{
+      console.log(res);
+    },(err)=>{
+      console.log(err);
+    })
+  }
+    }
 }
