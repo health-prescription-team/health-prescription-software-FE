@@ -29,6 +29,7 @@
         </div>
 
          <div class="recipe" *ngFor="let prescription of displayedRecipes">
+            <p>{{prescription.prescriptionId}} -- {{prescription.isFulfilled}}</p>
             <h4>{{prescription.createdAt}} <span *ngIf="prescription.isFulfilled">Изпълнена</span></h4>
             <div class="recipe-body">
                 <div class="meds">

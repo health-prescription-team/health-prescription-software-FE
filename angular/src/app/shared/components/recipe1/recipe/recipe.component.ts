@@ -182,7 +182,7 @@ export class RecipeComponent implements OnInit, OnChanges {
   }
 
   fulfillRecipe() {
-  const confirm = window.confirm("Сигурни ли сте, че желаете да изпълните тази рецепта");
+  const confirm = window.confirm("Сигурни ли сте, че желаете да изпълните тази рецепта?");
   if(confirm){
     this.recipeService.fulfillRecipe(this.recipeId!).subscribe((res)=>{
       this.router.navigate([`/patient/profile/${this.currentRecipe.patientEgn}`])
@@ -190,5 +190,16 @@ export class RecipeComponent implements OnInit, OnChanges {
       console.log(err);
     })
   }
+    }
+
+    delRecipe(){
+      const confirm = window.confirm("Сигурни ли сте, че желаете да изтриете тази рецепта?");
+      if(confirm){
+        this.recipeService.deletelRecipe(this.recipeId!).subscribe((res)=>{
+          this.router.navigate([`/patient/profile/${this.currentRecipe.patientEgn}`])
+        },(err)=>{
+          console.log(err);
+        })
+      }
     }
 }

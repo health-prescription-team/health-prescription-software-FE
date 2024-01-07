@@ -26,4 +26,8 @@ export class RecipeService {
   fulfillRecipe(id: string) {
     return this.http.post(`API/Prescription/Complete/${id}`,null);
   }
+
+  deletelRecipe(id: string) {
+    return this.http.delete(`API/Prescription/${id}`);
+  }
 }

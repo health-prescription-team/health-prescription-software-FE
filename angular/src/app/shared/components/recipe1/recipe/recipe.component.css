@@ -172,13 +172,12 @@ input[type="date"],
   display: flex;
 }
 
-summary{
-display: flex;
-cursor: pointer;
+summary {
+  display: flex;
+  cursor: pointer;
 }
 
-details[open]{
-
+details[open] {
 }
 
 /* summary::marker {
@@ -189,9 +188,19 @@ details[open]{
   /* width: 80%; */
 }
 
-.button-container{
+.button-container {
   display: flex;
-    flex-direction: column-reverse;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+.button-container .del-recipe{
+  background: #c22b2b;
+  box-shadow: 2px 3px 4px #7a1010, inset -2px -3px 4px #7a1010;
+}
+
+.button-container .del-recipe:hover,
+.button-container .del-recipe:active{
+  box-shadow: 2px 3px 4px #7a1010, inset 2px 3px 4px #7a1010;
 }
 
 @media only screen and (min-width: 600px) {
@@ -208,7 +217,7 @@ details[open]{
     width: 30%;
   }
 
-  .start-date{
+  .start-date {
     width: 70%;
   }
 
