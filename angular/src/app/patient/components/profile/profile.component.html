@@ -15,7 +15,7 @@
                 <div class="sub-field">
                     <label for="personalId">ЕГН: </label>
                     <input id="personalId" placeholder="egn" type="number" name="personalId"
-                        id="personalId" value={{id}}  disabled>
+                        id="personalId" value={{egn}}  disabled>
                 </div>
             </div>
         </div>
@@ -23,9 +23,13 @@
 
 
     <div class="profile-body">
+        <div class="category-recipes">
+            <button (click)="setFulfilled(true)" [ngClass]="{'active':isFulfilled, 'unactive':!isFulfilled}">Изпълнени рецепти</button>
+            <button (click)="setFulfilled(false)" [ngClass]="{'active':!isFulfilled, 'unactive':isFulfilled}">Активни рецепти</button>
+        </div>
 
-        <div class="recipe" *ngFor="let prescription of prescriptions">
-            <h4>{{prescription.createdAt}}</h4>
+         <div class="recipe" *ngFor="let prescription of (isFulfilled? fulfilledRecipe: notfulfillR)">
+            <h4>{{prescription.createdAt}} <span *ngIf="prescription.isFulfilled">Изпълнена</span></h4>
             <div class="recipe-body">
                 <div class="meds">
                     <p>Предписани лекарства:</p>

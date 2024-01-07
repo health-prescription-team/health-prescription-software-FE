@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { RecipeService } from 'src/app/shared/services/recipe.service';
 import { UserService } from 'src/app/shared/services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe',
@@ -29,6 +29,7 @@ export class RecipeComponent implements OnInit, OnChanges {
   isPharmacist: boolean = false;
   role:string | undefined;
   isFulfilled: boolean = true;
+  patientEgn: string='';
 
 
   constructor(
@@ -36,7 +37,8 @@ export class RecipeComponent implements OnInit, OnChanges {
     public CacheService: CacheService,
     private http: HttpClient,
     private recipeService: RecipeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router,
   ) {}
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -63,7 +65,7 @@ export class RecipeComponent implements OnInit, OnChanges {
 
         this.years = this.ageFormula(res.patientEgn);
         this.isFulfilled= res.isFulfilled;
-        console.log(' this.isFulfilled',  this.isFulfilled);
+        this.patientEgn=res.patientEgn
       });
     }else{
       this.isFulfilled=false
@@ -183,7 +185,7 @@ export class RecipeComponent implements OnInit, OnChanges {
   const confirm = window.confirm("Сигурни ли сте, че желаете да изпълните тази рецепта");
   if(confirm){
     this.recipeService.fulfillRecipe(this.recipeId!).subscribe((res)=>{
-      console.log(res);
+      this.router.navigate([`/patient/profile/${this.currentRecipe.patientEgn}`])
     },(err)=>{
       console.log(err);
     })

@@ -57,8 +57,8 @@
                 </div>
                 <div class="button-container">
 
-                    <button *ngIf="!isEditRecipe  && this.role === 'Gp'" class="btn add-recipe" type="submit">Създай рецепта</button>
-                    <button *ngIf="isEditRecipe && this.role === 'Gp'" class="btn add-recipe" type="button" (click)="editRecipe()">Редактирай рецепта</button>
+                    <button *ngIf="!isEditRecipe  && this.role === 'GP'" class="btn add-recipe" type="submit">Създай рецепта</button>
+                    <button *ngIf="isEditRecipe && this.role === 'GP'" class="btn add-recipe" type="button" (click)="editRecipe()">Редактирай рецепта</button>
                     <button *ngIf="this.role === 'Pharmacist' && !isFulfilled" class="btn fulfill-recipe" type="button" (click)="fulfillRecipe()">Изпълни рецепта</button>
                 </div>
             </div>

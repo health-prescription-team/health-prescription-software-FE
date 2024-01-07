@@ -13,32 +13,49 @@ export class ProfileComponent implements OnInit {
   id: any;
   egn!: string;
   prescriptions: any;
+  fulfilledRecipe:Array<any>=[];
+  notfulfillR:Array<any>=[];
+  isFulfilled: boolean = false;
+
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const data = this.userService.jwtdecrypt(token!);
-    this.name = data['unique_name'];
-    // this.id = localStorage.getItem('ID');
 
     this.route.params.subscribe(params => {
-      // Retrieve the 'id' parameter from the URL
       this.egn = params['id'];
-      console.log('ID from URL:', this.egn);
     });
 
-    
-    this.getProfile(this.egn);
+
+    this.getProfile();
   }
 
-  getProfile(egn: any) {
+  getProfile() {
     this.userService.getProfile(this.egn).subscribe(
       (res) => {
-
-        console.log(res);
         this.prescriptions = res;
+        console.log('res', res);
+       this.name= this.prescriptions[0].patientNames;
+       this.separatePrescriptions(this.prescriptions)
       },
       (err) => {
         console.log(err);
       }
     );
   }
+
+  separatePrescriptions(allPresctiptions:any){
+    allPresctiptions.forEach((r:any)=>{
+      if(r.isFulfilled){
+        this.fulfilledRecipe.push(r)
+      }else{
+        this.notfulfillR.push(r)
+      }
+    });
+  }
+
+  setFulfilled(value: boolean): void {
+    this.isFulfilled = value;
+  }
+
+
 }

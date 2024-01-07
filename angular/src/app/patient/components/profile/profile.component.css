@@ -47,6 +47,30 @@
     display: flex;
     justify-content: space-around;
   }
+  .category-recipes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 9px 0
+  }
+
+  .category-recipes button {
+    border: none;
+    padding: 8px 5px;
+    font-size: 15px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .category-recipes .active {
+    border-bottom: 1px solid black ;
+  }
+
+  .category-recipes  .unactive {
+    border-bottom: none;
+  }
 
   ul,
   p {
@@ -61,7 +85,7 @@
   li {
     list-style-type: none;
   }
-  button{
+  .details button{
       margin: 25px 0 0 100px;
   }
   h4{
