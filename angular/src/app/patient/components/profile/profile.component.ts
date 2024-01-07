@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
     this.userService.getProfile(this.egn).subscribe(
       (res) => {
         this.prescriptions = res;
-        console.log('res', res);
        this.name= this.prescriptions[0].patientNames;
       },
       (err) => {
@@ -41,6 +40,9 @@ export class ProfileComponent implements OnInit {
   }
 
   get displayedRecipes(): any[] {
+    if (!this.prescriptions) {
+      return [];
+    }
     return this.prescriptions.filter((p:any) => p.isFulfilled === this.isFulfilled);
   }
 
