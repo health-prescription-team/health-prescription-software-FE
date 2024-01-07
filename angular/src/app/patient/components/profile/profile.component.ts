@@ -13,8 +13,6 @@ export class ProfileComponent implements OnInit {
   id: any;
   egn!: string;
   prescriptions: any;
-  fulfilledRecipe:Array<any>=[];
-  notfulfillR:Array<any>=[];
   isFulfilled: boolean = false;
 
   ngOnInit(): void {
@@ -35,7 +33,6 @@ export class ProfileComponent implements OnInit {
         this.prescriptions = res;
         console.log('res', res);
        this.name= this.prescriptions[0].patientNames;
-       this.separatePrescriptions(this.prescriptions)
       },
       (err) => {
         console.log(err);
@@ -43,14 +40,8 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  separatePrescriptions(allPresctiptions:any){
-    allPresctiptions.forEach((r:any)=>{
-      if(r.isFulfilled){
-        this.fulfilledRecipe.push(r)
-      }else{
-        this.notfulfillR.push(r)
-      }
-    });
+  get displayedRecipes(): any[] {
+    return this.prescriptions.filter((p:any) => p.isFulfilled === this.isFulfilled);
   }
 
   setFulfilled(value: boolean): void {

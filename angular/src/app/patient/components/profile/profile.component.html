@@ -28,7 +28,7 @@
             <button (click)="setFulfilled(false)" [ngClass]="{'active':!isFulfilled, 'unactive':isFulfilled}">Активни рецепти</button>
         </div>
 
-         <div class="recipe" *ngFor="let prescription of (isFulfilled? fulfilledRecipe: notfulfillR)">
+         <div class="recipe" *ngFor="let prescription of displayedRecipes">
             <h4>{{prescription.createdAt}} <span *ngIf="prescription.isFulfilled">Изпълнена</span></h4>
             <div class="recipe-body">
                 <div class="meds">
