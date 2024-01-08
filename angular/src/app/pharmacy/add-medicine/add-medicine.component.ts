@@ -5,6 +5,7 @@ import { CacheService } from 'src/app/shared/services/cache.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DetailsService } from 'src/app/shared/services/details.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-medicine',
   templateUrl: './add-medicine.component.html',
@@ -21,7 +22,8 @@ export class AddMedicineComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private detailsService: DetailsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr:ToastrService
   ) {
     this.route.queryParams.subscribe((params) => {
       this.idMedicament = params['medId'];
@@ -95,10 +97,7 @@ export class AddMedicineComponent implements OnInit {
     payload.delete('MedicineImage');
 
     if (this.isNewImage) {
-      console.log('new image - yes', this.isNewImage);
       payload.append('MedicineImage', this.imageBinary);
-    } else {
-      console.log('new image - no', this.isNewImage);
     }
 
     payload.append('MedicineCompany', data.unique_name);
@@ -106,24 +105,23 @@ export class AddMedicineComponent implements OnInit {
     if (this.isEditMode) {
       this.pharmacyService.editMedicine(this.idMedicament, payload).subscribe(
         (res) => {
-          console.log(res);
-          window.alert('edit');
+          this.toastr.success('Лекарството е редактирано успешно!');
         },
         (err) => {
-          console.log(err);
+          this.toastr.error('Неуспешна редакция. Моля, опитайте отново!');
         }
       );
     } else {
-      this.pharmacyService.addMeidicine(payload).subscribe({
-        next: (res: any) => {
-          console.log(res);
+      this.pharmacyService.addMeidicine(payload).subscribe(
+         (res: any) => {
+          this.toastr.success('Добавено е ново лекарство!');
         },
-        error(err) {
-          console.log(err);
+        (err) => {
+          this.toastr.error('Неуспешно добавяне на лекарство. Моля, опитайте отново!');
         },
-      });
+      );
     }
-    // form.reset();
+    form.reset();
   }
 
   medicineDetails(productId: string) {

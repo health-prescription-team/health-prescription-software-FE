@@ -11,6 +11,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { CatalogService } from 'src/app/shared/services/catalog.service';
 import { RecipeService } from 'src/app/shared/services/recipe.service';
@@ -45,7 +46,8 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     private Renderer2: Renderer2,
     private ElementRef: ElementRef,
     public CacheService: CacheService,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private toastr:ToastrService
   ) {}
   clearAllFields() {}
 
@@ -127,7 +129,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
         if (err.status === 401) {
           this.CacheService.logout();
         } else {
-          console.log(err);
+          this.toastr.error('Нещо се обърка. Моля, опитайте отново.')
         }
       }
     );

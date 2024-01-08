@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CatalogService } from '../../services/catalog.service';
 import { LoaderService } from '../../services/loader.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-catalog-medicaments',
@@ -18,7 +19,8 @@ export class CatalogMedicamentsComponent implements OnInit {
 
   constructor(
     private CatalogService: CatalogService,
-    public loaderService: LoaderService
+    public loaderService: LoaderService,
+    private toastr:ToastrService
   ) {}
 
   binaryToPng(binary: any) {
@@ -42,7 +44,7 @@ export class CatalogMedicamentsComponent implements OnInit {
         this.maxPage = Math.ceil(this.medicinesCount/this.entriesPerPage);
       },
       (error) => {
-        console.log(error);
+        this.toastr.error('Неуспешно търсене! Моля, опитайте отново!')
       }
     );
   }

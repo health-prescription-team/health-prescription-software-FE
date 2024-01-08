@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private activeRoute: Router,
-    private UserService: UserService
+    private UserService: UserService,
+    private toastr: ToastrService
   ) {}
   isPharamcyLogin: boolean = false;
   isEgn: boolean = false;
@@ -32,9 +34,9 @@ export class LoginComponent implements OnInit {
   isPharmacy() {
     const currentPath = this.activeRoute.url.split('/')[1];
     if (currentPath == 'pharmacy') {
-      console.log(currentPath);
+
       this.isPharamcyLogin = true;
-      console.log(this.isPharamcyLogin);
+
     }
   }
   isEmail() {
@@ -61,26 +63,27 @@ export class LoginComponent implements OnInit {
     if (currentPath == 'doctor') {
       this.UserService.loginDoctor(payload).subscribe(
         (res:any) => {
-          console.log(res);
           localStorage.setItem("token",res.token);
           this.router.navigate([`${currentPath}/recipe/new`]);
+          this.toastr.success('Добре дошли!');
         },
         (error) => {
-          alert('Something went wrong');
+          this.toastr.error('Некоректно ЕГН или парола!');
         }
       );
     }
     if (currentPath == 'patient') {
       this.UserService.loginPatient(payload).subscribe(
         (res:any) => {
-          
+
           localStorage.setItem("token",res.token);
           //@ts-ignore
           localStorage.setItem("ID",payload.get('Egn'))
           this.router.navigate([`${currentPath}/profile/${payload.get('Egn')}`]);
+          this.toastr.success('Добре дошли!');
         },
         (error) => {
-          alert('Something went wrong');
+          this.toastr.error('Некоректно ЕГН или парола!');
         }
       );
     }
@@ -89,9 +92,10 @@ export class LoginComponent implements OnInit {
         (res:any) => {
           localStorage.setItem("token",res.token);
           this.router.navigate([`${currentPath}/search`]);
+          this.toastr.success('Добре дошли!');
         },
         (error) => {
-          alert('Something went wrong');
+          this.toastr.error('Некоректно ЕГН или парола!');
         }
       );
     }
@@ -100,9 +104,10 @@ export class LoginComponent implements OnInit {
         (res:any) => {
           localStorage.setItem("token",res.token);
           this.router.navigate([`${currentPath}/add-medicine`]);
+          this.toastr.success('Добре дошли!');
         },
         (error) => {
-          alert('Something went wrong');
+          this.toastr.error('Некоректен имейл или парола!');
         }
       );
     }

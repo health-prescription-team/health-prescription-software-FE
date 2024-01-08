@@ -15,6 +15,8 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import { FormsModule, NgForm } from "@angular/forms";
 import { LoadingInterceptor } from './shared/interceptors/loader.interceptor';
 import { authErrorInterceptor } from './shared/interceptors/authError.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,8 @@ import { authErrorInterceptor } from './shared/interceptors/authError.intercepto
     PharmacyModule,
     PatientModule,
     FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     {

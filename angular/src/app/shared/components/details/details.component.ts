@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { DetailsService } from '../../services/details.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { LoaderService } from '../../services/loader.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -13,7 +14,8 @@ export class DetailsComponent implements OnInit {
     private ActivatedRoute: ActivatedRoute,
     private DetailsService: DetailsService,
     public loaderService: LoaderService,
-    private router:Router
+    private router:Router,
+    private toastr:ToastrService
   ) {}
   currentMedicine!: any;
   imageSrc!: any;
@@ -41,7 +43,7 @@ export class DetailsComponent implements OnInit {
         const reader = new FileReader();
       },
       (error) => {
-        console.log(error);
+        this.toastr.error('Нещо се обърка. Моля, опитайте отново.')
       }
     );
   }
@@ -66,10 +68,11 @@ export class DetailsComponent implements OnInit {
     const confirm = window.confirm('Сигурни ли сте, че желаете да изтриете това лекарство?');
     if(confirm){
       this.DetailsService.delMedicament(this.productId).subscribe((res)=>{
-        this.router.navigate(['/catalog'])
+        this.router.navigate(['/catalog']);
+        this.toastr.success('Лекарството е успешно изтрито.')
       },
       (err)=>{
-        console.log(err);
+        this.toastr.error('Нещо се обърка. Моля, опитайте отново.')
       })
     }
   }

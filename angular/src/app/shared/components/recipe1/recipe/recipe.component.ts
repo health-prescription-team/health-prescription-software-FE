@@ -5,6 +5,7 @@ import { CacheService } from 'src/app/shared/services/cache.service';
 import { RecipeService } from 'src/app/shared/services/recipe.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-recipe',
@@ -27,10 +28,9 @@ export class RecipeComponent implements OnInit, OnChanges {
 
   isEditRecipe: boolean = false;
   isPharmacist: boolean = false;
-  role:string | undefined;
+  role: string | undefined;
   isFulfilled: boolean = true;
-  patientEgn: string='';
-
+  patientEgn: string = '';
 
   constructor(
     private service: UserService,
@@ -38,7 +38,8 @@ export class RecipeComponent implements OnInit, OnChanges {
     private http: HttpClient,
     private recipeService: RecipeService,
     private route: ActivatedRoute,
-    private router:Router,
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -47,14 +48,14 @@ export class RecipeComponent implements OnInit, OnChanges {
 
     this.route.paramMap.subscribe((params) => {
       this.recipeId = params.get('id');
-      console.log('ID from URL:', this.recipeId);
+      // console.log('ID from URL:', this.recipeId);
     });
 
     if (this.recipeId) {
-      this.isEditRecipe=true;
+      this.isEditRecipe = true;
 
       this.recipeService.getRecipe(this.recipeId).subscribe((res: any) => {
-        console.log('res', res);
+        // console.log('res', res);
         if (Object.values(res).some((x) => x === '')) {
           return;
         }
@@ -64,11 +65,11 @@ export class RecipeComponent implements OnInit, OnChanges {
         this.CacheService.allMedicinesAdded = res.prescriptionDetails;
 
         this.years = this.ageFormula(res.patientEgn);
-        this.isFulfilled= res.isFulfilled;
-        this.patientEgn=res.patientEgn
+        this.isFulfilled = res.isFulfilled;
+        this.patientEgn = res.patientEgn;
       });
-    }else{
-      this.isFulfilled=false
+    } else {
+      this.isFulfilled = false;
     }
 
     this.getDataFromToken();
@@ -131,21 +132,21 @@ export class RecipeComponent implements OnInit, OnChanges {
       this.recipeService.createRecipe(mainData).subscribe(
         (response: any) => {
           this.idResponse = response.PrescriptionId;
+          this.toastr.success('Рецептата е добавена успешно!');
         },
         (err) => {
-          console.log(err.error.errors);
+          this.toastr.error('Нещо се обърка. Моля, опитайте отново!');
         }
       );
 
       //this.rescipeID = response.ID;
-    } else {
-      console.log('It is editing');
-
-      this.isEditRecipe = true;
-
-      const { med, morning, midday, evening, additionalInfo } = allFields;
-      console.log('allFields', allFields);
     }
+    // else {
+    //   this.isEditRecipe = true;
+
+    //   const { med, morning, midday, evening, additionalInfo } = allFields;
+    //   console.log('allFields', allFields);
+    // }
     // console.log('-->',selectMedInput);
   }
   isTen: boolean = false;
@@ -164,9 +165,14 @@ export class RecipeComponent implements OnInit, OnChanges {
 
   editRecipe() {
     // this.isPopUp = true;
-    this.recipeService.editRecipe(this.currentRecipe).subscribe((res) => {
-      console.log('res edit', res);
-    });
+    this.recipeService.editRecipe(this.currentRecipe).subscribe(
+      (res) => {
+        this.toastr.success('Рецептата е редактирана успешно');
+      },
+      (err) => {
+        this.toastr.error('Нещо се обърка. Моля, опитайте отново!');
+      }
+    );
   }
 
   doctor: string = '';
@@ -176,30 +182,46 @@ export class RecipeComponent implements OnInit, OnChanges {
     if (token) {
       const tokenInfo = this.service.jwtdecrypt(token);
       this.doctor = tokenInfo['unique_name'];
-      this.role=tokenInfo.role
+      this.role = tokenInfo.role;
       // console.log('tokenInfo', tokenInfo);
     }
   }
 
   fulfillRecipe() {
-  const confirm = window.confirm("Сигурни ли сте, че желаете да изпълните тази рецепта?");
-  if(confirm){
-    this.recipeService.fulfillRecipe(this.recipeId!).subscribe((res)=>{
-      this.router.navigate([`/patient/profile/${this.currentRecipe.patientEgn}`])
-    },(err)=>{
-      console.log(err);
-    })
+    const confirm = window.confirm(
+      'Сигурни ли сте, че желаете да изпълните тази рецепта?'
+    );
+    if (confirm) {
+      this.recipeService.fulfillRecipe(this.recipeId!).subscribe(
+        (res) => {
+          this.router.navigate([
+            `/patient/profile/${this.currentRecipe.patientEgn}`,
+          ]);
+          this.toastr.success('Рецептата е изпълнена!')
+        },
+        (err) => {
+          this.toastr.error('Нещо се обърка. Моля, опитайте отново!');
+        }
+      );
+    }
   }
-    }
 
-    delRecipe(){
-      const confirm = window.confirm("Сигурни ли сте, че желаете да изтриете тази рецепта?");
-      if(confirm){
-        this.recipeService.deletelRecipe(this.recipeId!).subscribe((res)=>{
-          this.router.navigate([`/patient/profile/${this.currentRecipe.patientEgn}`])
-        },(err)=>{
-          console.log(err);
-        })
-      }
+  delRecipe() {
+    const confirm = window.confirm(
+      'Сигурни ли сте, че желаете да изтриете тази рецепта?'
+    );
+    if (confirm) {
+      this.recipeService.deletelRecipe(this.recipeId!).subscribe(
+        (res) => {
+          this.router.navigate([
+            `/patient/profile/${this.currentRecipe.patientEgn}`,
+          ]);
+          this.toastr.success('Рецептата е изтрита успешно!')
+        },
+        (err) => {
+          this.toastr.error('Нещо се обърка. Моля, опитайте отново!');
+        }
+      );
     }
+  }
 }
