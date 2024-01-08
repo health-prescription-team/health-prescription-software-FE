@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { LoaderService } from 'src/app/shared/services/loader.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -9,11 +8,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  constructor(
-    private userService: UserService,
-    public loaderService: LoaderService,
-    private toastr:ToastrService
-  ) {}
+  constructor(private userService: UserService,private route:ActivatedRoute) {}
   name: string = '';
   id: any;
   egn!: string;
@@ -23,23 +18,24 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const data = this.userService.jwtdecrypt(token!);
-    this.name = data.unique_name;
 
-    // this.route.params.subscribe((params) => {
-    //   const egn = params['id'];
-    // }); --> при прехвърляне от каталог (или друга страниця) към профил - няма егн - undefined
+    this.route.params.subscribe(params => {
+      this.egn = params['id'];
+    });
+
 
     this.getProfile();
   }
 
   getProfile() {
-    this.infoFromToken()
     this.userService.getProfile(this.egn).subscribe(
       (res) => {
+        console.log('res', res);
         this.prescriptions = res;
+       this.name= this.prescriptions[0].patientNames;
       },
       (err) => {
-        this.toastr.warning('Нещо се обърка. Моля, опитайте отново.')
+        console.log(err);
       }
     );
   }
@@ -48,18 +44,12 @@ export class ProfileComponent implements OnInit {
     if (!this.prescriptions) {
       return [];
     }
-    return this.prescriptions.filter(
-      (p: any) => p.isFulfilled === this.isFulfilled
-    );
+    return this.prescriptions.filter((p:any) => p.isFulfilled === this.isFulfilled);
   }
 
   setFulfilled(value: boolean): void {
     this.isFulfilled = value;
   }
 
-  infoFromToken(){
-    const token = localStorage.getItem('token');
-    const decodedData = this.userService.jwtdecrypt(token!);
-    this.egn=decodedData.EGN;
-  }
+
 }
