@@ -21,15 +21,14 @@
         </div>
     </div>
 
-
-    <div class="profile-body">
+    <app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
+    <div class="profile-body" *ngIf="prescriptions?.length>0">
         <div class="category-recipes">
             <button (click)="setFulfilled(true)" [ngClass]="{'active':isFulfilled, 'unactive':!isFulfilled}">Изпълнени рецепти</button>
             <button (click)="setFulfilled(false)" [ngClass]="{'active':!isFulfilled, 'unactive':isFulfilled}">Активни рецепти</button>
         </div>
 
          <div class="recipe" *ngFor="let prescription of displayedRecipes">
-            <p>{{prescription.prescriptionId}} -- {{prescription.isFulfilled}}</p>
             <h4>{{prescription.createdAt}} <span *ngIf="prescription.isFulfilled">Изпълнена</span></h4>
             <div class="recipe-body">
                 <div class="meds">
@@ -44,8 +43,9 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
+    <div class="profile-body" *ngIf="prescriptions?.length===0">
+            <h3>Все още нямате добавени рецепти.</h3>
+    </div>
 </div>
