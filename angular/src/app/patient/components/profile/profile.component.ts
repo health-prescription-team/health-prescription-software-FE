@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
       console.log('ID from URL:', this.egn);
     });
 
-    // this.getProfile();
+    this.getProfile();
   }
 
   getProfile() {
