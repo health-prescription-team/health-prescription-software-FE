@@ -28,7 +28,7 @@ export class RecipeComponent implements OnInit, OnChanges {
 
   isEditRecipe: boolean = false;
   isPharmacist: boolean = false;
-  role: string | undefined;
+  role!: string ;
   isFulfilled: boolean = true;
   patientEgn: string = '';
 
@@ -48,6 +48,10 @@ export class RecipeComponent implements OnInit, OnChanges {
 
     this.route.paramMap.subscribe((params) => {
       this.recipeId = params.get('id');
+      //RISK
+      if(!this.recipeId){
+        this.CacheService.allMedicinesAdded = []
+      }
       // console.log('ID from URL:', this.recipeId);
     });
 
@@ -219,6 +223,7 @@ export class RecipeComponent implements OnInit, OnChanges {
           this.toastr.success('Рецептата е изтрита успешно!')
         },
         (err) => {
+          console.log(err)
           this.toastr.error('Нещо се обърка. Моля, опитайте отново!');
         }
       );

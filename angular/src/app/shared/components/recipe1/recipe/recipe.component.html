@@ -77,7 +77,7 @@
                 </details>
             </div>
 
-            <app-recipe-add-med-form [recipeId]="recipeId!" />
+            <app-recipe-add-med-form [recipeId]="recipeId!" [role]="role" [isEditRecipe] = "isEditRecipe" />
 <!--          (nestedFormValues)="CacheService.nestedFormValues = $event"-->
             <span *ngIf="!isEditRecipe">
                 <button class="btn add-medicine" type="button" (click)="CacheService.showAddMedicineComponent()"
