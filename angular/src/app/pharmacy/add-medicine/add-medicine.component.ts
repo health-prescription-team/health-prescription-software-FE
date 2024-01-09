@@ -21,6 +21,7 @@ export class AddMedicineComponent implements OnInit {
     private pharmacyService: PharmacyService,
     private userService: UserService,
     private route: ActivatedRoute,
+    private Router: Router,
     private detailsService: DetailsService,
     private fb: FormBuilder,
     private toastr:ToastrService
@@ -54,6 +55,9 @@ export class AddMedicineComponent implements OnInit {
     if (this.isEditMode && this.currentMedicine.imageFileName) {
       this.imageBinary = 'existing_image_filename.jpg';
     }
+  }
+  redirectToMedicineDetails(id:string){
+    this.Router.navigate(['/details',id])
   }
 
   getFormData(formValue: any) {
@@ -105,6 +109,7 @@ export class AddMedicineComponent implements OnInit {
     if (this.isEditMode) {
       this.pharmacyService.editMedicine(this.idMedicament, payload).subscribe(
         (res) => {
+          this.redirectToMedicineDetails(this.idMedicament)
           this.toastr.success('Лекарството е редактирано успешно!');
         },
         (err) => {
@@ -114,6 +119,7 @@ export class AddMedicineComponent implements OnInit {
     } else {
       this.pharmacyService.addMeidicine(payload).subscribe(
          (res: any) => {
+           this.redirectToMedicineDetails(this.idMedicament)
           this.toastr.success('Добавено е ново лекарство!');
         },
         (err) => {
