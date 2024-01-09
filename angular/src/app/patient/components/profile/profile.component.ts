@@ -40,7 +40,6 @@ export class ProfileComponent implements OnInit {
   getProfile() {
     this.userService.getProfile(this.egn).subscribe(
       (res) => {
-        console.log('res', res);
         this.prescriptions = res;
       },
       (err) => {
