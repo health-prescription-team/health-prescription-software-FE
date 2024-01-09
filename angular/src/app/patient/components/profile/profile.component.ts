@@ -53,9 +53,20 @@ export class ProfileComponent implements OnInit {
     if (!this.prescriptions) {
       return [];
     }
-    return this.prescriptions.filter(
+
+    const compareByDate = (a:any, b:any) => {
+      const dateA = new Date(a.createdAt);
+      const dateB = new Date(b.createdAt);
+
+      // @ts-ignore
+      return dateB - dateA;
+    };
+
+// Sorting the array based on the 'createdAt' property
+    const prescriptions = this.prescriptions.filter(
       (p: any) => p.isFulfilled === this.isFulfilled
-    );
+    )
+    return prescriptions.sort(compareByDate);
   }
 
   setFulfilled(value: boolean): void {

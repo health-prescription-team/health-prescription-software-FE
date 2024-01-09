@@ -48,6 +48,10 @@ export class RecipeComponent implements OnInit, OnChanges {
 
     this.route.paramMap.subscribe((params) => {
       this.recipeId = params.get('id');
+      //RISK
+      if(!this.recipeId){
+        this.CacheService.allMedicinesAdded = []
+      }
       // console.log('ID from URL:', this.recipeId);
     });
 
