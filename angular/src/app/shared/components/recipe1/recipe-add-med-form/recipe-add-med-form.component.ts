@@ -32,7 +32,8 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   @Output('nestedFormValues') customEvent = new EventEmitter<object>();
 
   @Input('recipeId') recipeId!: string;
-  @Input('isEditRecipe') isEditRecipe!: string;
+  @Input('isEditRecipe') isEditRecipe!: boolean;
+  @Input('role') role!: string;
 
   currentmedicine: any = '';
 

@@ -23,18 +23,18 @@ export class CacheService {
 
   hideAddMedicineComponent(name: any, id?: string, inputevening?: any) {
     this.displayAddMedicine = 'none';
-    if (!id) {
       for (const entries of Object.entries(this.nestedFormValues)) {
         // @ts-ignore
         this.nestedFormValues[entries[0]] = '';
       }
       this.nestedFormValues.medicineName='';
       this.nameCurrentMedicines = ''
+    if (id) {
     }
 
     this.isCanceled = true;
-  this.filteredResults=[...this.results];
-  this.searchTerm = '';
+    this.filteredResults=[...this.results];
+    this.searchTerm = '';
   }
   addMedicine(currentmedicine: any, name: any) {
     if (name) {
@@ -44,14 +44,22 @@ export class CacheService {
     }
   }
   editMedicine(currentmedicine: any, name: any) {
-    console.log(currentmedicine.medicineId);
     currentmedicine.medicineName = name;
 
     // 0
     const indexOfCurrentRecord = this.allMedicinesAdded.findIndex(
       (x: any) => x.medicineId === currentmedicine.medicineId
     );
-    this.allMedicinesAdded[indexOfCurrentRecord] = currentmedicine;
+    console.log(indexOfCurrentRecord)
+
+      this.allMedicinesAdded[indexOfCurrentRecord] = {...currentmedicine};
+        this.hideAddMedicineComponent(name)
+    console.log(currentmedicine)
+    setTimeout(() => {
+
+      },
+      0)
+
   }
 
   allMedicinesAdded: any = [];

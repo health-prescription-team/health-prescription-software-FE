@@ -75,8 +75,8 @@
   #inputadditionalInfo="ngModel"
             [(ngModel)] = CacheService.nestedFormValues.notes></textarea>
   <div id="btns-container">
-    <button class="btn" id="proceedBtn" type="button" (click)="CacheService.addMedicine(CacheService.nestedFormValues,CacheService.nameCurrentMedicines)">Предпиши</button>
-    <button *ngIf="isEditRecipe" class="btn" id="proceedBtn" type="button" (click)="CacheService.editMedicine(CacheService.nestedFormValues,CacheService.nameCurrentMedicines)">Редактирай</button>
-    <button class="btn" id="cancelBtn" type="button" (click)="CacheService.hideAddMedicineComponent(currentmedicine, recipeId,inputevening)" [attr.idMedicine]="">Отказ</button>
+    <button *ngIf="!isEditRecipe" class="btn" id="proceedBtn" type="button" (click)="CacheService.addMedicine(CacheService.nestedFormValues,CacheService.nameCurrentMedicines)">Предпиши</button>
+    <button *ngIf="isEditRecipe||role===role" id="proceedBtn" class="btn"  type="button" (click)="CacheService.editMedicine(CacheService.nestedFormValues,CacheService.nameCurrentMedicines)">Редактирай</button>
+    <button  class="btn" id="cancelBtn" type="button" (click)="CacheService.hideAddMedicineComponent(currentmedicine, recipeId,inputevening)" [attr.idMedicine]="">Отказ</button>
   </div>
 </div>

@@ -39,10 +39,9 @@ export class RecipeInfoMedComponent implements AfterViewInit{
   editCurrentMedicament(){
     console.log('toggle');
     this.CacheService.showAddMedicineComponent();
-    this.CacheService.nestedFormValues =  this.CacheService.allMedicinesAdded[this.index]
-    console.log( this.CacheService.nestedFormValues);
-    
-    
-    
+    this.CacheService.nestedFormValues = {...this.CacheService.allMedicinesAdded[this.index]}
+
+
+
   }
 }

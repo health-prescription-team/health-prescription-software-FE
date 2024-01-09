@@ -26,15 +26,15 @@ export class ProfileComponent implements OnInit {
     const token = localStorage.getItem('token');
     const data = this.userService.jwtdecrypt(token!);
     this.name = data.unique_name;
-    this.id = localStorage.getItem('ID');
 
     this.route.params.subscribe((params) => {
       // Retrieve the 'id' parameter from the URL
+      this.id = params['id'];
       this.egn = params['id'];
       console.log('ID from URL:', this.egn);
     });
 
-    // this.getProfile();
+    this.getProfile();
   }
 
   getProfile() {
