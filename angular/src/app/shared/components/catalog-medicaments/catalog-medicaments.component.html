@@ -9,15 +9,20 @@
     <div class="all-meds">
         <app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
         <div *ngFor="let med of allMedicaments; let index = index" class="medicament">
-            <div class="group">
-                <p>{{med.name}}</p>
+            <div class="circle">
+                <p>{{med.price}}лв</p>
             </div>
             <div class="img">
                 <img [src]="'data:image/png;base64,'+ med.medicineImageBytes" alt="med img">
+
+            </div>
+            <div class="group">
+                <p>{{med.name}}</p>
+                
             </div>
             <div class="details">
+                
                 <button [routerLink]="['/details', med.id]" class="btn details-btn">Детайли</button>
-
             </div>
         </div>
     </div>

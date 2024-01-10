@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class CatalogMedicamentsComponent implements OnInit {
-  entriesPerPage: number = 1;
+  entriesPerPage: number = 10;
   searchTerm: string = '';
   pageNumber: number = 1;
   maxPage: number =0;
