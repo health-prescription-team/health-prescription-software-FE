@@ -21,32 +21,45 @@ export class ProfileComponent implements OnInit {
   egn!: string;
   prescriptions: any;
   isFulfilled: boolean = false;
+  role:string = ''
 
   ngOnInit(): void {
+    
     const token = localStorage.getItem('token');
     const data = this.userService.jwtdecrypt(token!);
+    // if(data.role === 'GP'){
+    //   console.log(this.prescriptions);
+      
+    // }
+    
     this.name = data.unique_name;
-
+    
+    
     this.route.params.subscribe((params) => {
       // Retrieve the 'id' parameter from the URL
       this.id = params['id'];
       this.egn = params['id'];
       console.log('ID from URL:', this.egn);
     });
-
     this.getProfile();
+    this.role = data.role;
   }
 
   getProfile() {
     this.userService.getProfile(this.egn).subscribe(
       (res) => {
         this.prescriptions = res;
+        if(this.role === 'GP'){
+          this.name = this.prescriptions[0].patientNames
+        } 
+        
       },
       (err) => {
         console.log(err);
       }
     );
   }
+  
 
   get displayedRecipes(): any[] {
     if (!this.prescriptions) {

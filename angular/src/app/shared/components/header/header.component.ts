@@ -26,7 +26,9 @@ export class HeaderComponent implements OnInit {
     // this.email = allData['email'];
     this.name = allData['unique_name'];
     this.role = allData['role'];
-    this.id=allData['nameId']
+    this.id=allData['EGN']
+    // console.log(allData);
+    
     if(!this.name){
       this.name = allData['email'];
     }
