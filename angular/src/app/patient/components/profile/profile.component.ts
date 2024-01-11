@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   prescriptions: any;
   isFulfilled: boolean = false;
   role:string = ''
+  noRecipes:boolean = false;
 
   ngOnInit(): void {
     
@@ -49,9 +50,18 @@ export class ProfileComponent implements OnInit {
     this.userService.getProfile(this.egn).subscribe(
       (res) => {
         this.prescriptions = res;
+        console.log(this.prescriptions);
+        
+        if(this.prescriptions.length <= 0){
+          this.noRecipes = true
+        } else {
+          this.noRecipes = false
+        }
         if(this.role === 'GP'){
           this.name = this.prescriptions[0].patientNames
         } 
+        console.log(this.noRecipes);
+        
         
       },
       (err) => {

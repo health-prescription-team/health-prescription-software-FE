@@ -43,9 +43,9 @@ export class CacheService {
       this.hideAddMedicineComponent(name);
     }
   }
-  editMedicine(currentmedicine: any, name: any) {
-    currentmedicine.medicineName = name;
-
+  editMedicine(currentmedicine: any) {
+    console.log(currentmedicine);
+    
     // 0
     const indexOfCurrentRecord = this.allMedicinesAdded.findIndex(
       (x: any) => x.medicineId === currentmedicine.medicineId
@@ -53,7 +53,7 @@ export class CacheService {
     console.log(indexOfCurrentRecord)
 
       this.allMedicinesAdded[indexOfCurrentRecord] = {...currentmedicine};
-        this.hideAddMedicineComponent(name)
+        this.hideAddMedicineComponent(currentmedicine.medicineName)
     console.log(currentmedicine)
     setTimeout(() => {
 

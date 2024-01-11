@@ -37,10 +37,11 @@ export class RecipeInfoMedComponent implements AfterViewInit{
     this.Renderer2.setStyle(this.ElementRef.nativeElement,"justify-content","center")
   }
   editCurrentMedicament(){
-    console.log('toggle');
+    
+    console.log(this.currentRecord);
     this.CacheService.showAddMedicineComponent();
     this.CacheService.nestedFormValues = {...this.CacheService.allMedicinesAdded[this.index]}
-
+    
 
 
   }

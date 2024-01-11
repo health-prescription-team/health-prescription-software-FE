@@ -6,6 +6,7 @@ import { RecipeService } from 'src/app/shared/services/recipe.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { doctor } from '../../register/util';
 
 @Component({
   selector: 'app-recipe',
@@ -31,6 +32,8 @@ export class RecipeComponent implements OnInit, OnChanges {
   role!: string ;
   isFulfilled: boolean = true;
   patientEgn: string = '';
+  onlyRead:boolean = false;
+  gpName:string = '';
 
   constructor(
     private service: UserService,
@@ -40,26 +43,33 @@ export class RecipeComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
-  ) {}
+  ) {
+
+    this.route.paramMap.subscribe((params) => {
+      this.recipeId = params.get('id');
+      
+      
+      //RISK
+      if(!this.recipeId){
+        this.CacheService.allMedicinesAdded = []
+        this.onlyRead = false
+      } else {
+        this.onlyRead = true
+      }
+      console.log('kkkkk');
+      // console.log('ID from URL:', this.recipeId);
+    });
+  }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     this.service.jwtdecrypt(token!);
     // console.log(this.formattedDate);
-
-    this.route.paramMap.subscribe((params) => {
-      this.recipeId = params.get('id');
-      //RISK
-      if(!this.recipeId){
-        this.CacheService.allMedicinesAdded = []
-      }
-      // console.log('ID from URL:', this.recipeId);
-    });
-
+    
     if (this.recipeId) {
       this.isEditRecipe = true;
-
+        console.log('read recipe');
       this.recipeService.getRecipe(this.recipeId).subscribe((res: any) => {
-        // console.log('res', res);
+      this.gpName =  res.gpFullName
         if (Object.values(res).some((x) => x === '')) {
           return;
         }

@@ -1,5 +1,8 @@
 <div class="container">
-    <div class="profile-header">
+    <div *ngIf="noRecipes" class="no-recipes">
+        <p>Пациантът няма налични рецепти!</p>
+    </div>
+    <div *ngIf="!noRecipes" class="profile-header">
         <h3>Личен профил</h3>
         <div class="fields">
             <div class="field">
@@ -44,7 +47,7 @@
             </div>
         </div>
 
-
+        
     </div>
 
 </div>
