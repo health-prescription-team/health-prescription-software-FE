@@ -23,43 +23,53 @@ export class ProfileComponent implements OnInit {
   isFulfilled: boolean = false;
   role:string = ''
   noRecipes:boolean = false;
+  profileImage:any
+  data:any;
 
   ngOnInit(): void {
     
     const token = localStorage.getItem('token');
-    const data = this.userService.jwtdecrypt(token!);
+    this.data = this.userService.jwtdecrypt(token!);
     // if(data.role === 'GP'){
     //   console.log(this.prescriptions);
       
     // }
     
-    this.name = data.unique_name;
+    // this.name = data.unique_name;
     
     
     this.route.params.subscribe((params) => {
       // Retrieve the 'id' parameter from the URL
-      this.id = params['id'];
+      
+      // this.id = params['id'];
       this.egn = params['id'];
       console.log('ID from URL:', this.egn);
     });
     this.getProfile();
-    this.role = data.role;
+    this.role = this.data.role;
   }
 
   getProfile() {
     this.userService.getProfile(this.egn).subscribe(
-      (res) => {
-        this.prescriptions = res;
-        console.log(this.prescriptions);
-        
+      (res:any) => {
+        this.prescriptions = res.patientPrescriptions
+        console.log(res.patientPrescriptions);
+        this.profileImage = res.profileImage;
+
         if(this.prescriptions.length <= 0){
           this.noRecipes = true
         } else {
           this.noRecipes = false
         }
-        if(this.role === 'GP'){
-          this.name = this.prescriptions[0].patientNames
-        } 
+        if(this.role === 'GP' || this.role === 'Pharmacist' ){
+          this.name = res.patientNames
+          
+          this.id = res.patientEGN;
+        } else if(this.role === 'Patient') {
+          console.log(this.data);
+          this.name = this.data.unique_name
+          this.id = this.data.EGN;
+        }
         console.log(this.noRecipes);
         
         

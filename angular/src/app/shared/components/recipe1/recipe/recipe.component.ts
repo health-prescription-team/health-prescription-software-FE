@@ -49,6 +49,7 @@ export class RecipeComponent implements OnInit, OnChanges {
       this.recipeId = params.get('id');
       
       
+      
       //RISK
       if(!this.recipeId){
         this.CacheService.allMedicinesAdded = []
@@ -198,9 +199,12 @@ export class RecipeComponent implements OnInit, OnChanges {
       this.doctor = tokenInfo['unique_name'];
       this.role = tokenInfo.role;
       // console.log('tokenInfo', tokenInfo);
+      if(this.role === 'GP'){
+        this.gpName = this.doctor
+      }
     }
   }
-
+  
   fulfillRecipe() {
     const confirm = window.confirm(
       'Сигурни ли сте, че желаете да изпълните тази рецепта?'
