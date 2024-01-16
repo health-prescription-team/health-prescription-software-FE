@@ -1,35 +1,29 @@
+<div class="container">
+    <div class="bg-img">
 
-    <div class="container">
-        <h2>Login</h2>
+    </div>
+    <div class="form">
+        <!-- <h2>Login</h2> -->
         <form #form="ngForm" (ngSubmit)="login(form)">
-            <div class="form-group">
-                <input
-                type="text"
-                [name]="isEmailInput ? 'Email' : 'Egn'"
-                id="id"
-                [placeholder]="isEmailInput ? 'Email' : 'Egn'"
-                #inputId="ngModel"
-                required
-                ngModel
-                >
+            <div class="top">
+                <div class="form-group">
+                    <input type="text" [name]="isEmailInput ? 'Email' : 'Egn'" id="id"
+                        [placeholder]="isEmailInput ? 'Имейл' : 'ЕГН'" #inputId="ngModel" required ngModel>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="Password" id="password" placeholder="*******" #inputPassword="ngModel"
+                        required ngModel>
+                </div>
             </div>
-            <div class="form-group">
-                <input
-                type="password"
-                name="Password"
-                id="password"
-                placeholder="*******"
-                #inputPassword="ngModel"
-                required
-                ngModel
-                >
-            </div>
-            <div class="form-group">
-                <button type="submit">Login</button>
+            <div class="bottom">
+                <div class="bottom-group">
+                    <button class="btn" type="submit">Вход</button>
+                </div>
+                <div class="register">
+                    <p>Don't have account? <a [routerLink]='"/"+currentPath + "/register"'>Register</a></p>
+                </div>
             </div>
         </form>
-        <div class="register">
-            <p>Don't have account? <a [routerLink]='"/"+currentPath + "/register"'>Register</a></p>
-        </div>
-    </div>
 
+    </div>
+</div>
