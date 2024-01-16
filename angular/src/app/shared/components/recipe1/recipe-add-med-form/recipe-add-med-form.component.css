@@ -1,13 +1,13 @@
 .form {
   width: 90%;
   /* min-width: 250px; */
-  background: rgb(5, 45, 70);
-  background: linear-gradient(
-    209deg,
-    rgba(5, 45, 70, 1) 5%,
-    rgba(172, 224, 249, 1) 44%,
-    rgba(255, 255, 255, 1) 87%
-  );
+    /*background: rgb(5, 45, 70);*/
+    /*background: linear-gradient(*/
+    /*  209deg,*/
+    /*  rgba(5, 45, 70, 1) 5%,*/
+    /*  rgba(172, 224, 249, 1) 44%,*/
+    /*  rgba(255, 255, 255, 1) 87%*/
+    /*);*/
   /* display: flex; */
   flex-direction: column;
   justify-content: center;
@@ -17,6 +17,7 @@
   margin: 30px 0;
   border-radius: 15px;
   text-align: center;
+  background-color: white;
 }
 
 #selectMedInput {
@@ -58,9 +59,31 @@
   cursor: pointer;
   color: white;
 }
+.pair{
+  color: black;
+  display: flex;
+  border: solid black 1px;
+  padding: 0 10px ;
+  border-radius: 100px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.pair>*{
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
 
 h4 {
   align-self: flex-start;
+}
+.additionalInfoC{
+  background-color: #FFBB6B;
+  border-radius: 35%;
+  padding: 10px 60px;
+
 }
 
 #additionalInfo {
@@ -68,6 +91,12 @@ h4 {
   min-width: 50%;
   margin-bottom: 20px;
   align-self: flex-start;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  background-color: #FFBB6B;
+  padding: 5px;
+  color: #620000;
+  height: 100%;
 }
 
 #additionalInfo:focus {
@@ -82,15 +111,18 @@ h4 {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
-  gap: 10px;
+  gap: 30px;
 }
 
 .intake-input {
   height: 35px;
   width: 65%;
-  padding: 5px 7px;
+  padding: 0;
+  background-color: transparent;
+  text-align: center;
   border: none;
-  border-radius: 5px;
+  outline: none;
+  border-left: 0.2cm solid #D9D9D9;
 }
 
 #btns-container {
@@ -120,9 +152,16 @@ h4 {
   border: none;
 }
 
-#proceedBtn {
+#proceedBtn{
   background-color: #94c646;
   box-shadow: 2px 3px 4px #447336, inset -2px -3px 4px #447336;
+}
+#editBtn{
+  background-color: #94c646;
+  box-shadow: 2px 3px 4px #A47B05, inset -2px -3px 4px #A47B05;
+}
+#editBtn{
+  background-color: #D9B448;
 }
 
 #proceedBtn:active,
@@ -142,7 +181,7 @@ h4 {
 
 @media only screen and (min-width: 600px) {
   .form {
-    background: none;
+    /*background: none;*/
     box-shadow: 1px 1px 5px #052d46;
   }
 
@@ -154,8 +193,8 @@ h4 {
   }
 
   .intake-input {
-    border: 1px solid #052d46;
-    width: 100%;
+    /*border: 1px solid #052d46;*/
+    /*width: 100%;*/
   }
 
   #inputs-container,

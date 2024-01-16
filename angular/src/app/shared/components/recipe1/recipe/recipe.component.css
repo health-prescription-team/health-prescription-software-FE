@@ -3,12 +3,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "PT Serif", serif;
+  /*font-family: "PT Serif", serif;*/
+  font-family: "Inter", serif;
 }
-
+form{
+  background-color: #ECF7FF;
+}
 .container {
   height: 100%;
-  color: #265978;
+  color: white;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -22,7 +25,7 @@
 .recipe-header {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background: linear-gradient(to top, rgba(117, 179, 208, 1) 0%, #ace0f9 100%);
 }
 
 .field {
@@ -31,15 +34,21 @@
   display: flex;
   justify-content: space-evenly;
 }
-
+.field>*{
+  flex:1 ;
+}
 .field label {
   padding: 10px;
 }
 
 .field input {
   border: none;
-  background: none;
-  border-bottom: 2px solid grey;
+  background: white;
+  padding: 10px;
+  border-radius: 200px;
+  display: flex;
+  justify-content: flex-start;
+  /*border-bottom: 2px solid grey;*/
   color: #002e29;
 }
 
@@ -86,6 +95,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background: linear-gradient(to right, rgba(69, 143, 254, 1), rgba(69, 143, 254, 0));
+  padding: 20px;
+  color: white;
+  gap: 10px;
+}
+.validity>*{
+  border-radius: 10px;
 }
 
 .date {
@@ -111,8 +127,9 @@
 /* INPUT DATE */
 input[type="date"],
 .start-date {
+  background-color: white;
   font-size: 14px;
-  background-color: #d9b448;
+  /*background-color: #d9b448;*/
   border: none;
   outline: none;
   border-radius: 5px;
@@ -120,10 +137,11 @@ input[type="date"],
   box-shadow: 1px 1px 5px #7a631d;
   margin-top: 5px;
   max-width: 100%;
+  color: black;
 }
 
 .start-date {
-  background-color: grey;
+  /*background-color: grey;*/
   box-shadow: 1px 1px 5px rgb(78, 78, 78);
   padding: 10px;
 }
