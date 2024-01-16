@@ -1,4 +1,4 @@
-        .container {
+/* .container {
             width: 300px;
             margin: 0 auto;
             text-align: center;
@@ -31,4 +31,114 @@
         .register {
             border: 1px solid red;
             padding: 1em;
-        }
+        } */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 66%;
+  width: 500px;
+  margin: 30px auto;
+}
+
+.bg-img {
+  background: url("../../../../assets/images/login.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+
+}
+
+.form {
+  flex: 1;
+  background: linear-gradient(
+    336deg,
+    rgba(216, 236, 241, 1) 33%,
+    rgba(153, 208, 218, 1) 54%
+  );
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.top{
+    margin-top: 30%;
+}
+.form-group {
+  margin: 25px auto;
+}
+
+.form-group input {
+  border-radius: 4px;
+  border: 1px solid #646464;
+  padding: 10px 15px;
+  background: transparent;
+  color: white;
+}
+
+.form-group input::placeholder {
+  color: white;
+}
+
+.form-group input:focus {
+  outline: none;
+}
+
+.register {
+  text-align: left;
+}
+
+.register p,
+.register p a {
+  color: #259bb2;
+  font-weight: 500;
+}
+
+.register p a {
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.btn {
+  border: none;
+  background: #1b94ab;
+  color: white;
+  padding: 10px 36px;
+  border-radius: 30px;
+  cursor: pointer;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  min-height: 40px;
+}
+
+
+.bottom-group{
+    display: flex;
+    align-items: center;
+}
+
+.bottom{
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container{
+        max-width: 55%;
+    }
+  .bg-img {
+    display: none;
+  }
+}
