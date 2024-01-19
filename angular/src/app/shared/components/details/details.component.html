@@ -5,13 +5,16 @@
                 <img src={{imageSrc}} alt="nqma">
 
             </div>
-            <div class="price">
-                <p>{{currentMedicine.price}} лв</p>
-            </div>
+
         </div>
         <div class="right-box">
             <p class="name">{{currentMedicine.name}}</p>
+          <div class="pharmacyAndPriceC">
             <p class="pharmacyName">{{currentMedicine.pharmacyName}}</p>
+            <div class="price">
+              <p>{{currentMedicine.price}} лв</p>
+            </div>
+          </div>
             <div class="details">
                 <button id="detailsMed" (click)="changeContent($event)"
                     [class.active]="activeButton === 'detailsMed'">Описание</button>
