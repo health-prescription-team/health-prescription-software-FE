@@ -83,7 +83,7 @@ color: red;
   max-height: 100%;
 }
 
-.form-group input {
+.form-group input:not(.image) {
   border-radius: 4px;
   border: 1px solid #646464;
   padding: 10px 15px;
@@ -110,10 +110,22 @@ color: red;
 }
 
 .upload{
-   width: 30%;
+   /* width: 30%; */
+  
    max-height: 17%;
+   position: relative;
 }
-
+.upload input {
+  transform: scale(1.5) translateY(-20px) translateX(2px);
+  border: 1px solid red;
+  width: 20px;
+  height: 20px;
+  /* opacity: 0; */
+  padding:10px ;
+}
+.upload input:hover {
+  cursor: pointer;
+}
 .upload img{
     border: 18px solid #2A4685;
     border-radius: 50%;
@@ -128,6 +140,9 @@ color: red;
     text-align: center;
     color: white;
     font-weight: 800;
+    position: absolute;
+    bottom:-4px;
+    right:42px
 }
 
 .bottons{

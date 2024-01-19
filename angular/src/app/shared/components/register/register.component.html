@@ -112,9 +112,11 @@
         <div class="form-group upload" *ngIf="currentRole=='doctor' || currentRole=='patient'">
           <img src="../../../../assets/images/profile.png" width="60" height="60" alt="">
           <div class="round">
-            <span>+</span>
-            <input type="file" name="ProfilePicture" id="image" placeholder="Снимка" #inputimage="ngModel" ngModel
+            <span>+
+
+              <input type="file" name="ProfilePicture" class="image" id="image" placeholder="Снимка" #inputimage="ngModel" ngModel
               (change)="handleFileInput($event)">
+            </span>
           </div>
         </div>
         <div *ngIf="form.controls['image']?.touched && form.controls['image'].invalid">
