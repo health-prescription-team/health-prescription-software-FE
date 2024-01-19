@@ -117,10 +117,10 @@ color: red;
 }
 .upload input {
   transform: scale(1.5) translateY(-20px) translateX(2px);
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 20px;
   height: 20px;
-  /* opacity: 0; */
+  opacity: 0;
   padding:10px ;
 }
 .upload input:hover {

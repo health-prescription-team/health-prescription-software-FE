@@ -39,15 +39,14 @@
   height: auto;
   display: flex;
   flex-direction: column;
+  border: 2px solid rgb(216, 216, 216);
+  border-radius: 0.5em;
+  overflow: hidden;
+  box-shadow:  5px 5px 10px rgba(0, 0, 0, 0.3),  inset 5px 5px 10px rgba(0, 0, 0, 0.1) ;/* Adjust the values as needed */
 
   /* border: 1px solid red;  */
 }
-.medicament:hover {
-  border: 3px solid rgba(199, 197, 247, 0.676);
-  padding: 0.7em 0.5em;
-  transition: all 0.2s ease-out;
-  border-radius: 0.5em;
-}
+
 
 .group p {
   margin: 0;
@@ -120,20 +119,35 @@ button {
   font-size: 21px;
   padding: 5px 10px;
 }
-.circle {
-  aspect-ratio: 1/1;
-  border: 3px solid rgb(255, 0, 0);
+.pharmacy {
+  background-color: #FFBB6B;
   text-align: center;
   align-self: flex-end;
-  border-radius: 50%;
+  border-radius: 26%;
   position: relative;
-  /* justify-self: right; */
+  width: 75%;
+  transform: rotate(45deg);
+  position: relative;
+  top: 17px;
+  right: -28px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
-.circle p {
-  /* border: 1px solid blue; */
-  padding: 0.3em 0;
+
+.pharmacy p {
   font-weight: bold;
-  font-size: 1.5em;
   letter-spacing: 1px;
-  /* margin: 1em 1em; */
+  color: white;
+  text-align: center;
+  border: 1px solid red;
 }
+
+.inside-bandage {
+  width: 30px;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: #FF8A00;
+  margin-top: 10px;
+  margin-left: auto; /* Align to the right side */
+}
+

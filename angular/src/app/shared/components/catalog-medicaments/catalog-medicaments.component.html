@@ -9,10 +9,13 @@
     <div class="all-meds">
         <app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
         <div *ngFor="let med of allMedicaments; let index = index" class="medicament">
-            <div class="circle">
-                <p>{{med.price}}лв</p>
+            <div class="pharmacy">
+                <div class="inside-bandage"></div>
+                    <p>SoPharmacy</p>
+
+                    <!-- <p>{{med.medicineCompany}}</p> -->
             </div>
-            <div class="img">
+            <div class="img"> 
                 <img [src]="'data:image/png;base64,'+ med.medicineImageBytes" alt="med img">
 
             </div>

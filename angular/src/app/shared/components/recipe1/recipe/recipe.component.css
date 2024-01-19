@@ -8,6 +8,8 @@
 }
 form{
   background-color: #ECF7FF;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
 }
 .container {
   height: 100%;
@@ -19,13 +21,19 @@ form{
 
 .recipe-form {
   min-height: 100px;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em
   /* margin: 0 auto; */
 }
 
 .recipe-header {
+  /* border: 1px solid red; */
+  /* border-radius: 0.5em; */
   display: flex;
   flex-direction: column;
   background: linear-gradient(to top, rgba(117, 179, 208, 1) 0%, #ace0f9 100%);
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
 }
 
 .field {
@@ -40,7 +48,7 @@ form{
 .field label {
   padding: 10px;
 }
-
+ 
 .field input {
   border: none;
   background: white;
@@ -89,6 +97,11 @@ form{
 
 .recipe-footer {
   color: #030303;
+  /* border: 1px solid red; */
+  /* border-radius: 0.5em; */
+  /* border-bottom-right-radius: 0.5em; */
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
 }
 
 .validity {
@@ -99,9 +112,14 @@ form{
   padding: 20px;
   color: white;
   gap: 10px;
+  /* border: 1px solid red; */
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  /* border-radius: 0.5em; */
 }
 .validity>*{
   border-radius: 10px;
+  
 }
 
 .date {
