@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@microsoft/signalr": "^8.0.0",
     "iv-viewer": "^2.0.1",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
