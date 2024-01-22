@@ -5,6 +5,7 @@
   margin: 0 auto;
   /* border: 1px solid black; */
   box-shadow: 1px 1px 10px rgb(187, 184, 184);
+  padding: 1em;
 }
 
 .search {
@@ -15,7 +16,7 @@
   margin-top: 10px;
   border-radius: 10px;
   outline: none;
-  border: 1px solid rgb(239 52 35);
+  border: 3px solid #91C84C;
 }
 .search button {
   margin-top: 10px;
@@ -68,14 +69,16 @@
   flex: 1;
   display: flex;
   aspect-ratio: 16 / 9;
+
 }
 
 .img img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: auto;
   object-fit: contain;
   background: white;
+
 }
 
 .details {
@@ -87,8 +90,10 @@
 
 .btn {
   width: 100%;
-  padding: 5px;
-  background: grey;
+  padding: 15px;
+  margin: 5px auto;
+  font-size: 1.2em;
+  background: #91C84C;
   color: white;
   font-weight: 600;
 }
@@ -112,13 +117,57 @@ button {
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
   cursor: pointer;
+  /* color: #91C84C; */
 
 }
 
 .pagination-btn {
   font-size: 21px;
   padding: 5px 10px;
+  background-color: #91C84C;
 }
+
+.pharmacy {
+  position: relative;
+  display: inline-block; /* or use "block" if you want it to be a block element */
+}
+
+.inside-bandage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://pngimg.com/d/bandage_PNG67.png') center center no-repeat; /* Add your bandage image */
+  background-size: 130px 75px;
+
+}
+
+.medName {
+  position: relative; /* Create a stacking context for z-index */
+  z-index: 1; /* Place the text above the bandage */
+  /* Additional styling for the text if needed */
+  transform: rotate(-20deg);
+  text-align: center;
+  color: rgba(0, 117, 220, 0.601);
+  /* margin: 0 auto; */
+  font-size: 1.2em;
+
+}
+.group {
+  border: 1px solid rgb(195, 195, 195);
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 0.4em;
+  background-color: #90a9ba;
+  color: white;
+  letter-spacing: 1.2em;
+  /* font-size: 1.2em; */
+  box-shadow:  5px 5px 10px rgba(0, 0, 0, 0.3),  inset 5px 5px 10px rgba(0, 0, 0, 0.1) ;/* Adjust the values as needed */
+
+}
+/* 
+
 .pharmacy {
   background-color: #FFBB6B;
   text-align: center;
@@ -144,10 +193,10 @@ button {
 }
 
 .inside-bandage {
-  width: 30px;
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
   background-color: #FF8A00;
   margin-top: 10px;
-  margin-left: auto; /* Align to the right side */
-}
+  margin-left: auto; 
+  
+} */
 

@@ -1,6 +1,6 @@
 <div class="wrapper">
   <form  class="form" #form="ngForm">
-    <label class="heading" for="recipeNumber">ЕГН на пациент:</label>
+    <label class="heading" for="recipeNumber">Моля въведете ЕГН на пациент!</label>
     <input
       id="egn"
       type="text"
@@ -9,10 +9,11 @@
       name="egn"
       #egn="ngModel"
     >
-    <div *ngIf="form.controls['recipeNumber']?.touched && form.controls['recipeNumber'].invalid">
-      <div *ngIf="form.controls['recipeNumber'].errors?.['required']" class="error">Recipe number is required.</div>
+    <div *ngIf="form.controls['egn']?.touched && form.controls['egn'].invalid">
+      <div *ngIf="form.controls['egn'].errors?.['required']" class="error">Полето е задължително!</div>
     </div>
     <button class="btn" (click)="findPatient(egn.value)" type="submit">Намери пациент</button>
   </form>
   
 </div>
+ 

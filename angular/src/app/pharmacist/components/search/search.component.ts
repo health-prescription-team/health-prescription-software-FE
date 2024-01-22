@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
       .then(() => connection.invoke("send", "Hello"));
   }
   findPatient(egn:string){
-
+      
     this.router.navigate([`/patient/profile/${egn}`])
 
   }
