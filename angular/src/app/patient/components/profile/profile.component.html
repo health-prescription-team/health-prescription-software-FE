@@ -45,7 +45,13 @@
             </div>
         </div>
 
+        <div class="pagination">
+            <button class="pagination-btn" (click)="goToPage(pageNumber - 1)" [disabled]="pageNumber === 1"> &#171;</button>
 
+            <div class="page-number">{{ pageNumber }}</div>
+
+            <button class="pagination-btn" (click)="goToPage(pageNumber + 1)" [disabled]="pageNumber === maxPage">&#187;</button>
+          </div>
     </div>
 
 </div>

@@ -10,6 +10,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -21,14 +22,13 @@ export class ProfileComponent implements OnInit {
   egn!: string;
   prescriptions: any;
   isFulfilled: boolean = false;
-  role:string = ''
-  noRecipes:boolean = false;
-  profileImage:any
-  data:any;
-  noUser:boolean=true;
+  role: string = '';
+  noRecipes: boolean = false;
+  profileImage: any;
+  data: any;
+  noUser: boolean = true;
 
   ngOnInit(): void {
-
     const token = localStorage.getItem('token');
     this.data = this.userService.jwtdecrypt(token!);
     // if(data.role === 'GP'){
@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
     // }
 
     // this.name = data.unique_name;
-
 
     this.route.params.subscribe((params) => {
       // Retrieve the 'id' parameter from the URL
@@ -52,44 +51,45 @@ export class ProfileComponent implements OnInit {
 
   getProfile() {
     this.userService.getProfile(this.egn).subscribe(
-      (res:any) => {
-        this.noUser=false;
-        this.prescriptions = res.patientPrescriptions
+      (res: any) => {
+        this.noUser = false;
+        this.prescriptions = res.patientPrescriptions;
         console.log(res.patientPrescriptions);
         this.profileImage = res.profileImage;
 
-        if(this.prescriptions.length <= 0){
-          this.noRecipes = true
+        if (this.prescriptions.length <= 0) {
+          this.noRecipes = true;
         } else {
-          this.noRecipes = false
+          this.noRecipes = false;
         }
-        if(this.role === 'GP' || this.role === 'Pharmacist' ){
-          this.name = res.patientNames
+        if (this.role === 'GP' || this.role === 'Pharmacist') {
+          this.name = res.patientNames;
 
           this.id = res.patientEGN;
-        } else if(this.role === 'Patient') {
+        } else if (this.role === 'Patient') {
           console.log(this.data);
-          this.name = this.data.unique_name
+          this.name = this.data.unique_name;
           this.id = this.data.EGN;
         }
         console.log(this.noRecipes);
-
-
       },
       (err) => {
-        this.noUser=true;
+        this.noUser = true;
         console.log(err);
       }
     );
   }
 
+  setFulfilled(value: boolean): void {
+    this.isFulfilled = value;
+  }
 
   get displayedRecipes(): any[] {
     if (!this.prescriptions) {
       return [];
     }
 
-    const compareByDate = (a:any, b:any) => {
+    const compareByDate = (a: any, b: any) => {
       const dateA = new Date(a.createdAt);
       const dateB = new Date(b.createdAt);
 
@@ -97,14 +97,19 @@ export class ProfileComponent implements OnInit {
       return dateB - dateA;
     };
 
-// Sorting the array based on the 'createdAt' property
+    // Sorting the array based on the 'createdAt' property
     const prescriptions = this.prescriptions.filter(
       (p: any) => p.isFulfilled === this.isFulfilled
-    )
+    );
     return prescriptions.sort(compareByDate);
   }
 
-  setFulfilled(value: boolean): void {
-    this.isFulfilled = value;
+
+  pageSize=10;
+  pageNumber: any;
+  maxPage: any;
+  goToPage(pageNumber: number) {
+
   }
+
 }
