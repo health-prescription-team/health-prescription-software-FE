@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container" *ngIf="!noUser">
     <div *ngIf="noRecipes" class="no-recipes">
         <p>Пациантът няма налични рецепти!</p>
     </div>
+    <app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
     <div *ngIf="!noRecipes" class="profile-header">
         <h3>Личен профил</h3>
         <div class="fields">
@@ -11,20 +12,17 @@
             </div>
             <div class="field">
                 <div class="sub-field">
-                    <label for="fullName">Имена: </label>
-                    <input type="text" id="fullName" type="text" name="fullName" id="fullName"
-                        value={{name}} disabled>
+                    <p  class="label">Имена: </p>
+                    <p class="text" id="fullName" >{{name}}</p>
                 </div>
                 <div class="sub-field">
-                    <label for="personalId">ЕГН: </label>
-                    <input id="personalId" placeholder="egn" type="number" name="personalId"
-                         value={{id}}  disabled>
+                    <p class="label"  >ЕГН: </p>
+                    <p class="text" id="personalId">{{id}}</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <app-loader *ngIf="loaderService.loading$.source._value"></app-loader>
     <div class="profile-body" *ngIf="prescriptions?.length>0">
         <div class="category-recipes">
             <button (click)="setFulfilled(true)" [ngClass]="{'active':isFulfilled, 'unactive':!isFulfilled}">Изпълнени рецепти</button>
@@ -47,7 +45,13 @@
             </div>
         </div>
 
-        
+        <div class="pagination">
+            <button class="pagination-btn" (click)="goToPage(pageNumber - 1)" [disabled]="pageNumber === 1"> &#171;</button>
+
+            <div class="page-number">{{ pageNumber }}</div>
+
+            <button class="pagination-btn" (click)="goToPage(pageNumber + 1)" [disabled]="pageNumber === maxPage">&#187;</button>
+          </div>
     </div>
 
 </div>

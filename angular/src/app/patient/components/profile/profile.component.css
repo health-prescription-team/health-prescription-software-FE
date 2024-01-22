@@ -2,7 +2,7 @@
     max-width: 500px;
     min-height: 100px;
     margin: 0 auto;
-    border: 1px solid blue;
+    box-shadow: 3px 5px 20px #00000063;
   }
 
   .profile-header {
@@ -10,12 +10,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: rgb(229, 232, 248);
+    background-color: #C2EBE2;
   }
 
   .fields {
     display: flex;
     flex-direction: row;
+    background: white;
+    margin: 15px 0;
+    border-radius: 20px;
   }
 
   .field {
@@ -28,6 +31,27 @@
   img {
     width: 100px;
     height: auto;
+    border-radius: 50%;
+    box-shadow: 1px 1px 15px #00000066;
+  }
+
+  .sub-field{
+    display: flex;
+  }
+
+  .sub-field .label{
+    flex: 1;
+    font-weight: 900;
+
+  }
+
+  .sub-field .text{
+    flex:2;
+  }
+
+  .sub-field p{
+    padding: 0;
+    height: fit-content;
   }
 
   .profile-body {
@@ -39,8 +63,10 @@
   .recipe {
       width: 90%;
       align-self: center;
-      border-bottom: 1px solid blue;
       padding-bottom: 10px;
+      box-shadow: 1px 1px 20px #000000a6;
+      border-radius: 20px;
+      margin: 10px;
   }
 
   .recipe-body {
@@ -93,4 +119,28 @@
   }
   h3{
     margin: 0 auto;
+  }
+
+  app-loader{
+    border: 1px solid red;
+  }
+
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .page-number {
+    margin: 0 10px;
+    font-weight: bold;
+  }
+
+  .pagination-btn {
+    font-size: 22px;
+    border: none;
+    background: transparent;
+    color: blue;
   }
