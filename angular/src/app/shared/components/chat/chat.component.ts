@@ -41,8 +41,8 @@ export class ChatComponent implements OnInit{
       .withUrl("https://health-prescription-api.azurewebsites.net/chatHub" ,{ accessTokenFactory: () => currentUserToken})
       .build();
 
-    this.connection.on("ReceiveMessage", (data:any) => {
-      console.log(data)
+    this.connection.on("ReceiveMessage", (senderId:string, message:string, time:string) => {
+      console.log(message)
     });
 
 
