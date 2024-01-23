@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     public loaderService: LoaderService,
+    public router: Router,
     private toastr: ToastrService
   ) {}
   name: string = '';
@@ -125,5 +126,8 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  navigateToChat(){
+    this.router.navigate([`/chat/${this.egn}`]);
+  }
 
 }

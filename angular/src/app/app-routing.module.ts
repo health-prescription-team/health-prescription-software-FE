@@ -12,6 +12,7 @@ import { ProfileComponent } from './patient/components/profile/profile.component
 import { AddMedicineComponent } from './pharmacy/add-medicine/add-medicine.component';
 import { DetailsComponent } from './shared/components/details/details.component';
 import { CatalogMedicamentsComponent } from './shared/components/catalog-medicaments/catalog-medicaments.component';
+import {ChatComponent} from "./shared/components/chat/chat.component";
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'recipeDetails/:id',
     component: RecipeComponent,
+  },
+  {
+    path: 'chat/:egn',
+    component: ChatComponent,
   },
   {
     //doctor

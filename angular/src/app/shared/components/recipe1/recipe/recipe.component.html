@@ -23,12 +23,12 @@
                 </div>
                 <div class="field">
                     <label for="patientАge">Години: &asymp;</label>
-                    <div class="inputAndError"> 
+                    <div class="inputAndError">
                     <input type="text" disabled id="patientАge" placeholder="Години" type="text" name="patientАge"
                         id="patientАge" #inputpatientАge="ngModel" required [(ngModel)] = "years">
                         </div>
                 </div>
-                <div class="field">
+                <div class="field ">
                     <label for="doctor">Лекар: </label>
                     <div class="inputAndError">
 
@@ -41,6 +41,9 @@
                         </ng-container>
                     </div>
                 </div>
+              <div class="field startChatBtnField">
+                  <button (click)="navigateToChat()" class="startChatBtn">Започни чат</button>
+              </div>
 
                 <div class="field diagnosis-field">
                     <label for="diagnosis">Диагноза: </label>

@@ -7,6 +7,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { doctor } from '../../register/util';
+import * as signalR from "@microsoft/signalr";
 
 @Component({
   selector: 'app-recipe',
@@ -47,9 +48,9 @@ export class RecipeComponent implements OnInit, OnChanges {
 
     this.route.paramMap.subscribe((params) => {
       this.recipeId = params.get('id');
-      
-      
-      
+
+
+
       //RISK
       if(!this.recipeId){
         this.CacheService.allMedicinesAdded = []
@@ -65,7 +66,7 @@ export class RecipeComponent implements OnInit, OnChanges {
     const token = localStorage.getItem('token');
     this.service.jwtdecrypt(token!);
     // console.log(this.formattedDate);
-    
+
     if (this.recipeId) {
       this.isEditRecipe = true;
         console.log('read recipe');
@@ -204,7 +205,7 @@ export class RecipeComponent implements OnInit, OnChanges {
       }
     }
   }
-  
+
   fulfillRecipe() {
     const confirm = window.confirm(
       'Сигурни ли сте, че желаете да изпълните тази рецепта?'
@@ -243,4 +244,16 @@ export class RecipeComponent implements OnInit, OnChanges {
       );
     }
   }
+
+
+navigateToChat(){
+  this.router.navigate([`/chat/${this.currentRecipe.gpEgn}`]);
+}
+
+
+
+
+
+
+
 }

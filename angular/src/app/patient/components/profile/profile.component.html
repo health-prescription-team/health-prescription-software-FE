@@ -19,6 +19,7 @@
                     <p class="label"  >ЕГН: </p>
                     <p class="text" id="personalId">{{id}}</p>
                 </div>
+              <button (click)="navigateToChat()" *ngIf="role==='GP'" class="startChatBtn">Започни чат</button>
             </div>
         </div>
     </div>

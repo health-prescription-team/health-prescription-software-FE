@@ -79,6 +79,18 @@
     justify-content: space-around;
   }
 
+  .startChatBtn{
+    padding: 10px;
+    background-color: #265978;
+    border-radius: 100px;
+    border: none;
+    color: white;
+  }
+.startChatBtn:hover{
+  cursor: pointer;
+}
+
+
   .meds{
     flex: 2;
   }

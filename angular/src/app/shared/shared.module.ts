@@ -13,6 +13,7 @@ import { PharmacyModule } from '../pharmacy/pharmacy.module';
 import { DetailsComponent } from './components/details/details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -29,6 +30,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     DetailsComponent,
     HeaderComponent,
     LoaderComponent,
+    ChatComponent,
   ],
   imports: [
     CommonModule,
