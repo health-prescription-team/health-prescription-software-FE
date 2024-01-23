@@ -10,7 +10,6 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -27,6 +26,10 @@ export class ProfileComponent implements OnInit {
   profileImage: any;
   data: any;
   noUser: boolean = true;
+
+  entriesPerPage: number = 3;
+  pageNumber: number = 1;
+  maxPage!: number;
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -82,6 +85,7 @@ export class ProfileComponent implements OnInit {
 
   setFulfilled(value: boolean): void {
     this.isFulfilled = value;
+    this.pageNumber = 1;
   }
 
   get displayedRecipes(): any[] {
@@ -101,15 +105,25 @@ export class ProfileComponent implements OnInit {
     const prescriptions = this.prescriptions.filter(
       (p: any) => p.isFulfilled === this.isFulfilled
     );
-    return prescriptions.sort(compareByDate);
+    const sortedPrescription = prescriptions.sort(compareByDate);
+    this.maxPage = Math.ceil(sortedPrescription.length / this.entriesPerPage);
+
+    const startIndex = (this.pageNumber - 1) * this.entriesPerPage;
+    const endIndex = startIndex + this.entriesPerPage;
+
+    return sortedPrescription.slice(startIndex, endIndex);;
   }
 
-
-  pageSize=10;
-  pageNumber: any;
-  maxPage: any;
-  goToPage(pageNumber: number) {
-
+  goToPage(newPage: number) {
+    if (newPage > 0 && newPage <= this.maxPage) {
+      this.pageNumber = newPage;
+    }
+    if (newPage > this.pageNumber) {
+      this.pageNumber++;
+    } else if (newPage < this.pageNumber) {
+      this.pageNumber--;
+    }
   }
+
 
 }

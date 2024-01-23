@@ -33,13 +33,13 @@
             <h4>{{prescription.createdAt}} <span *ngIf="prescription.isFulfilled">Изпълнена</span></h4>
             <div class="recipe-body">
                 <div class="meds">
-                    <p>Предписани лекарства:</p>
-                    <ul>
+                    <p class="labels">Предписани лекарства:</p>
+                    <ul class="meds-list">
                         <li *ngFor="let medicament of prescription.medicaments">{{medicament}}</li>
                     </ul>
                 </div>
                 <div class="details">
-                    <p>Валидна до: {{prescription.expiresAt }}</p>
+                    <p class="labels">Валидна до: <span class="sub-label">{{prescription.expiresAt || 'не е посочено' }}</span></p>
                     <button [routerLink]="'/recipe/' + prescription.prescriptionId">Детайли</button>
                 </div>
             </div>

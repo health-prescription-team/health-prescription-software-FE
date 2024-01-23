@@ -55,7 +55,7 @@
   }
 
   .profile-body {
-    min-height: 58vh;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
   }
@@ -64,15 +64,45 @@
       width: 90%;
       align-self: center;
       padding-bottom: 10px;
-      box-shadow: 1px 1px 20px #000000a6;
       border-radius: 20px;
       margin: 10px;
+      transition: transform 0.3s;
+  }
+
+  .recipe:hover{
+    box-shadow: 1px 1px 20px #000000a6;
+    transform: scale(1.04);
   }
 
   .recipe-body {
     display: flex;
     justify-content: space-around;
   }
+
+  .meds{
+    flex: 2;
+  }
+
+  .details{
+    flex: 1;
+  }
+
+  .labels{
+    font-weight: 600;
+    padding: 0 10px;
+  }
+
+  .sub-label{
+    display: block;
+    font-weight: 100;
+  }
+
+  .meds-list{
+    margin: 0;
+    padding: 0 15px;
+    font-style: italic;
+  }
+
   .category-recipes{
     display: flex;
     flex-direction: row;
@@ -98,33 +128,43 @@
     border-bottom: none;
   }
 
-  ul,
+  /* ul,
   p {
     padding-inline-start: 20px;
     margin-block-start: 0;
     margin-block-end: 0;
-  }
-  p{
+  } */
+  /* p{
       font-style: italic;
-  }
+  } */
 
   li {
     list-style-type: none;
   }
-  .details button{
-      margin: 25px 0 0 100px;
+
+  .recipe button{
+    border: none;
+    background: #c2ebe2;
+    padding: 7px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    width: 60%;
+    margin-left: 10px;
+    display: block;
   }
   h4{
-      margin-left: 20px;
+      margin: 10px 20px;
   }
   h3{
     margin: 0 auto;
   }
-
+/*
   app-loader{
     border: 1px solid red;
-  }
-
+  } */
 
   .pagination {
     display: flex;
@@ -142,5 +182,10 @@
     font-size: 22px;
     border: none;
     background: transparent;
-    color: blue;
+    color: #36d4b1;
+    cursor: pointer;
+  }
+  .pagination-btn:disabled{
+    color: white;
+cursor: auto;
   }
