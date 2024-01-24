@@ -1,1 +1,28 @@
-<p>chat works!</p>
+<section class="chatWrapper">
+  <div class="chatC">
+    <div #messagesWrapper class="messagesWrapper">
+      <div class="messagesC">
+        <div *ngFor="let message of chatMessages" [attr.isMe]="message.authorId==me.id" class="message">
+          <div *ngIf="message.authorId==me.id" class="userPic">
+
+          </div>
+          <div class="textAndDateC">
+            <div class="messageText">
+              {{message.message}}
+            </div>
+            <div class="date">{{message.messageTime}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+      <div class="input">
+        <form >
+          <input #messageTextElement name="messageText" ngModel type="text" placeholder="Вашето съобщение...">
+          <button (click)="sendMessage(messageTextElement)" class="sendBtn">Изпрати</button>
+        </form>
+
+      </div>
+  </div>
+</section>
