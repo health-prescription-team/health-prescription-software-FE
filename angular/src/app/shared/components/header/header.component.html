@@ -1,7 +1,24 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
 <section style="color: #fff;">
   <nav class="stroke">
+    
     <h2>Здравейте, {{greetings[role]}} {{name}}</h2>
+    
+    <div class="content">
+      <div class="card">
+          <div class="firstinfo"><img src="https://static-00.iconduck.com/assets.00/user-icon-2048x2048-ihoxz4vq.png" />
+              <div class="profileinfo">
+                  <h3 class="header-name"> {{greetings[role]}} {{name}} </h3>
+                  <h3>Python Ninja</h3>
+                  <p class="bio">Lived all my life on the top of mount Fuji, learning the way to be a Ninja Dev.</p>
+              </div>
+          </div>
+      </div>
+      <div class="badgescard"> <span class="devicons devicons-django"></span><span class="devicons devicons-python"> </span><span class="devicons devicons-codepen"></span><span class="devicons devicons-javascript_badge"></span><span class="devicons devicons-gulp"></span><span class="devicons devicons-angular"></span>
+          <span
+              class="devicons devicons-sass"></span>
+      </div>
+  </div>
     <ul>
       <!-- <li>About</li> -->
       <!-- <li *ngIf="role === 'Pharmacy'" routerLink="/pharmacy/add-medicine">Add medicaments</li> -->

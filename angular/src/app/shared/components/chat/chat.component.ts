@@ -24,14 +24,6 @@ export class ChatComponent implements OnInit{
   messageText:string=""
 
   chatMessages:any = [
-    {id: 'b39f91fd-4cf6-4a05-919f-ad925a0e6c7b', message: 'Hello', messageTime: '2024-01-23 19:39', authorId: 'eb7e0efa-7dcc-4731-9b40-964f8693378e', isRead: false},
-    {id: 'b39f91fd-4cf6-4a05-919f-ad925a0e6c7b', message: 'Hello', messageTime: '2024-01-23 19:39', authorId: 'eb7e0efa-7dcc-4731-9b40-964f8693378e', isRead: false},
-    {id: 'b39f91fd-4cf6-4a05-919f-ad925a0e6c7b', message: 'Hello', messageTime: '2024-01-23 19:39', authorId: 'eb7e0efa-7dcc-4731-9b40-964f8693378e', isRead: false},
-    {id: 'b39f91fd-4cf6-4a05-919f-ad925a0e6c7b', message: 'Hello', messageTime: '2024-01-23 19:39', authorId: 'eb7e0efa-7dcc-4731-9b40-964f8693378e', isRead: false},
-    {id: 'b39f91fd-4cf6-4a05-919f-ad925a0e6c7b', message: 'Hello', messageTime: '2024-01-23 19:39', authorId: 'eb7e0efa-7dcc-4731-9b40-964f8693378e', isRead: false},
-    {id: 'b39f91fd-4cf6-4a05-919f-ad925a0e6c7b', message: 'Hello', messageTime: '2024-01-23 19:39', authorId: 'eb7e0efa-7dcc-4731-9b40-964f8693378e', isRead: false},
-    {id: 'b39f91fd-4cf6-4a05-919f-ad925a0e6c7b', message: 'Hello', messageTime: '2024-01-23 19:39', authorId: 'eb7e0efa-7dcc-4731-9b40-964f8693378e', isRead: false},
-    {id: 'b39f91fd-4cf6-4a05-919f-ad925a0e6c7b', message: 'Hello', messageTime: '2024-01-23 19:39', authorId: "7a83ebc1-fefd-4173-836e-f03db09cd1ee", isRead: false},
 
   ]
   ngOnInit() {
