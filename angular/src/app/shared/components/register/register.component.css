@@ -155,12 +155,12 @@ color: red;
 .register p a {
   color: #259bb2;
   font-weight: 500;
+  /* text-decoration: underline; */
+}
+.register a {
+  text-decoration: underline;
 }
 
-.register p a {
-  text-decoration: none;
-  font-weight: 800;
-}
 
 .btn {
   border: none;
