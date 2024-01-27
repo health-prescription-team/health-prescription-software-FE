@@ -114,3 +114,8 @@ body {
     display: none;
   }
 }
+
+.error {
+  color: red
+  /* font-size: 1.2em; */
+}
