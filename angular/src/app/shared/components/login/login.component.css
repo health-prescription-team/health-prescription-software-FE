@@ -1,38 +1,8 @@
-/* .container {
-            width: 300px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        .form-group {
-            margin: 10px 0;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .register {
-            border: 1px solid red;
-            padding: 1em;
-        } */
-
+body {
+  background-image: url('../../../../assets/images/19366.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%
+}
 .container {
   display: flex;
   align-items: center;
@@ -45,6 +15,7 @@
 
 .bg-img {
   background: url("../../../../assets/images/login.png");
+  border-radius: 0.3em;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   flex: 1;
@@ -60,6 +31,7 @@
     rgba(216, 236, 241, 1) 33%,
     rgba(153, 208, 218, 1) 54%
   );
+  border-radius: 0.3em;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -107,9 +79,9 @@
   font-weight: 500;
 }
 
-.register p a {
-  text-decoration: none;
-  font-weight: 800;
+.register a {
+  /* text-decoration: none; */
+  text-decoration: underline
 }
 
 .btn {
