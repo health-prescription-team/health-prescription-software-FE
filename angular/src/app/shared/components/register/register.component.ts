@@ -56,6 +56,8 @@ export class RegisterComponent implements OnInit {
   }
   data: any = '';
   register(form: any) {
+    if(form.invalid) return
+    
     const payload = this.getFormData(form.value);
     payload.forEach((e) => {
       console.log(e);

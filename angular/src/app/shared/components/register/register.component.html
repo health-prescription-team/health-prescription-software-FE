@@ -16,104 +16,109 @@
         <div class="form-group" *ngIf="currentRole=='doctor'||
                     currentRole=='patient'||
                     currentRole=='pharmacist'">
-          <input type="text" name="FirstName" id="firstName" placeholder="Ivan" #inputfirstName="ngModel" required
-            ngModel="Виктор">
+          <input type="text" name="FirstName" id="firstName" placeholder="Име" #inputfirstName="ngModel" required
+            ngModel>
         </div>
-        <div *ngIf="form.controls['firstName']?.touched && form.controls['firstName'].invalid">
-          <div *ngIf="form.controls['firstName'].errors?.['required']" class="error">First name is required.</div>
-        </div>
-
-        <div class="form-group" *ngIf="currentRole=='doctor'||
-                    currentRole=='patient'||
-                    currentRole=='pharmacist'">
-          <input type="text" name="MiddleName" id="middleName" placeholder="Ivanov" #inputmiddleName="ngModel" required
-            ngModel="Пламенов">
-        </div>
-        <div *ngIf="form.controls['middleName']?.touched && form.controls['middleName'].invalid">
-          <div *ngIf="form.controls['middleName'].errors?.['required']" class="error">Middle name is required.</div>
+        <div *ngIf="form.controls['FirstName']?.touched && form.controls['FirstName'].invalid">
+          <div *ngIf="form.controls['FirstName'].errors?.['required']" class="error">Полето е задължително!</div>
         </div>
 
         <div class="form-group" *ngIf="currentRole=='doctor'||
                     currentRole=='patient'||
                     currentRole=='pharmacist'">
-          <input type="text" name="LastName" id="surName" placeholder="Petrov" #inputsurName="ngModel" required
-            ngModel="Шандров">
-        </div>
-        <div *ngIf="form.controls['surName']?.touched && form.controls['surName'].invalid">
-          <div *ngIf="form.controls['surName'].errors?.['required']" class="error">Surname is required.</div>
+          <input type="text" name="MiddleName" id="middleName" placeholder="Иванов" #inputmiddleName="ngModel" required
+            ngModel>
+            <div *ngIf="form.controls['MiddleName']?.touched && form.controls['MiddleName'].invalid">
+              <div *ngIf="form.controls['MiddleName'].errors?.['required']" class="error">Полето е задължително!</div>
+            </div>
         </div>
 
         <div class="form-group" *ngIf="currentRole=='doctor'||
                     currentRole=='patient'||
                     currentRole=='pharmacist'">
-          <input type="number" name="Egn" id="personalId" placeholder="990102****" #inputpersonalId="ngModel" required
-            ngModel="1045636665">
+          <input type="text" name="LastName" id="surName" placeholder="Фамилия" #inputsurName="ngModel" required
+            ngModel>
         </div>
-        <div *ngIf="form.controls['personalId']?.touched && form.controls['personalId'].invalid">
-          <div *ngIf="form.controls['personalId'].errors?.['required']" class="error">Personal Id is required.</div>
+        <div *ngIf="form.controls['LastName']?.touched && form.controls['LastName'].invalid">
+          <div *ngIf="form.controls['LastName'].errors?.['required']" class="error">Полето е задължително!</div>
+        </div>
+
+        <div class="form-group" *ngIf="currentRole=='doctor'||
+                    currentRole=='patient'||
+                    currentRole=='pharmacist'">
+          <input type="text" name="Egn" id="personalId" placeholder="ЕГН" #inputpersonalId="ngModel" required
+          minlength="10" pattern="[0-9]+"  ngModel>
+        </div>
+        <div *ngIf="form.controls['Egn']?.touched && form.controls['Egn'].invalid">
+          <div *ngIf="form.controls['Egn'].errors?.['required']" class="error">Моля, въведете ЕГН</div>
+          <div *ngIf="form.controls['Egn'].errors?.['minlength']" class="error">Невалидно ЕГН</div>
+          <div *ngIf="form.controls['Egn'].errors?.['pattern']" class="error">Mоля, въведете цифри</div>
         </div>
 
         <div class="form-group" *ngIf="currentRole=='pharmacy'||
                     currentRole=='pharmacist'">
-          <input type="text" name="PharmacyName" id="PharmacyName" placeholder="PharmacyName"
-            #inputPharmacyName="ngModel" required ngModel="Цар Иван">
+          <input type="text" name="PharmacyName" id="PharmacyName" placeholder="Болница"
+            #inputPharmacyName="ngModel" required ngModel>
         </div>
         <div *ngIf="form.controls['PharmacyName']?.touched && form.controls['PharmacyName'].invalid">
-          <div *ngIf="form.controls['PharmacyName'].errors?.['required']" class="error">Pharmacy name is required.</div>
+          <div *ngIf="form.controls['PharmacyName'].errors?.['required']" class="error">Полето е задължително.</div>
         </div>
 
         <div class="form-group" *ngIf="currentRole=='doctor'||
                     currentRole=='pharmacist'">
-          <input type="number" name="UinNumber" id="uinNumber" placeholder="1234567890" #inputuinNumber="ngModel"
-            required ngModel="7898777854">
+          <input type="text" name="UinNumber" id="uinNumber" placeholder="1234567890" #inputuinNumber="ngModel"
+            required minlength="10" pattern="[0-9]+"  ngModel>
         </div>
-        <div *ngIf="form.controls['uinNumber']?.touched && form.controls['uinNumber'].invalid">
-          <div *ngIf="form.controls['uinNumber'].errors?.['required']" class="error">Identity Number is required.</div>
+        <div *ngIf="form.controls['UinNumber']?.touched && form.controls['UinNumber'].invalid">
+          <div *ngIf="form.controls['UinNumber'].errors?.['required']" class="error">Полето е задължителено!</div>
+          <div *ngIf="form.controls['UinNumber'].errors?.['minlength']" class="error">Моля, въведете <br> валиден номер! 10 символа</div>
+          <div *ngIf="form.controls['UinNumber'].errors?.['pattern']" class="error">Моля, въведете <br> валиден номер!</div>
         </div>
 
         <div class="form-group" *ngIf="currentRole=='doctor'">
-          <input type="text" name="HospitalName" id="hospitalName" placeholder="Hospital name..."
-            #inputhospitalName="ngModel" required ngModel="Цар Борис 3">
+          <input type="text" name="HospitalName" id="hospitalName" placeholder="Болница"
+            #inputhospitalName="ngModel" required ngModel>
         </div>
-        <div *ngIf="form.controls['hospitalName']?.touched && form.controls['hospitalName'].invalid">
-          <div *ngIf="form.controls['hospitalName'].errors?.['required']" class="error">Hospital name is required.</div>
-        </div>
-
-        <div class="form-group">
-          <input type="text" name="PhoneNumber" id="phoneNumber" placeholder="Phone Number..."
-            #inputphoneNumber="ngModel" required ngModel="0892794851">
-        </div>
-        <div *ngIf="form.controls['phoneNumber']?.touched && form.controls['phoneNumber'].invalid">
-          <div *ngIf="form.controls['phoneNumber'].errors?.['required']" class="error">Phone Number is required.</div>
+        <div *ngIf="form.controls['HospitalName']?.touched && form.controls['HospitalName'].invalid">
+          <div *ngIf="form.controls['HospitalName'].errors?.['required']" class="error">Мол,я въведете болница</div>
         </div>
 
         <div class="form-group">
-          <input type="password" name="Password" id="password" placeholder="Password" #inputpassword="ngModel" required
-            ngModel="Health1234@" minlength="8">
+          <input type="text" name="PhoneNumber" id="phoneNumber" placeholder="Мобилен телефон"
+            #inputphoneNumber="ngModel" required ngModel>
         </div>
-        <div *ngIf="form.controls['password']?.touched && form.controls['password'].invalid">
-          <div *ngIf="form.controls['password'].errors?.['required']" class="error">Password is required.</div>
-          <div *ngIf="form.controls['password'].errors?.['minlength']" class="error">Password is too short.</div>
+        <div *ngIf="form.controls['PhoneNumber']?.touched && form.controls['PhoneNumber'].invalid">
+          <div *ngIf="form.controls['PhoneNumber'].errors?.['required']" class="error">Полето е задължителено!</div>
         </div>
 
         <div class="form-group">
-          <input type="password" name="ConfirmPassword" id="rePassword" placeholder="Repeat Password"
-            #inputrePassword="ngModel" required ngModel="Health1234@" minlength="8">
+          <input type="password" name="Password" id="password" placeholder="Парола" #inputpassword="ngModel" required
+            ngModel minlength="6">
         </div>
+        <div *ngIf="form.controls['Password']?.touched && form.controls['Password'].invalid">
+          <div *ngIf="form.controls['Password'].errors?.['required']" class="error">Въведете парола</div>
+          <div *ngIf="form.controls['Password'].errors?.['minlength']" class="error">Паролата е прекалено <br> къса.</div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" name="ConfirmPassword" id="rePassword" placeholder="Потвърдете парола"
+            #inputrePassword="ngModel" required ngModel minlength="6">
+        </div>
+        <!-- {{form.controls['ConfirmPassword'].errors| json}} -->
         <div class="error" *ngIf="form.errors?.['passwordMatch']">
           Passwords do not match.
         </div>
-        <div *ngIf="form.controls['rePassword']?.touched && form.controls['rePassword'].invalid">
-          <div *ngIf="form.controls['rePassword'].errors?.['required']" class="error">Password is required.</div>
-          <div *ngIf="form.controls['rePassword'].errors?.['minlength']" class="error">Password is too short.</div>
+        <div *ngIf="form.controls['ConfirmPassword']?.touched && form.controls['ConfirmPassword'].invalid">
+          <div *ngIf="form.controls['ConfirmPassword'].errors?.['required']" class="error">Потвърдете паролата</div>
+          <div *ngIf="form.controls['ConfirmPassword'].errors?.['minlength']" class="error">Паролата е прекалено <br> къса</div>
         </div>
 
 
         <div class="form-group upload" *ngIf="currentRole=='doctor' || currentRole=='patient'">
+          <div style="color:white">Снимка</div>
           <img src="../../../../assets/images/profile.png" width="60" height="60" alt="">
           <div class="round">
             <span>+
-
               <input type="file" name="ProfilePicture" class="image" id="image" placeholder="Снимка" #inputimage="ngModel" ngModel
               (change)="handleFileInput($event)">
             </span>
@@ -125,9 +130,9 @@
       </div>
 
       <div class="form-group bottons">
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">Регистрация</button>
         <div class="register">
-          <p>Already have account? <a routerLink="/doctor/login">Login</a></p>
+          <p>Вече сте регистринани ? <a routerLink="/doctor/login">Вход</a></p>
         </div>
       </div>
     </form>
