@@ -14,6 +14,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -31,6 +32,7 @@ import { ChatComponent } from './components/chat/chat.component';
     HeaderComponent,
     LoaderComponent,
     ChatComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

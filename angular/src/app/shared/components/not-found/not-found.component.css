@@ -1,0 +1,18 @@
+body {
+    background-image: url('../../../../assets/images/page-404-with-a-nurse-or-doctor-web-error-vector-22999924.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%
+  }
+  h1 {
+    color: #00A0C2;
+    margin: 1em 3em;
+
+  }
+  body a {
+    margin: 1em 3em;
+    border: 2px solid #00A0C2;
+    padding: 1em;
+    font-size: 1.3em;
+    color: #00A0C2;
+    border-radius: 0.5em;
+  }

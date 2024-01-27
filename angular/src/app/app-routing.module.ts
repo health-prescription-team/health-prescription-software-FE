@@ -14,6 +14,7 @@ import { DetailsComponent } from './shared/components/details/details.component'
 import { CatalogMedicamentsComponent } from './shared/components/catalog-medicaments/catalog-medicaments.component';
 import {ChatComponent} from "./shared/components/chat/chat.component";
 import { AuthGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -160,6 +161,10 @@ const routes: Routes = [
     component: CatalogMedicamentsComponent,
     canActivate:[AuthGuard]
   },
+  {
+    path:"**",
+    component:NotFoundComponent
+  }
 ];
 
 @NgModule({
