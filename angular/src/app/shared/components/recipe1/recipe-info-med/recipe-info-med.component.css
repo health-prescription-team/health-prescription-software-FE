@@ -35,6 +35,7 @@
 #additionalInfoContainer {
   text-align: center;
   margin-top: 25px;
+  color: rgba(69, 143, 254, 1);
 }
 #additionalInfoHeading {
   margin: 10px;

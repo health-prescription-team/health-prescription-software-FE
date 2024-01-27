@@ -241,6 +241,7 @@ details[open] {
 } */
 .current-medicine h4 {
   text-align: center;
+  color: rgba(69, 143, 254, 1)
   /* width: 80%; */
 }
 
