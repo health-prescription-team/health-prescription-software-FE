@@ -13,6 +13,7 @@ import { AddMedicineComponent } from './pharmacy/add-medicine/add-medicine.compo
 import { DetailsComponent } from './shared/components/details/details.component';
 import { CatalogMedicamentsComponent } from './shared/components/catalog-medicaments/catalog-medicaments.component';
 import {ChatComponent} from "./shared/components/chat/chat.component";
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,10 +30,13 @@ const routes: Routes = [
   {
     path: 'recipeDetails/:id',
     component: RecipeComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'chat/:egn',
     component: ChatComponent,
+    canActivate:[AuthGuard]
+
   },
   {
     //doctor
@@ -43,6 +47,7 @@ const routes: Routes = [
         //doctor/login
         path: 'login',
         component: LoginComponent,
+
       },
       {
         //doctor register
@@ -73,6 +78,8 @@ const routes: Routes = [
         path: 'profile/:id',
         pathMatch: 'full',
         component: ProfileComponent,
+        canActivate:[AuthGuard]
+
       },
     ],
   },
@@ -97,6 +104,8 @@ const routes: Routes = [
         path: 'search',
         pathMatch: 'full',
         component: SearchComponent,
+        canActivate:[AuthGuard]
+
       },
     ],
   },
@@ -106,12 +115,16 @@ const routes: Routes = [
     path: 'doctor/recipe/new',
     pathMatch: 'full',
     component: RecipeComponent,
+    canActivate:[AuthGuard]
+
   },
 
   {
     //read single recipe
     path: 'recipe/:id',
     component: RecipeComponent,
+    canActivate:[AuthGuard]
+
   },
   {
     //pharmacy/login
@@ -124,6 +137,8 @@ const routes: Routes = [
     path: 'pharmacy/add-medicine',
     pathMatch: 'full',
     component: AddMedicineComponent,
+    canActivate:[AuthGuard]
+
   },
   {
     //pharmacy/register
@@ -136,11 +151,14 @@ const routes: Routes = [
     path: 'details/:id',
     pathMatch: 'full',
     component: DetailsComponent,
+    canActivate:[AuthGuard]
+
   },
   {
     path: 'catalog',
     pathMatch: 'full',
     component: CatalogMedicamentsComponent,
+    canActivate:[AuthGuard]
   },
 ];
 

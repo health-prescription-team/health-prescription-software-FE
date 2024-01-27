@@ -13,7 +13,7 @@
           <input type="text" name="Email" id="Email" placeholder="Email" #inputEmail="ngModel" required ngModel>
         </div>
         <div *ngIf="form.controls['Email']?.touched && form.controls['Email'].invalid">
-          <div *ngIf="form.controls['Email'].errors?.['required']" class="error">Email is required.</div>
+          <div *ngIf="form.controls['Email'].errors?.['required']" class="error">Полето е задължително</div>
         </div>
 
         <div class="form-group" *ngIf="currentRole=='doctor'||
