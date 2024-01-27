@@ -310,8 +310,11 @@ body {
 	 box-sizing: border-box;
 }
  .content {
-	 position: relative;
-	 animation: animatop 0.9s cubic-bezier(0.425, 1.14, 0.47, 1.125) forwards;
+	 position: sticky;
+   margin: 1em auto;
+   /* border: 3px solid rgb(185, 185, 185); */
+   border-radius: 0.4em;
+	 /* animation: animatop 0.9s cubic-bezier(0.425, 1.14, 0.47, 1.125) forwards; */
   }
   .card {
     /* width: 500px; */
