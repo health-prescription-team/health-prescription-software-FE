@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {DynamicSearchMedicament} from "../interfaces";
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class RecipeService {
   }
 
   getMedicamentsForSearch() {
-    return this.http.get('API/Medicine/DynamicSearch');
+    return this.http.get<{medicaments:DynamicSearchMedicament[]}>('API/Medicine/DynamicSearch');
   }
 
   getRecipe(id: string) {

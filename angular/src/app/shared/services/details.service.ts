@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { medicineEndpoint } from '../constants';
 import { CacheService } from './cache.service';
+import {MedicamentCatalogDetails} from "../interfaces";
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class DetailsService {
   ) {}
 
   getMedicine(id: string) {
-    return this.HttpClient.get(medicineEndpoint + `/${id}`);
+    return this.HttpClient.get<MedicamentCatalogDetails>(medicineEndpoint + `/${id}`);
   }
   deleteMedicament(id: string) {
     const index = this.CacheService.allMedicinesAdded.findIndex(

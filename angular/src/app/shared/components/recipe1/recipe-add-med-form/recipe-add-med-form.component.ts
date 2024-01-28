@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { CatalogService } from 'src/app/shared/services/catalog.service';
 import { RecipeService } from 'src/app/shared/services/recipe.service';
+import {CurrentMedicine, DynamicSearchMedicament} from "../../../interfaces";
 
 @Component({
   selector: 'app-recipe-add-med-form',
@@ -35,7 +36,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   @Input('isEditRecipe') isEditRecipe!: boolean;
   @Input('role') role!: string;
 
-  currentmedicine: any = '';
+  currentmedicine!: CurrentMedicine ;
 
   showDropdown: boolean = true;
 
@@ -80,7 +81,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
   filterResults(): void {
     if (this.CacheService.searchTerm) {
       this.CacheService.filteredResults = this.CacheService.results.filter(
-        (res: any) =>
+        (res:DynamicSearchMedicament) =>
           res.name &&
           res.name.toLowerCase().startsWith(this.CacheService.searchTerm?.toLowerCase())
       );
@@ -92,7 +93,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     }, 0);
   }
 
-  selectOption(option: any): void {
+  selectOption(option: DynamicSearchMedicament): void {
     this.isDropdownError = false;
     this.CacheService.searchTerm = option.name;
     this.showDropdown = false;
@@ -121,7 +122,7 @@ export class RecipeAddMedFormComponent implements AfterViewInit {
     // }
 
     return this.recipeService.getMedicamentsForSearch().subscribe(
-      (res: any) => {
+      (res:{medicaments:DynamicSearchMedicament[]}) => {
         this.CacheService.results = res.medicaments;
         // this.filteredResults = this.results
         // this.showDropdown = true

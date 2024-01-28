@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent{
   title = 'angular';
 
-  isAuth:any = false;
- 
+  isAuth:boolean = false;
+
   get Token (){
     const token =  localStorage.getItem('token')
     if(token){
       return true
     } else {
       return false
-    } 
+    }
   }
-  
+
 }

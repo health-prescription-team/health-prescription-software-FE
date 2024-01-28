@@ -2,6 +2,8 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CatalogService } from '../../services/catalog.service';
 import { LoaderService } from '../../services/loader.service';
 import { ToastrService } from 'ngx-toastr';
+import {Medicine} from "../../interfaces.js"
+
 
 @Component({
   selector: 'app-catalog-medicaments',
@@ -9,13 +11,15 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./catalog-medicaments.component.css'],
 })
 
+
 export class CatalogMedicamentsComponent implements OnInit {
   entriesPerPage: number = 10;
   searchTerm: string = '';
   pageNumber: number = 1;
   maxPage: number =0;
   medicinesCount: number =0;
-  allMedicaments: any;
+  allMedicaments: Medicine[] =[];
+
 
   constructor(
     private CatalogService: CatalogService,
@@ -38,11 +42,11 @@ export class CatalogMedicamentsComponent implements OnInit {
       this.pageNumber,
       this.entriesPerPage
     ).subscribe(
-      (res: any) => {
+      (res ) => {
         this.allMedicaments = res.medicines;
         this.medicinesCount = res.medicinesCount;
         this.maxPage = Math.ceil(this.medicinesCount/this.entriesPerPage);
-      },
+      } ,
       (error) => {
         this.toastr.error('Неуспешно търсене! Моля, опитайте отново!')
       }

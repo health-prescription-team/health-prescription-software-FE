@@ -9,10 +9,10 @@ import * as signalR from '@microsoft/signalr';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  constructor(
-    private http:HttpClient,
-              private router:Router,) {}
-  prescriptions:any;
+          constructor(
+              private http:HttpClient,
+              private router:Router,
+          ) {}
 
   ngOnInit(){
 

@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, Input, Renderer2} from '@angular/c
 import { UserService } from 'src/app/shared/services/user.service';
 import {DetailsService} from "../../../services/details.service";
 import {CacheService} from "../../../services/cache.service";
+import {CurrentMedicine, PrescriptionDetails, PrescriptionMedicament} from "../../../interfaces";
 
 @Component({
   selector: 'app-recipe-info-med',
@@ -10,9 +11,9 @@ import {CacheService} from "../../../services/cache.service";
 })
 export class RecipeInfoMedComponent implements AfterViewInit{
 
-@Input('med') currentRecord:any;
-@Input('index') index:any;
-@Input('currentRecipe') currentRecipe:any;
+@Input('med') currentRecord!:PrescriptionMedicament;
+@Input('index') index!:number;
+@Input('currentRecipe') currentRecipe!:PrescriptionDetails;
 
 
   constructor(
@@ -24,7 +25,7 @@ export class RecipeInfoMedComponent implements AfterViewInit{
   private cacheService:CacheService
   ) {
   }
-  medicine:any
+  medicine!:CurrentMedicine
   ngAfterViewInit() {
     this.setStyles()
   }
@@ -37,11 +38,11 @@ export class RecipeInfoMedComponent implements AfterViewInit{
     this.Renderer2.setStyle(this.ElementRef.nativeElement,"justify-content","center")
   }
   editCurrentMedicament(){
-    
+
     console.log(this.currentRecord);
     this.CacheService.showAddMedicineComponent();
     this.CacheService.nestedFormValues = {...this.CacheService.allMedicinesAdded[this.index]}
-    
+
 
 
   }

@@ -6,6 +6,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DetailsService } from 'src/app/shared/services/details.service';
 import { ToastrService } from 'ngx-toastr';
+import {MedicamentCatalogDetails} from "../../shared/interfaces";
 @Component({
   selector: 'app-add-medicine',
   templateUrl: './add-medicine.component.html',
@@ -13,7 +14,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddMedicineComponent implements OnInit {
   idMedicament: string = '';
-  currentMedicine: any = {};
+  // @ts-ignore
+  currentMedicine: MedicamentCatalogDetails ;
   isEditMode: boolean = false;
   isNewImage: boolean = false;
   form!: FormGroup;
@@ -52,6 +54,7 @@ export class AddMedicineComponent implements OnInit {
     if (this.isEditMode) {
       this.medicineDetails(this.idMedicament);
     }
+
     if (this.isEditMode && this.currentMedicine.imageFileName) {
       this.imageBinary = 'existing_image_filename.jpg';
     }
@@ -118,7 +121,7 @@ export class AddMedicineComponent implements OnInit {
       );
     } else {
       this.pharmacyService.addMeidicine(payload).subscribe(
-         (res: any) => {
+         () => {
            this.redirectToMedicineDetails(this.idMedicament)
           this.toastr.success('Добавено е ново лекарство!');
         },
@@ -132,7 +135,7 @@ export class AddMedicineComponent implements OnInit {
 
   medicineDetails(productId: string) {
     this.detailsService.getMedicine(productId).subscribe(
-      (res: any) => {
+      (res:MedicamentCatalogDetails) => {
         this.currentMedicine = res;
         // console.log(this.currentMedicine);
       },

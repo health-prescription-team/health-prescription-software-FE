@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {API_URL, loginEndpoint, prescriptionEndpoint, registerEndpoint} from '../constants';
 import  * as jwt  from 'jsonwebtoken';
 import {jwtDecode} from 'jwt-decode';
+import {Profile} from "../interfaces";
 
 
 @Injectable({
@@ -50,8 +51,8 @@ export class UserService {
     return decodedToken
   }
 
-  getProfile(personalId:any){
-    return this.http.get(prescriptionEndpoint+'?patientEgn='+personalId)
+  getProfile(personalId:string){
+    return this.http.get<Profile>(prescriptionEndpoint+'?patientEgn='+personalId)
     //Prescription?patientEgn=333333333
   }
 }

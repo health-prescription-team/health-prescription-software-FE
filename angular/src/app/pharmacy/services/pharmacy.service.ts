@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { medicineEndpoint } from 'src/app/shared/constants'
+import {Medicine} from "../../shared/interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class PharmacyService {
   addMeidicine(data:any) {
     return this.http.post(medicineEndpoint,data)
   }
-  editMedicine(id:string,data:any){
+  editMedicine(id:string,data:FormData){
    return this.http.put(`${medicineEndpoint}/${id}`,data)
   }
 

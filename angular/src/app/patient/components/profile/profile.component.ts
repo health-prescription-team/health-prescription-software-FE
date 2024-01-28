@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import {Profile} from "../../../shared/interfaces";
 
 @Component({
   selector: 'app-profile',
@@ -55,7 +56,7 @@ export class ProfileComponent implements OnInit {
 
   getProfile() {
     this.userService.getProfile(this.egn).subscribe(
-      (res: any) => {
+      (res:Profile) => {
         this.noUser = false;
         this.prescriptions = res.patientPrescriptions;
         console.log(res.patientPrescriptions);

@@ -2,6 +2,8 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import * as signalR from "@microsoft/signalr";
 import {ChatService} from "../../services/chat.service";
+import {ChatMessage, Me} from "../../interfaces";
+
 
 @Component({
   selector: 'app-chat',
@@ -17,13 +19,13 @@ export class ChatComponent implements OnInit{
 
   @ViewChild("messagesWrapper") messagesWrapper!:ElementRef
 
-  me:any = {id: "7a83ebc1-fefd-4173-836e-f03db09cd1ee"}
+  me:Me = {id: "7a83ebc1-fefd-4173-836e-f03db09cd1ee"}
   egn:string = ""
   connection:any = undefined
 
   messageText:string=""
 
-  chatMessages:any = [
+  chatMessages:ChatMessage[] = [
 
   ]
   ngOnInit() {
@@ -38,7 +40,7 @@ export class ChatComponent implements OnInit{
 
   fetchChat(){
     this.ChatService.fetchChat(this.egn).subscribe(
-      (res:any)=>{
+      (res:ChatMessage[])=>{
         this.chatMessages = res.reverse()
         console.log(res)
     })
