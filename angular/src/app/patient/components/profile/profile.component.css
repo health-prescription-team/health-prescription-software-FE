@@ -201,3 +201,9 @@
     color: white;
 cursor: auto;
   }
+
+  .no-recipes p{
+    text-align: center;
+    font-size: 19px;
+    padding-top: 30px;
+  }

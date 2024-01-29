@@ -1,12 +1,12 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
 <section style="color: #fff;">
   <nav class="stroke">
-    
+
     <!-- <h2>Здравейте, {{greetings[role]}} {{name}}</h2>   -->
-    
+
     <div class="content">
       <div class="card">
-          <div class="firstinfo"><img src="https://static-00.iconduck.com/assets.00/user-icon-2048x2048-ihoxz4vq.png" />
+          <div class="firstinfo"><img [src]="'data:image/png;base64,'+ profileImg"/>
               <div class="profileinfo">
                   <h3 class="header-name"> {{greetings[role]}} {{name}} </h3>
                   <h3>Егн: {{id}}</h3>

@@ -42,7 +42,7 @@
                     </div>
                 </div>
               <div class="field startChatBtnField">
-                  <button (click)="navigateToChat()" class="startChatBtn">Започни чат</button>
+                  <button *ngIf="isPatient" (click)="navigateToChat()" class="startChatBtn">Започни чат</button>
               </div>
 
                 <div class="field diagnosis-field">

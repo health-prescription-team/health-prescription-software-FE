@@ -318,9 +318,9 @@ body {
   }
   .card {
     /* width: 500px; */
-     
+
     /* aspect-ratio: 1/1; */
-	 
+
 	 padding: 20px;
 	 border-radius: 3px;
 	 background-color: white;
@@ -331,7 +331,7 @@ body {
  /* .card:after {
 	 content: '';
 	 display: block;
-	 
+
 	 background: cadetblue;
 	 position: absolute;
 	 animation: rotatemagic 0.75s cubic-bezier(0.425, 1.04, 0.47, 1.105) 1s both;
@@ -365,6 +365,7 @@ body {
 	 border-radius: 50%;
 	 width: 120px;
 	 height: 120px;
+   box-shadow: 1px 1px 20px #00968861;
 }
  .firstinfo .profileinfo {
 	 padding: 0px 20px;
@@ -414,4 +415,3 @@ body {
 		 left: -78px;
 	}
 }
- 

@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   name: string = '';
   role: string = '';
   id:string = '';
+  profileImg! : string;
   // email:string = '';
 
   ngOnInit(): void {
@@ -28,10 +29,11 @@ export class HeaderComponent implements OnInit {
     this.role = allData['role'];
     this.id=allData['EGN']
     // console.log(allData);
-    
+
     if(!this.name){
       this.name = allData['email'];
     }
+    this.gpImage();
   }
 
   logout() {
@@ -43,5 +45,15 @@ export class HeaderComponent implements OnInit {
     'Patient': 'г-н/г-жо',
     'Pharmacy': 'г-н/г-жо',
     'Pharmacist': 'г-н/г-жо'
+  }
+
+  gpImage(){
+    this.userService.getRecipient(this.id).subscribe((res:any)=>{
+
+      this.profileImg=res.userImage;
+      //"https://static-00.iconduck.com/assets.00/user-icon-2048x2048-ihoxz4vq.png"
+    },(err)=>{
+      console.log(err);
+    })
   }
 }

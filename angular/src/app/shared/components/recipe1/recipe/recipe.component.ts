@@ -35,6 +35,7 @@ export class RecipeComponent implements OnInit, OnChanges {
   patientEgn: string = '';
   onlyRead:boolean = false;
   gpName:string = '';
+ isPatient!:boolean;
 
   constructor(
     private service: UserService,
@@ -64,12 +65,11 @@ export class RecipeComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
-    this.service.jwtdecrypt(token!);
+    const decrToken = this.service.jwtdecrypt(token!);
     // console.log(this.formattedDate);
-
+    this.getRole(decrToken);
     if (this.recipeId) {
       this.isEditRecipe = true;
-        console.log('read recipe');
       this.recipeService.getRecipe(this.recipeId).subscribe((res: any) => {
       this.gpName =  res.gpFullName
         if (Object.values(res).some((x) => x === '')) {
@@ -250,7 +250,11 @@ navigateToChat(){
   this.router.navigate([`/chat/${this.currentRecipe.gpEgn}`]);
 }
 
-
+getRole(decrToken:any){
+if(decrToken.role ==='Patient'){
+  this.isPatient=true;
+}
+}
 
 
 
