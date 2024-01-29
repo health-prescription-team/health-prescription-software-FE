@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import * as signalR from "@microsoft/signalr";
 import {ChatService} from "../../services/chat.service";
 import {ChatMessage, Me} from "../../interfaces";
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -14,16 +15,20 @@ export class ChatComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private ChatService: ChatService,
+    private userService:UserService
   ) {
   }
 
   @ViewChild("messagesWrapper") messagesWrapper!:ElementRef
-
-  me:Me = {id: "7a83ebc1-fefd-4173-836e-f03db09cd1ee"}
+  idFromToken!:string ;
+  me:Me = {id: this.idFromToken}
   egn:string = ""
   connection:any = undefined
 
-  messageText:string=""
+  messageText:string="";
+
+  imageRecipient!:string;
+  nameRecipient!: string;
 
   chatMessages:ChatMessage[] = [
 
@@ -35,6 +40,13 @@ export class ChatComponent implements OnInit{
       this.startChatBtnClick(this.egn,localStorage.getItem("token")!)
       this.fetchChat()
     });
+    const token= localStorage.getItem('token');
+    this.idFromToken = this.userService.jwtdecrypt(token!).nameid;
+    this.me = {id: this.idFromToken};
+    setTimeout(() => {
+      this.scrollToBottom();
+    }, 500);
+    this.recipient();
   }
 
 
@@ -73,7 +85,11 @@ export class ChatComponent implements OnInit{
 
     const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}`;
 
-    this.chatMessages.push({ message: messageElement.value, messageTime: formattedDateTime, authorId: this.me.id, isRead: true})
+    this.chatMessages.push({
+      message: messageElement.value, messageTime: formattedDateTime, authorId: this.me.id, isRead: true,
+      id: '',
+      recipientId: ''
+    })
     messageElement.value =""
     setTimeout(()=>{
       this.scrollToBottom()
@@ -83,5 +99,14 @@ export class ChatComponent implements OnInit{
        this.messagesWrapper.nativeElement.scrollTop = this.messagesWrapper.nativeElement.scrollHeight;
     }
 
+    recipient(){
+      this.userService.getRecipient(this.egn).subscribe((res:any)=>{
+        console.log(res);
+        this.imageRecipient=res.userImage;
+        this.nameRecipient=res.fullName;
+      },(err)=>{
+        console.log(err);
+      })
+    }
 
 }

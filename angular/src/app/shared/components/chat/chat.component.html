@@ -1,10 +1,13 @@
 <section class="chatWrapper">
   <div class="chatC">
+    <div class="recipientName">
+      <h3>{{nameRecipient}}</h3>
+    </div>
     <div #messagesWrapper class="messagesWrapper">
       <div class="messagesC">
         <div *ngFor="let message of chatMessages" [attr.isMe]="message.authorId==me.id" class="message">
-          <div *ngIf="message.authorId==me.id" class="userPic">
-
+          <div *ngIf="message.authorId!==me.id" class="userPic">
+            <img [src]="'data:image/png;base64,'+ imageRecipient">
           </div>
           <div class="textAndDateC">
             <div class="messageText">
