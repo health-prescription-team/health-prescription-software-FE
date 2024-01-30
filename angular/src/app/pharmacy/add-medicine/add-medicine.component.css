@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    background-image: url('../../../assets/images/add=pharmacy-background.avif');
+}
 form {
     border: 2px solid rgb(152, 151, 151);
     /* text-align: center; */
@@ -12,7 +15,7 @@ form {
 }
 .container {
     /* width: 500px; */
-    height: 100vh;
+    height: 90vh;
     /* border: 1px solid red; */
     /* margin: 0 auto; */
     display: flex;
@@ -20,9 +23,8 @@ form {
     align-items: center;
     justify-content:center;
     /* margin-top:8em; */
-    background-image: url('../../../assets/images/add-medicine-bck.jpg');
-    background-size: auto 100vh;
-    background-repeat: no-repeat;
+    /* margin: 0 auto; */
+
 
 }
 .form-group {
@@ -43,7 +45,7 @@ input {
 .title {
     font-size: 2em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #005BC7
+    color: rgb(253, 253, 253)
 }
 textarea {
     font-size: 16px;
@@ -68,4 +70,38 @@ button {
 }
 button:hover {
     background-color: #bad6f8;
+}
+.error {
+    margin-right: 5em ;
+    color: red;
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    display:block;
+    /* text-align: center; */
+    margin-right: 5em;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  input[type="file"] {
+    /* position:sticky */
+    color: white;
+    /* display: none; */
+  }
+
+
+@media (max-width:400px) {
+    body{
+        font-size: 0.8em;
+    }
+    .title {
+        color:rgb(18, 139, 97);
+    }
 }

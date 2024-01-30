@@ -65,13 +65,13 @@ export class AddMedicineComponent implements OnInit {
 
   getFormData(formValue: any) {
     const formData = new FormData();
-
+    
     const array = Object.entries(formValue);
     for (const arrayElement of array) {
       // @ts-ignore
       formData.append(arrayElement[0], arrayElement[1]);
     }
-
+    
     return formData;
   }
 
@@ -94,13 +94,17 @@ export class AddMedicineComponent implements OnInit {
   }
 
   addMedicine(form: NgForm) {
+    console.log(form.value);
+    
     const token = localStorage.getItem('token');
     const data = this.userService.jwtdecrypt(token!);
 
-    if (form.invalid) return;
+    if(!this.isEditMode){
+      if (form.invalid) return;
+    }
     const payload = this.getFormData(form.value);
     // payload.forEach((el) => console.log(el));
-
+    
     payload.delete('MedicineImage');
 
     if (this.isNewImage) {
@@ -108,7 +112,8 @@ export class AddMedicineComponent implements OnInit {
     }
 
     payload.append('MedicineCompany', data.unique_name);
-
+    console.log(this.isEditMode);
+    
     if (this.isEditMode) {
       this.pharmacyService.editMedicine(this.idMedicament, payload).subscribe(
         (res) => {
@@ -121,9 +126,13 @@ export class AddMedicineComponent implements OnInit {
       );
     } else {
       this.pharmacyService.addMeidicine(payload).subscribe(
-         () => {
+         (res:any) => {
+          console.log(this.idMedicament=res.medicineId);
+          
            this.redirectToMedicineDetails(this.idMedicament)
           this.toastr.success('Добавено е ново лекарство!');
+          console.log('here2');
+
         },
         (err) => {
           this.toastr.error('Неуспешно добавяне на лекарство. Моля, опитайте отново!');

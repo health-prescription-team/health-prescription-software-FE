@@ -1,82 +1,72 @@
-
-
+<body>
 <div class="container">
     <p class="title">Добре дошли</p>
     <form #form="ngForm" (ngSubmit)="addMedicine(form)">
         <div class="form-group">
-            <input
-            type="text"
-            name="Name"
-            id="name"
-            placeholder="Име на лекарство"
-            #inputName="ngModel"
-            required
-            ngModel
-            [(ngModel)]="currentMedicine.name"
-            >
-            <ng-container *ngIf="inputName.invalid && (inputName.dirty || inputName.touched)">
-                <div class="error-message" *ngIf="inputName?.errors?.['required']">Името е задължително</div>
-                <div class="error-message" *ngIf="inputName?.errors?.['minlength']">Името трябва да е поне 3 символа</div>
+            <input type="text" name="Name" id="name" placeholder="Име на лекарство..."
+                *ngIf="isEditMode; else readOnlyInput" [(ngModel)]="currentMedicine.name" required>
+
+            <ng-template #readOnlyInput>
+                <input type="text" name="Name" id="name" placeholder="Име на лекарство..." ngModel required>
+            </ng-template>
+
+            <ng-container *ngIf="form.controls['Name']?.touched && form.controls['Name'].invalid">
+                <div *ngIf="form.controls['Name'].errors?.['required']" class="error">Полето е задължително!</div>
             </ng-container>
         </div>
         <div class="form-group">
-             <textarea
-                type="text"
-                name="ingredients"
-                id="ingredients"
-                placeholder="Съставки..."
-                #inputIngredients="ngModel"
-                required
-                ngModel
-                [(ngModel)]="currentMedicine.ingredients"
-            ></textarea>
-            <ng-container *ngIf="inputIngredients.invalid && (inputIngredients.dirty || inputIngredients.touched)">
-                <div class="error-message" *ngIf="inputIngredients?.errors?.['required']">Съставките са задължителни</div>
-                <div class="error-message" *ngIf="inputIngredients?.errors?.['minlength']">Съставките трябва да са поне 3 символа</div>
+            <textarea type="text" name="ingredients" id="ingredients" placeholder="Съставки..."
+                *ngIf="isEditMode; else readOnlytextarea" #inputIngredients="ngModel" required ngModel
+                [(ngModel)]="currentMedicine.ingredients"></textarea>
+            <ng-template #readOnlytextarea>
+                <textarea type="text" name="ingredients" id="ingredients" placeholder="Съставки..." ngModel
+                    required></textarea>
+            </ng-template>
+
+            <ng-container *ngIf="form.controls['ingredients']?.touched && form.controls['ingredients'].invalid">
+                <div *ngIf="form.controls['ingredients'].errors?.['required']" class="error">Полето е задължително!
+                </div>
             </ng-container>
         </div>
+
+
         <div class="form-group">
-            <textarea
-            type="text"
-            name="MedicineDetails"
-            id="description"
-            placeholder="Описание..."
-            #inputDescription="ngModel"
-            required
-            ngModel
-            [(ngModel)]="currentMedicine.medicineDetails"
-            ></textarea>
-            <ng-container *ngIf="inputDescription.invalid && (inputDescription.dirty || inputDescription.touched)">
-                <div class="error-message" *ngIf="inputDescription?.errors?.['required']">Описанието е задължително</div>
-                <div class="error-message" *ngIf="inputDescription?.errors?.['minlength']">Описанието трябва да е поне 3 символа</div>
+            <textarea type="text" name="MedicineDetails" id="description" placeholder="Описание..."
+                #inputDescription="ngModel" *ngIf="isEditMode; else readOnlyDetails" required ngModel
+                [(ngModel)]="currentMedicine.medicineDetails"></textarea>
+            <ng-template #readOnlyDetails>
+                <textarea type="text" name="MedicineDetails" id="description" placeholder="Описание..." ngModel
+                    required></textarea>
+            </ng-template>
+
+            <ng-container *ngIf="form.controls['MedicineDetails']?.touched && form.controls['MedicineDetails'].invalid">
+                <div *ngIf="form.controls['MedicineDetails'].errors?.['required']" class="error">Полето е задължително!
+                </div>
             </ng-container>
+            
         </div>
-        
+
         <div class="form-group">
-            <input
-            type="file"
-            name="MedicineImage"
-            id="image"
-            placeholder="dsadas"
-            #inputImage="ngModel"
-            ngModel
-            (change)="handleFileInput($event)"
-            >
+            <div class="test">
+                <label for="image">Снимка</label>
+                <input type="file" name="MedicineImage" id="image" placeholder="Снимка" #inputImage="ngModel" ngModel
+                (change)="handleFileInput($event)" required>
+            </div>
             <!-- VALIDATORS -->
+            <ng-container *ngIf="form.controls['MedicineImage']?.touched && form.controls['MedicineImage'].invalid">
+                <div *ngIf="form.controls['MedicineImage'].errors?.['required']" class="error">Полето е задължително!
+                </div>
+            </ng-container>
         </div>
         <div class="form-group">
-            <input
-            type="number"
-            name="price"
-            id="price"
-            placeholder="Цена в лева"
-            #inputPrice="ngModel"
-            required
-            ngModel
-            [(ngModel)]="currentMedicine.price"
-            >
-            <ng-container *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)">
-                <div class="error-message" *ngIf="inputPrice?.errors?.['required']">Цената е задължителна</div>
+            <input type="number" name="price" id="price" placeholder="Цена в лева" #inputPrice="ngModel" required
+                ngModel *ngIf="isEditMode; else readOnlyInputPrice" [(ngModel)]="currentMedicine.price">
+            <ng-template #readOnlyInputPrice>
+                <input type="number" name="price" id="price" placeholder="Цена" ngModel required>
+            </ng-template>
+
+            <ng-container *ngIf="form.controls['price']?.touched && form.controls['price'].invalid">
+                <div *ngIf="form.controls['price'].errors?.['required']" class="error">Полето е задължително!</div>
             </ng-container>
         </div>
         <div class="form-group">
@@ -84,3 +74,4 @@
         </div>
     </form>
 </div>
+</body>

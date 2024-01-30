@@ -6,11 +6,18 @@
 
     <div class="content">
       <div class="card">
-          <div class="firstinfo"><img [src]="'data:image/png;base64,'+ profileImg"/>
-              <div class="profileinfo">
-                  <h3 class="header-name"> {{greetings[role]}} {{name}} </h3>
+          <div class="firstinfo">
+            <img *ngIf="role === 'Pharmacy'" src="../../../../assets/images/—Pngtree—pharmacy flat style illustration store_6855692.png" />
+            <img *ngIf="role !== 'Pharmacy'" [src]="'data:image/png;base64,' + profileImg" />
+
+              <div *ngIf="role !== 'Pharmacy'" class="profileinfo">
+                  <h3 class="header-name"> Добре дошли {{greetings[role]}} {{name}} </h3>
                   <h3>Егн: {{id}}</h3>
               </div>
+              <div *ngIf="role == 'Pharmacy'" class="profileinfo">
+                <h3 class="header-name"> Вие сте влезли като: {{name}} </h3>
+                <!-- <h3>Егн: {{id}}</h3> -->
+            </div>
           </div>
       </div>
   </div>
