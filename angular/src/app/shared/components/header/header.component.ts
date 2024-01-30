@@ -33,7 +33,10 @@ export class HeaderComponent implements OnInit {
     if(!this.name){
       this.name = allData['email'];
     }
-    this.gpImage();
+    if(this.role !=='Pharmacy' && this.role !=='Pharmacist'){
+      this.gpImage();
+
+    }
   }
 
   logout() {

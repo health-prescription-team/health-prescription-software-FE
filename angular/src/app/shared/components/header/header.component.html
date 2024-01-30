@@ -8,9 +8,10 @@
       <div class="card">
           <div class="firstinfo">
             <img *ngIf="role === 'Pharmacy'" src="../../../../assets/images/—Pngtree—pharmacy flat style illustration store_6855692.png" />
-            <img *ngIf="role !== 'Pharmacy'" [src]="'data:image/png;base64,' + profileImg" />
+            <img *ngIf="role === 'Pharmacist'" src="../../../../assets/images/pngwing.com.png" />
+            <img *ngIf="role === 'GP' || role === 'Patient'"  [src]="'data:image/png;base64,' + profileImg" />
 
-              <div *ngIf="role !== 'Pharmacy'" class="profileinfo">
+              <div *ngIf="role === 'GP' || role === 'Patient'"  class="profileinfo">
                   <h3 class="header-name"> Добре дошли {{greetings[role]}} {{name}} </h3>
                   <h3>Егн: {{id}}</h3>
               </div>
@@ -18,6 +19,10 @@
                 <h3 class="header-name"> Вие сте влезли като: {{name}} </h3>
                 <!-- <h3>Егн: {{id}}</h3> -->
             </div>
+            <div *ngIf="role == 'Pharmacist'" class="profileinfo">
+              <h3 class="header-name"> Вие сте влезли като Фармацевт: {{name}} </h3>
+              <!-- <h3>Егн: {{id}}</h3> -->
+          </div>
           </div>
       </div>
   </div>
