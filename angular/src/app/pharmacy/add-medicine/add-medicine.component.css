@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background-image: url('../../../assets/images/add=pharmacy-background.avif');
 }
@@ -69,7 +70,7 @@ button {
     border-radius: 0.3em;
 }
 button:hover {
-    background-color: #bad6f8;
+    background-color: #4CAF50;
 }
 .error {
     margin-right: 5em ;

@@ -1,6 +1,8 @@
 <body>
 <div class="container">
-    <p class="title">Добре дошли</p>
+    <p class="title">Добре дошли!</p>
+    <p class="title">Моля, попълнете формата.</p>
+
     <form #form="ngForm" (ngSubmit)="addMedicine(form)">
         <div class="form-group">
             <input type="text" name="Name" id="name" placeholder="Име на лекарство..."
