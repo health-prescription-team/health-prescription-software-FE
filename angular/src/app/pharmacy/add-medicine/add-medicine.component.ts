@@ -15,7 +15,7 @@ import {MedicamentCatalogDetails} from "../../shared/interfaces";
 export class AddMedicineComponent implements OnInit {
   idMedicament: string = '';
   // @ts-ignore
-  currentMedicine: MedicamentCatalogDetails ;
+  currentMedicine: MedicamentCatalogDetails = {};
   isEditMode: boolean = false;
   isNewImage: boolean = false;
   form!: FormGroup;
@@ -28,6 +28,7 @@ export class AddMedicineComponent implements OnInit {
     private fb: FormBuilder,
     private toastr:ToastrService
   ) {
+    
     this.route.queryParams.subscribe((params) => {
       this.idMedicament = params['medId'];
       if (this.idMedicament) {
@@ -53,15 +54,17 @@ export class AddMedicineComponent implements OnInit {
   ngOnInit(): void {
     if (this.isEditMode) {
       this.medicineDetails(this.idMedicament);
+
+    }
+    
+    // if (this.isEditMode && this.currentMedicine.imageFileName) {
+      //   // this.imageBinary = 'existing_image_filename.jpg';
+      // }
+    }
+    redirectToMedicineDetails(id:string){
+      this.Router.navigate(['/details',id])
     }
 
-    if (this.isEditMode && this.currentMedicine.imageFileName) {
-      this.imageBinary = 'existing_image_filename.jpg';
-    }
-  }
-  redirectToMedicineDetails(id:string){
-    this.Router.navigate(['/details',id])
-  }
 
   getFormData(formValue: any) {
     const formData = new FormData();
@@ -146,7 +149,7 @@ export class AddMedicineComponent implements OnInit {
     this.detailsService.getMedicine(productId).subscribe(
       (res:MedicamentCatalogDetails) => {
         this.currentMedicine = res;
-        // console.log(this.currentMedicine);
+        console.log(this.currentMedicine);
       },
       (error) => {
         console.log(error);
