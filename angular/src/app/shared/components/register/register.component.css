@@ -48,7 +48,8 @@ body {
 }
 
 .form-group {
-  margin: 10px 0;
+  /* margin: 10px 0; */
+  margin-top: 10px;
   width: 40%;
   max-height: 100%;
 }
@@ -81,7 +82,7 @@ body {
 
 .upload{
    /* width: 30%; */
-  
+
    max-height: 17%;
    position: relative;
 }
@@ -144,6 +145,7 @@ body {
   min-height: 40px;
 }
 .error {
-  color: red
+  color: red;
+  font-size: 11px;
   /* font-size: 1.2em; */
 }

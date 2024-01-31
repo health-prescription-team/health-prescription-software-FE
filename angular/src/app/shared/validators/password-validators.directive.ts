@@ -13,11 +13,11 @@ import { NG_VALIDATORS, AbstractControl, ValidatorFn, ValidationErrors, Validato
 })
 export class PasswordMatchValidatorDirective {
   validate(control: AbstractControl): ValidationErrors | null {
-    const password = control.get('password');
-    const rePassword = control.get('rePassword');
+    const password = control.get('Password');
+    const rePassword = control.get('ConfirmPassword');
 
     if (password && rePassword && password.value !== rePassword.value) {
-      
+
       return { passwordMatch: true };
     }
 

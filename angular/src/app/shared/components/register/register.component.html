@@ -1,5 +1,5 @@
 <body>
-   
+
 
 <div class="container">
   <div class="bg-img">
@@ -53,14 +53,14 @@
           minlength="10" pattern="[0-9]+"  ngModel>
         </div>
         <div *ngIf="form.controls['Egn']?.touched && form.controls['Egn'].invalid">
-          <div *ngIf="form.controls['Egn'].errors?.['required']" class="error">Моля, въведете ЕГН</div>
+          <div *ngIf="form.controls['Egn'].errors?.['required']" class="error">Въведете ЕГН</div>
           <div *ngIf="form.controls['Egn'].errors?.['minlength']" class="error">Невалидно ЕГН</div>
           <div *ngIf="form.controls['Egn'].errors?.['pattern']" class="error">Mоля, въведете цифри</div>
         </div>
 
         <div class="form-group" *ngIf="currentRole=='pharmacy'||
                     currentRole=='pharmacist'">
-          <input type="text" name="PharmacyName" id="PharmacyName" placeholder="Болница"
+          <input type="text" name="PharmacyName" id="PharmacyName" placeholder="Аптека"
             #inputPharmacyName="ngModel" required ngModel>
         </div>
         <div *ngIf="form.controls['PharmacyName']?.touched && form.controls['PharmacyName'].invalid">
@@ -83,7 +83,7 @@
             #inputhospitalName="ngModel" required ngModel>
         </div>
         <div *ngIf="form.controls['HospitalName']?.touched && form.controls['HospitalName'].invalid">
-          <div *ngIf="form.controls['HospitalName'].errors?.['required']" class="error">Мол,я въведете болница</div>
+          <div *ngIf="form.controls['HospitalName'].errors?.['required']" class="error">Въведете болница</div>
         </div>
 
         <div class="form-group">
@@ -108,8 +108,8 @@
             #inputrePassword="ngModel" required ngModel minlength="6">
         </div>
         <!-- {{form.controls['ConfirmPassword'].errors| json}} -->
-        <div class="error" *ngIf="form.errors?.['passwordMatch']">
-          Passwords do not match.
+        <div class="error" *ngIf="form.controls['ConfirmPassword']?.touched && form.errors?.['passwordMatch']">
+          Паролите не съвпадат
         </div>
         <div *ngIf="form.controls['ConfirmPassword']?.touched && form.controls['ConfirmPassword'].invalid">
           <div *ngIf="form.controls['ConfirmPassword'].errors?.['required']" class="error">Потвърдете паролата</div>
