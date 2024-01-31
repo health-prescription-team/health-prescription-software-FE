@@ -15,6 +15,10 @@ import { CatalogMedicamentsComponent } from './shared/components/catalog-medicam
 import {ChatComponent} from "./shared/components/chat/chat.component";
 import { AuthGuard } from './guards/auth.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { DoctorGuard } from './guards/doctor.guard';
+import { patientGuard } from './guards/patient.guard';
+import { pharmacistGuard } from './guards/pharmacist.guard';
+import { pharmacyGuard } from './guards/pharmacy.guard';
 
 const routes: Routes = [
   {
@@ -31,12 +35,12 @@ const routes: Routes = [
   {
     path: 'recipeDetails/:id',
     component: RecipeComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard,pharmacyGuard]
   },
   {
     path: 'chat/:egn',
     component: ChatComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard,pharmacistGuard,pharmacyGuard]
 
   },
   {
@@ -76,10 +80,10 @@ const routes: Routes = [
       },
       {
         //patient profile
-        path: 'profile/:id',
+        path: 'profile/:id', 
         pathMatch: 'full',
         component: ProfileComponent,
-        canActivate:[AuthGuard]
+        canActivate:[AuthGuard,pharmacyGuard]
 
       },
     ],
@@ -105,7 +109,7 @@ const routes: Routes = [
         path: 'search',
         pathMatch: 'full',
         component: SearchComponent,
-        canActivate:[AuthGuard]
+        canActivate:[AuthGuard,patientGuard,pharmacyGuard]
 
       },
     ],
@@ -116,7 +120,7 @@ const routes: Routes = [
     path: 'doctor/recipe/new',
     pathMatch: 'full',
     component: RecipeComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard,pharmacistGuard,patientGuard,pharmacyGuard]
 
   },
 
@@ -124,7 +128,7 @@ const routes: Routes = [
     //read single recipe
     path: 'recipe/:id',
     component: RecipeComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard,pharmacyGuard]
 
   },
   {
@@ -138,7 +142,7 @@ const routes: Routes = [
     path: 'pharmacy/add-medicine',
     pathMatch: 'full',
     component: AddMedicineComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard,DoctorGuard,patientGuard,pharmacistGuard]
 
   },
   {
