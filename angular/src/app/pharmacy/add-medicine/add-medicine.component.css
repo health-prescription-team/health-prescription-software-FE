@@ -75,11 +75,13 @@ button:hover {
 .error {
     margin-right: 5em ;
     color: red;
+    margin-top: 1em;
 }
 
 .test {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 label {
     display:block;
@@ -89,8 +91,13 @@ label {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+    position: absolute;
+    left: -87px;
+    top: -7px;
+    flex: 1;
+    width: 136px;
   }
-  
+
   input[type="file"] {
     /* position:sticky */
     color: white;
