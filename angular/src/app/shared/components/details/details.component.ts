@@ -4,6 +4,7 @@ import { DetailsService } from '../../services/details.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { LoaderService } from '../../services/loader.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -15,19 +16,25 @@ export class DetailsComponent implements OnInit {
     private DetailsService: DetailsService,
     public loaderService: LoaderService,
     private router:Router,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private userService:UserService
   ) {}
   currentMedicine!: any;
   imageSrc!: any;
   imagebytes!: any;
   productId!:string
   activeButton: string = 'detailsMed';
+  ownerId:string='';
+  pharmacyId:string = '';
 
   ngOnInit() {
     this.ActivatedRoute.params.subscribe((params) => {
       this.productId = params['id'];
       this.medicineDetails(this.productId)
     });
+
+    this.pharmacyId = this.userService.jwtdecrypt(localStorage.getItem('token')!).nameid;
+
   }
 
   medicineDetails(productId: string) {
@@ -39,6 +46,7 @@ export class DetailsComponent implements OnInit {
         this.imageSrc = this.binaryToPng(this.imagebytes);
         this.imageSrc =  this.binaryToPng(this.imagebytes);
         const reader = new FileReader();
+        this.ownerId=this.currentMedicine.pharmacyId;
       },
       (error) => {
         this.toastr.error('Нещо се обърка. Моля, опитайте отново.')

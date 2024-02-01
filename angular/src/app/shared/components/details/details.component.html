@@ -31,7 +31,7 @@
         </div>
 
     </div>
-    <div class="buttons">
+    <div class="buttons" *ngIf="ownerId===pharmacyId">
         <button class="btn edit" (click)="editMedicine()">Редактиране</button>
         <button class="btn delete" (click)="deleteMedicine()">Изтриване</button>
     </div>
