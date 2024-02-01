@@ -29,11 +29,11 @@
     <ul>
       <!-- <li>About</li> -->
       <!-- <li *ngIf="role === 'Pharmacy'" routerLink="/pharmacy/add-medicine">Add medicaments</li> -->
-      <li  [routerLink]="['/patient/profile', id]" >Профил</li>
+      <li  [routerLink]="['/patient/profile', id]" *ngIf="role=='Patient'">Профил</li>
       <li routerLink="/catalog">Каталог</li>
-      <li routerLink="/pharmacy/add-medicine">Добави лекарство</li>
-      <li routerLink="/doctor/recipe/new">Създай рецепта</li>
-      <li routerLink="/pharmacist/search">Намери рецепта</li>
+      <li routerLink="/pharmacy/add-medicine" *ngIf="role==='Pharmacy'">Добави лекарство</li>
+      <li routerLink="/doctor/recipe/new" *ngIf="role==='GP'">Създай рецепта</li>
+      <li routerLink="/pharmacist/search" *ngIf="role!=='Pharmacy'&& role!=='Patient'">Намери рецепта</li>
       <!-- <li><a href="#">Nice staff</a></li> -->
       <li (click) = logout()>Излез</li>
     </ul>
