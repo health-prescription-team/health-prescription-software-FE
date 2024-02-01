@@ -19,7 +19,8 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // console.log(this.currentPath());
+    localStorage.removeItem('token');
+    localStorage.removeItem('ID');
     this.currentRole = this.activeRoute.url.split('/')[1];
   }
   currentRole!: string;

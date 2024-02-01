@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { CacheService } from '../../services/cache.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private activeRoute: Router,
     private UserService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cacheService: CacheService
   ) {}
   isPharamcyLogin: boolean = false;
   isEgn: boolean = false;
@@ -23,6 +25,8 @@ export class LoginComponent implements OnInit {
   urlPath: string = '';
 
   ngOnInit(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('ID');
     this.isPharmacy();
     this.isEmail();
     this.getcurrentPath();

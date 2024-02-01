@@ -69,6 +69,9 @@ export class ChatComponent implements OnInit{
         id: '',
         recipientId: ''
       })
+      setTimeout(() => {
+        this.scrollToBottom();
+      }, 500);
     });
 
 

@@ -74,7 +74,6 @@
                 <details class="current-medicine">
                     <summary>
                         <h4>{{med.medicineName}}</h4>
-                        <!-- {{med | json}} -->
                     </summary>
 
                     <app-recipe-info-med [currentRecipe] = "currentRecipe" [med]="med" [index] = "index" />
@@ -83,7 +82,6 @@
             </div>
 
             <app-recipe-add-med-form [recipeId]="recipeId!" [role]="role" [isEditRecipe] = "isEditRecipe" />
-<!--          (nestedFormValues)="CacheService.nestedFormValues = $event"-->
             <span *ngIf="!isEditRecipe">
                 <button class="btn add-medicine" type="button" (click)="CacheService.showAddMedicineComponent()"
                 *ngIf="CacheService.displayAddMedicine== 'flex'? false:true">Добави

@@ -105,6 +105,7 @@ form{
 .add-recipe:hover,
 .add-recipe:active {
   box-shadow: 2px 3px 4px #052d46, inset 2px 3px 4px #052d46;
+  cursor: pointer;
 }
 /* BODY */
 
@@ -191,22 +192,12 @@ input[type="date"],
   border-radius: 3px;
 }
 
-/* BUTTON */
-/* .btn {
-  background-color: #343cd6;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-} */
-
 .add-medicine {
   /*position: relative;*/
+  margin-top: 2em;
   align-self: flex-end;
   max-width: 230px;
+  cursor: pointer;
   left: 290px;
   top: 50px;
   background: #808080;
@@ -216,6 +207,7 @@ input[type="date"],
 .add-medicine:hover,
 .add-medicine:active {
   box-shadow: 2px 3px 4px #ab9d9d, inset 2px 3px 4px #514d4d;
+  cursor: pointer;
 }
 
 /* ADD NEW MEDICINE */
