@@ -90,7 +90,7 @@
   </div>
   <div id="btns-container">
     <button *ngIf="!isEditRecipe" class="btn" id="proceedBtn" type="button" (click)="CacheService.addMedicine(CacheService.nestedFormValues,CacheService.nameCurrentMedicines)">Предпиши</button>
-    <button *ngIf="isEditRecipe||role===role" id="editBtn" class="btn"  type="button" (click)="CacheService.editMedicine(CacheService.nestedFormValues)">Редактирай</button>
+    <button *ngIf="isEditRecipe||role==='GP'" id="editBtn" class="btn"  type="button" (click)="CacheService.editMedicine(CacheService.nestedFormValues)">Редактирай</button>
     <button  class="btn" id="cancelBtn" type="button" (click)="CacheService.hideAddMedicineComponent(currentmedicine, recipeId,inputevening)" [attr.idMedicine]="">Отказ</button>
   </div>
 </div>
