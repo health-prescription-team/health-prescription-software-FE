@@ -21,8 +21,8 @@
     <button class="btn" id="proceedBtn" (click)="finishMedicine()" *ngIf="userService.role === 'pharmacist'">Завърши</button>
 <!--    <button class="btn" id="proceedBtn">Завърши</button>-->
 <!--    <button class="btn" id="editBtn" *ngIf="userService.role === 'doctor'">Редактирай</button>-->
-    <button type="button" class="btn" (click)="editCurrentMedicament()" id="editBtn">Редактирай</button>
-    <button class="btn" (click)="DetailsService.deleteMedicament(currentRecord.medicineId)" id="cancelBtn">Изтрий</button>
+    <button type="button" class="btn" *ngIf="userService.role === 'GP'" (click)="editCurrentMedicament()" id="editBtn">Редактирай</button>
+    <button class="btn" *ngIf="userService.role === 'GP'" (click)="DetailsService.deleteMedicament(currentRecord.medicineId)" id="cancelBtn">Изтрий</button>
   </div>
 
 </div>
