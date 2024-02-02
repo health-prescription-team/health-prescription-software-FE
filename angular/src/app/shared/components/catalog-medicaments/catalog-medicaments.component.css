@@ -1,9 +1,7 @@
 .component {
   max-width: 80vw;
   min-height: 50vh;
-  /* background: rgb(229, 232, 248); */
   margin: 0 auto;
-  /* border: 1px solid black; */
   box-shadow: 1px 1px 10px rgb(187, 184, 184);
   padding: 1em;
 }
@@ -44,14 +42,11 @@
   border-radius: 0.5em;
   overflow: hidden;
   box-shadow:  5px 5px 10px rgba(0, 0, 0, 0.3),  inset 5px 5px 10px rgba(0, 0, 0, 0.1) ;/* Adjust the values as needed */
-
-  /* border: 1px solid red;  */
 }
 
 
 .group p {
   margin: 0;
-  /* background: #37E4FF; */
   padding: 5px;
   flex: 1;
   overflow: hidden;
@@ -59,10 +54,6 @@
   border-top-left-radius: 0.5em;
   text-align: center;
   letter-spacing: 1px;
-  /* font-family: ' MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
-  /* text-transform: uppercase; */
-  /* font-size: 1.2em; */
-
 }
 
 .img {
@@ -83,7 +74,6 @@
 
 .details {
   flex: 0;
-  /* border:1px solid red; */
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
 }
@@ -144,14 +134,13 @@ button {
 }
 
 .medName {
-  position: relative; /* Create a stacking context for z-index */
-  z-index: 1; /* Place the text above the bandage */
-  /* Additional styling for the text if needed */
+  position: relative;
+  z-index: 1; 
   transform: rotate(-20deg);
   text-align: center;
-  color: rgba(0, 117, 220, 0.601);
-  /* margin: 0 auto; */
+  color: white;
   font-size: 1.2em;
+  font-weight: bold;
 
 }
 .group {
@@ -162,41 +151,7 @@ button {
   background-color: #90a9ba;
   color: white;
   letter-spacing: 1.2em;
-  /* font-size: 1.2em; */
   box-shadow:  5px 5px 10px rgba(0, 0, 0, 0.3),  inset 5px 5px 10px rgba(0, 0, 0, 0.1) ;/* Adjust the values as needed */
 
 }
-/* 
-
-.pharmacy {
-  background-color: #FFBB6B;
-  text-align: center;
-  align-self: flex-end;
-  border-radius: 26%;
-  position: relative;
-  width: 75%;
-  transform: rotate(45deg);
-  position: relative;
-  top: 17px;
-  right: -28px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.pharmacy p {
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: white;
-  text-align: center;
-  border: 1px solid red;
-}
-
-.inside-bandage {
-  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3), inset 5px 5px 10px rgba(0, 0, 0, 0.1);
-  background-color: #FF8A00;
-  margin-top: 10px;
-  margin-left: auto; 
-  
-} */
 
