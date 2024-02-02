@@ -69,7 +69,7 @@
 
         <div class="form-group" *ngIf="currentRole=='doctor'||
                     currentRole=='pharmacist'">
-          <input type="text" name="UinNumber" id="uinNumber" placeholder="1234567890" #inputuinNumber="ngModel"
+          <input type="text" name="UinNumber" id="uinNumber" placeholder="УИН" #inputuinNumber="ngModel"
             required minlength="10" pattern="[0-9]+"  ngModel>
         </div>
         <div *ngIf="form.controls['UinNumber']?.touched && form.controls['UinNumber'].invalid">
