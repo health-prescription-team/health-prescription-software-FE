@@ -40,7 +40,10 @@ export class DetailsComponent implements OnInit {
   medicineDetails(productId: string) {
     this.DetailsService.getMedicine(productId).subscribe(
       (res) => {
+        console.log(res);
+        
         this.currentMedicine = res;
+        this.currentMedicine.price = res.price.toFixed(2)
         // console.log('this.currentMedicine', this.currentMedicine);
         this.imagebytes = res.medicineImageBytes;
         this.imageSrc = this.binaryToPng(this.imagebytes);

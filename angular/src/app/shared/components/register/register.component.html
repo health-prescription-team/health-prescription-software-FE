@@ -10,7 +10,7 @@
       <div class="input-groups">
         <div class="form-group" *ngIf="currentRole=='pharmacy'||
                     currentRole=='pharmacist'">
-          <input type="text" name="Email" id="Email" placeholder="Email" #inputEmail="ngModel" required ngModel>
+          <input type="text" name="Email" id="Email" placeholder="Имейл" #inputEmail="ngModel" required ngModel>
         </div>
         <div *ngIf="form.controls['Email']?.touched && form.controls['Email'].invalid">
           <div *ngIf="form.controls['Email'].errors?.['required']" class="error">Полето е задължително</div>
@@ -29,7 +29,7 @@
         <div class="form-group" *ngIf="currentRole=='doctor'||
                     currentRole=='patient'||
                     currentRole=='pharmacist'">
-          <input type="text" name="MiddleName" id="middleName" placeholder="Иванов" #inputmiddleName="ngModel" required
+          <input type="text" name="MiddleName" id="middleName" placeholder="Презиме" #inputmiddleName="ngModel" required
             ngModel>
             <div *ngIf="form.controls['MiddleName']?.touched && form.controls['MiddleName'].invalid">
               <div *ngIf="form.controls['MiddleName'].errors?.['required']" class="error">Полето е задължително!</div>
@@ -69,7 +69,7 @@
 
         <div class="form-group" *ngIf="currentRole=='doctor'||
                     currentRole=='pharmacist'">
-          <input type="text" name="UinNumber" id="uinNumber" placeholder="1234567890" #inputuinNumber="ngModel"
+          <input type="text" name="UinNumber" id="uinNumber" placeholder="УИН" #inputuinNumber="ngModel"
             required minlength="10" pattern="[0-9]+"  ngModel>
         </div>
         <div *ngIf="form.controls['UinNumber']?.touched && form.controls['UinNumber'].invalid">
