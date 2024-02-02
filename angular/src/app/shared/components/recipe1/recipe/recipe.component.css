@@ -67,6 +67,7 @@ form{
 }
 .error {
   color: rgb(158, 12, 12);
+  margin-left: 5px;
 }
 
 .btn {
@@ -225,8 +226,7 @@ summary {
   cursor: pointer;
 }
 
-details[open] {
-}
+
 
 /* summary::marker {
   text-align: end !important;

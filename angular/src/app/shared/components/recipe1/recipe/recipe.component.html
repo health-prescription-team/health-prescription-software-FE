@@ -13,10 +13,10 @@
 
                         <ng-container *ngIf="inputpatient.touched">
                             <p class="error" *ngIf="inputpatient?.errors?.['required']">
-                                Id is required.
+                                Полето е задължително!
                             </p>
                             <p class="error" *ngIf="inputpatient?.errors?.['minlength'] || inputpatient?.errors?.['maxlength'] ">
-                                Please enter correct Id
+                                Моля,въведете валидно ЕГН!
                             </p>
                         </ng-container>
                     </div>
